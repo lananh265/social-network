@@ -1,0 +1,52 @@
+.Header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: baseline; */
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: black;
+  color: #fff;
+}
+
+.trai{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: left;
+  background-color:black;
+
+}
+ 
+.phai{
+  display: flex;
+  width: 50%;
+  align-items: left;
+  background-color: black;
+}
+
+/* .phai:hover {
+
+  color:#00bf5f;
+} */
+
+
+.input{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  /* overflow:auto;  */
+
+}
+
+ /* ::-webkit-scrollbar{
+  width: 10px;
+  background: lightgray;
+}
+::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 5px;
+}    */
+
+
