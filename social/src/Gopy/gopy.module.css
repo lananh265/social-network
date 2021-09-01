@@ -1,0 +1,43 @@
+  .container{
+      width: 100vw;
+      height: 60px;
+      /* display: flex; */
+     
+     
+  }
+
+  .header{
+      width: 100%;
+      height: 70px;
+      display: flex;
+      background-color: black;
+      color: white;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .trai{
+      width: 50%;
+      background-color: black;
+     
+  }
+
+  .phai{
+      width: 50%;
+      
+  }
+
+  .gopy{
+      height: 100%;
+      background-color: violet;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .toanbo{
+    align-content: center;
+    width: 100%;
+    height: 100%;
+  }

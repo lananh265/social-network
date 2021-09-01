@@ -32,7 +32,40 @@
     /* align: "center"; */
 
   }
-  /* .form-group{
-    align-items:"right";
+  .toanbo{
+    align-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bang{
+    width: 100%;
+    border:"1";
+    border-color: "#CCCCCC";
+    align-content: left;
+  }
+  .nhaptt{
+    background-color: "#ff6600";
+    height: "60px";
+    color: "#FFFFFF";
+    text-align: center;
+  }
+  .noidung{
+    align-content: center;
+  }
+  .tr{
+    width: "180";
+    text-align: right;
+    height: "60px";
+  }
+  .ph{
+    width: "820";
+    align-content: right;
+  }
+  .form-group{
+    align-content: right;
+    height: "60px";
+  }
+  /* .form-group ph{
     color: "#FF0000";
-  } */ 
+  } */

@@ -23,14 +23,16 @@ export default function Gopy(){
                        </tr>
                    </thead>
                    <body align= "center"><tr>
-                       <td width="180" align="right" height="60px"><label><h2>Chủ đề</h2></label></td>
+                       <div className="tr">
+                       <td width="180" align="right" height="60px"><label><h2>Chủ đề</h2></label></td></div>
+                      <div className="ph">
                        <td width="820" align="center" > 
                          <select name="slChuDe" id="slChuDe">
                          <option value="dichvu">Góp ý về dịch vụ </option>
                         <option value="website">Góp ý về website</option>
                         <option value="khac">Góp ý vấn đề khác</option>
                          </select>
-                     </td>
+                     </td></div>
                      </tr>
                      <tr className="form-group">
                          <td align="right" height="60px"><label><h2>Họ tên:</h2> </label></td>

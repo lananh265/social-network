@@ -14,7 +14,7 @@ import Chinhsach from "./components/Chinhsach/Chinhsach";
 import Khieunai from "./components/Khieunai/Khieunai";
 // import Gopy from "./Gopy/Gopy";
 
-import Gopy from "./Gopy/Gopy1";
+import Gopy from "./Gopy/Gopy2";
 
 // import './App.scss';
 // import Header from './components/Header';
