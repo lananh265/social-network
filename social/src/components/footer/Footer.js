@@ -23,6 +23,7 @@ const Footer = () => {
             {/* <FooterLink href="#">Chính sách bảo mật thông tin</FooterLink> */}
             <FooterLink href="#">Giải quyết khiếu nại, tranh chấp</FooterLink>
           </Column>
+          &nbsp;
           <Column>
             <Heading>Dịch vụ hỗ trợ</Heading>
             {/* <FooterLink href="#">Chat</FooterLink>
@@ -36,16 +37,15 @@ const Footer = () => {
             <FooterLink href="#">Giải đáp thắc mắc</FooterLink>
            
           </Column> */}
-
-<Column>
+ 
+          <Column>
           <Heading><h4>Thông tin liên hệ</h4></Heading>
-          <h4 style={{color:"red"}}> Hotline: 19002605</h4> <br/>
-          <h4 style={{color:"red"}}>Email: hotro@lana.vn</h4>
-           
+          <h5 style={{color:"red"}}> Hotline: 19002605</h5>
+          <h5 style={{color:"red"}}>Email: hotro@lana.vn</h5>
           </Column>
          
-          <Column>
-          <h5 style={{ color: "green", 
+          {/* <Column>
+          <h6 style={{ color: "green", 
                    textAlign: "center", 
                   }}>
         Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục<br/>
@@ -55,14 +55,15 @@ const Footer = () => {
         - Văn phòng Hà Nội: Tầng 9, Tòa nhà 52A2, Đường Nguyễn Huệ, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội.<br/>
         - Văn phòng TP.HCM: 26A đường số 5, Phường 9, Quận Bình Thạnh, TP.Hồ Chí Minh.<br/>
         
-      </h5>
+      </h6>
            
-          </Column>
+          </Column> */}
 
 
         </Row>
       </Container>
-      {/* <h6 style={{ color: "green", 
+      <br/>
+      <h6 style={{ color: "green", 
                    textAlign: "center", 
                   }}>
         Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục<br/>
@@ -71,10 +72,10 @@ const Footer = () => {
         Đại chỉ:<br/> 
         - Văn phòng Hà Nội: Tầng 9, Tòa nhà 52A2, Đường Nguyễn Huệ, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội.<br/>
         - Văn phòng TP.HCM: 26A đường số 5, Phường 9, Quận Bình Thạnh, TP.Hồ Chí Minh.<br/>
-        Hotline: 19002605 - Email: hotro@lana.vn
+       
         
         
-      </h6> */}
+      </h6>
     </Box>
   );
 };

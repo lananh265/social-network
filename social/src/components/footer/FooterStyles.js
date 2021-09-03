@@ -7,7 +7,7 @@ export const Box = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 30%;
+  height: 41%;
   
    
   @media (max-width: 1000px) {
@@ -28,7 +28,7 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-left: 0px;
+  margin-left: 30px;
   padding-top: 30px;
   
 `;

@@ -14,12 +14,15 @@ import Chinhsach from "./components/Chinhsach/Chinhsach";
 import Khieunai from "./components/Khieunai/Khieunai";
 // import Gopy from "./Gopy/Gopy";
 
-import Gopy from "./Gopy/Gopy2";
+import Gopy from "./components/Gopy/Gopy2";
 
 // import './App.scss';
 // import Header from './components/Header';
 // import NotFound from '/components/NotFound';
 // import Footer from "./components/footer/Footer";
+
+import Header from './components/Gopy/header';
+import App2 from "./components/Gopy/App";
 
 function App() {
   const [token, setToken] = useState(); //token = "dang nhap thanh cong"
@@ -43,8 +46,9 @@ function App() {
 
         {/* <Chinhsach /> */}
         {/* <Khieunai/> */}
-        <Gopy />
+        {/* <Gopy /> */}
 
+<Header />
       </Route>
     </Switch>
   </BrowserRouter>

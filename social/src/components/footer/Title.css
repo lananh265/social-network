@@ -14,7 +14,7 @@
   display: flex;
   width: 50%;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   background-color:black;
 
 }
@@ -22,7 +22,7 @@
 .phai{
   display: flex;
   width: 50%;
-  align-items: left;
+  align-items: right;
   background-color: black;
 }
 
@@ -48,5 +48,9 @@
   background-color: grey;
   border-radius: 5px;
 }    */
-
+/* .nut{
+  align-items: center;
+  align-content: center;
+  
+} */
 
