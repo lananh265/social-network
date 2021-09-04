@@ -63,7 +63,7 @@ const Footer = () => {
         </Row>
       </Container>
       <br/>
-      <h6 style={{ color: "green", 
+      <h6 style={{ color:"white", 
                    textAlign: "center", 
                   }}>
         Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục<br/>

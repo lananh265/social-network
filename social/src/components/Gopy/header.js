@@ -33,11 +33,9 @@ export default function Header(){
            
                 </div>
 
-            </div>
-            <br/>
-            
+            </div>       
 
-            <div className={s.down}> <h6 style={{ color: "green", 
+            <div className={s.down}> <h6 style={{ color: "white", 
                    textAlign: "center", 
                   }}>
         Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục<br/>

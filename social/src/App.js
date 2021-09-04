@@ -24,8 +24,12 @@ import Gopy from "./components/Gopy/Gopy2";
 import Header from './components/Gopy/header';
 import App2 from "./components/Gopy/App";
 
+import Ref from "./components/Gopy/ref";
+
+import Chat from "./components/chat/chat2";
+
 function App() {
-  const [token, setToken] = useState(); //token = "dang nhap thanh cong"
+  const [token, setToken] = useState("abc"); //token = "dang nhap thanh cong"
 
   if(!token) {
     return <Welcome nhanProps = {setToken}/>
@@ -48,7 +52,12 @@ function App() {
         {/* <Khieunai/> */}
         {/* <Gopy /> */}
 
-<Header />
+{/* <Header /> */}
+{/* 
+<Ref /> */}
+
+<Chat />
+
       </Route>
     </Switch>
   </BrowserRouter>

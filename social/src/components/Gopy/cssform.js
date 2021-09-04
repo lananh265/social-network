@@ -9,7 +9,7 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(to bottom, #f05053, #e1eec3);
+  background: linear-gradient(to bottom, #1f4037, #99f2c8);
   height: 100%;
   margin: 0;
   color: #555;
@@ -34,6 +34,7 @@ height: auto;
 padding: 0 20px;
 `;
 
+//form
 export const StyledForm = styled.form`
 width: 100%;
 max-width: 700px;
@@ -59,7 +60,7 @@ ${sharedStyles}
 `;
 export const StyledButton = styled.button`
 display: block;
-background-color: #f7797d;
+background-color: #1D976C;
 color: #fff;
 font-size: 0.9rem;
 border: 0;

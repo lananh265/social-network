@@ -6,7 +6,7 @@ import {GlobalStyle, sharedStyles, StyledFormWrapper,
 
 
 const initalState = {
-  name: '',
+  username: '',
   email: '',
   message: '',
   gender: ''
@@ -47,8 +47,8 @@ function App2() {
       <GlobalStyle />
       <StyledFormWrapper>
         <StyledForm onSubmit={handleSubmit}>
-          <h2>Contact Form</h2>
-          <label htmlFor="name">Name</label>
+          <h2>Nhập Thông Tin Góp Ý</h2>
+          <label htmlFor="name">Username</label>
           <StyledInput
             type="text"
             name="name"
@@ -96,7 +96,7 @@ function App2() {
               <p>{error}</p>
             </StyledError>
           )}
-          <StyledButton type="submit">Send Message</StyledButton>
+          <StyledButton type="submit">Send </StyledButton>
         </StyledForm>
       </StyledFormWrapper>
     </>
