@@ -24,15 +24,14 @@
 }
 
 .left{
-    /* background-color: tomato; */
+   color: whitesmoke;
 }
 
 .right{
     /* background-color: violet; */
+    text-align: right;
 }
 .button{
-    
-
 background-color: #ED213A;
 color: #fff;
 font-size: 0.9rem;

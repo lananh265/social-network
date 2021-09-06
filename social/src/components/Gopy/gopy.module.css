@@ -1,7 +1,7 @@
 .container{
   width: 100vw;
   height: 78px;
-  background-color: black;
+
 }
 
 .header{
@@ -16,12 +16,12 @@
 
 .trai{
   width: 40%;
-  background-color: black;
+  /* background-color: black; */
 }
 
 .phai{
   width: 60%;
-  background-color: black;
+  /* background-color: black; */
 }
 
 .gopy{

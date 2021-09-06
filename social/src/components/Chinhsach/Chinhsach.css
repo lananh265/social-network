@@ -6,8 +6,8 @@
     /* align-items: baseline; */
     padding: 1em;
     margin-bottom: 2em;
-    background-color: black;
-    color: #fff;
+    /* background-color: #134E5E; */
+    color:black;
   }
   
   .trai{
@@ -15,7 +15,7 @@
     width: 50%;
     flex-direction: column;
     align-items: left;
-    background-color:black;
+    /* background-color:#134E5E; */
   
   }
    
@@ -23,7 +23,7 @@
     display: flex;
     width: 50%;
     align-items: left;
-    background-color: black;
+    /* background-color: #134E5E; */
   }
 
   .noidung{
