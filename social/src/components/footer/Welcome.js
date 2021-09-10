@@ -37,7 +37,7 @@ const initalState = {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(true);
     const [sign, setSign] = useState(false);
 
     const dangnhap = ()=>{
