@@ -71,48 +71,43 @@
 
 // }
 
-
-import {useState, useRef, useEffect} from 'react'
-import socketIOClient, { Socket } from "socket.io-client"
-const host = "http://171.235.73.143:4000/"
+import {useState, useEffect} from 'react'
 
 export default function Chat(){
-  const [id, setID] = useState("")
-  const [tn, setTN] = useState ("")
-  const luuTN = (e)=>{
-    setTN(e.target.value)
-  }
-const guiTN = ()=>{
-  const ob={
-    id_gui:3,
-    id_nhan:2,
-    message: tn
-  }
-  socketRef.current.emit("guiTN", ob)
-  
-}
+  const [user, setUser] =useState("anh")
+  const [idUser, setIdUser]= useState("3")
+  const [luuDL, setLuuDL]=useState([{}])//luu du lieu Json vao LuuDL
 
 
-  let socketRef = useRef()
   useEffect( ()=>{
-    socketRef.current = socketIOClient.connect(host)
-    socketRef.current.on("nhanID", (data)=>{
-      setID(data)
-    }) 
+    const url ="http://philongit.ddns.net:4000/get_messages"
+    fetch(url, {
+      method:"GET"
+    })
+    
+    .then(data=>data.json())
+    .then((dataJson) =>{
+      // console.log(dataJson)
+      setLuuDL(dataJson)
+    })
+    .catch( (e)=>{
+      console.log(e)
+    })
 
   },[])
-  return(
+
+
+  const listTN = luuDL.map( (e, index)=>{
+    return <h3 key ={index}> {e.connecter_id} {e.text_me}</h3>
+  })
+
+
+  return (
     <div>
-      <h1>Day La Chat </h1>
-      {id}
-      <div>
-        <form>
-          <label>
-            <input type="text" value={tn} onChange={(e)=>{luuTN(e)}} />
-          </label>
-        </form>
-        <button onClick={()=>{guiTN()}}>Gui</button>
-      </div>
+      <h1>Day la Chat cua User: {user}, {idUser}</h1>
+
+     
+      {listTN }
     </div>
   )
 }
