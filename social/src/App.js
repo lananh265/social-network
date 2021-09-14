@@ -25,7 +25,7 @@ import Header from './components/Gopy/header';
 import App2 from "./components/Gopy/App";
 
 import Ref from "./components/Gopy/ref";
- import Chat from "./components/chat/chat5";
+ import Chat from "./components/chat/chat2";
 
 function App() {
   const [token, setToken] = useState("abc"); //token = "dang nhap thanh cong"
