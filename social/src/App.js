@@ -54,9 +54,9 @@ function App() {
 <Header /> */}
 
 {/* <Ref /> */}
-{/* <Welcome /> */}
+<Welcome />
 
-<Chat />
+{/* <Chat /> */}
 
       </Route>
     </Switch>

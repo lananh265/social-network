@@ -8,7 +8,8 @@ import {useState} from "react";
 
 import Login from "./Login";
 import About from "./About";
-
+import Home from "./Home";
+import Contact from "./Contact";
 function GetToken(){
   const token = localStorage.getItem('token')
   const UserToken = JSON.parse(token)
@@ -26,20 +27,25 @@ export default function App (){
   if(!token){
     return <Login thayDoiToken = {setToken} />
   }
+  // if(!token){
+  //   return <Home />
+  // }
 
 
   return (
     <div>
     <Router>
-    <h1>App </h1>
-    <button><Link to="/About">About</Link></button>
-
+    <Home />
+    
             <Switch>
-                <Route path="/login">
-                <Login />
+                <Route path="/home">
+                <Home />
                 </Route>
                 <Route path="/about">
                 <About />
+                </Route>
+                <Route path="/contact">
+                <Contact />
                 </Route>
             </Switch>
             <button onClick={()=>{dangXuat()}}>Logout</button>
