@@ -3,7 +3,7 @@ import { Container } from "../footer/FooterStyles"
 import "./Khieunai.css"
 import React, {useState}from 'react'; 
 import s from '../Gopy/header.module.css'
-import { GlobalStyle } from '../Gopy/cssform';
+import { GlobalStyle } from '../Gioithieu/cssform';
 
 
 export default function Khieunai(){

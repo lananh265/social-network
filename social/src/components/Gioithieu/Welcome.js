@@ -1,36 +1,69 @@
 import React, {useState}from 'react';
-// import './Title.css'
-import s from '../Gopy/header.module.css'
-import { GlobalStyle } from '../Gopy/cssform';
-import {StyledFormWrapper,StyledForm, StyledInput,StyledButton, StyledFieldset, StyledError} from '../Gopy/cssform'
 
-
-// export default function Welcome({nhanProps}) {
-//     const [Username, setUsername] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [email, setEmail] = useState("");
-//     const [phone, setPhone] = useState("");
-
-//     const [login, setLogin] = useState(false);
-//     const [sign, setSign] = useState(false);
-
-//     const dangnhap = ()=>{
-//         nhanProps('dang nhap thanh cong!');
-//     }
-
-//     const dangki = ()=>{
-//         alert ('dang ki thanh cong!');
-//     }
-
+import s from './header.module.css'
+import { GlobalStyle, StyledFormWrapper,StyledForm, StyledInput,
+        StyledButton, StyledFieldset, StyledError } from './cssform';
 
 const initalState = {
     username: '',
+    password: '',
     email: '',
-    message: '',
-    gender: ''
+    phone: '',
+    gender: '',
+  };
+
+  const signUpState = {
+    username: '',
+    password: '',
+    email: '',
+    phone: '',
+    gender: '',
   };
   
-  export default function Welcome({nhanProps}) {
+ export default function Welcome({nhanProps}) {
+
+  const [state, setState] = useState(initalState);
+  const [signupstate, setSignUpState] = useState(signUpState);
+
+  const [error, setError] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('submitted!');
+    console.log(state);
+
+    for (let key in state) {
+      if (state[key] === '') {
+        setError(`You must provide the ${key}`)
+        return
+      }
+    }
+    setError('');
+
+    // const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    // const test = regex.test(state.email);
+    // console.log(test);
+
+    console.log("Succeeded!!!")
+  };
+
+  const handleInput = e => {
+    const inputName = e.currentTarget.name;
+    const value = e.currentTarget.value;
+    console.log(inputName)
+    console.log(value)
+
+    setState(prev => ({ ...prev, [inputName]: value }));
+  };
+
+  const inputLogin = e => {
+    const inputName = e.currentTarget.name;
+    const value = e.currentTarget.value;
+    console.log(inputName)
+    console.log(value)
+
+    setSignUpState(prev => ({ ...prev, [inputName]: value }));
+  };
 
     const [Username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -48,34 +81,6 @@ const initalState = {
         alert ('dang ki thanh cong!');
     }
 
-    const [state, setState] = useState(initalState);
-    const [error, setError] = useState('');
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      console.log('submitted!');
-      console.log(state);
-  
-      for (let key in state) {
-        if (state[key] === '') {
-          setError(`You must provide the ${key}`)
-          return
-        }
-      }
-      setError('');
-      // const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-      // const test = regex.test(state.email);
-      // console.log(test);
-  
-      console.log("Succeeded!!!")
-    };
-  
-    const handleInput = e => {
-      const inputName = e.currentTarget.name;
-      const value = e.currentTarget.value;
-  
-      setState(prev => ({ ...prev, [inputName]: value }));
-    };
 return (
    <div>
        <GlobalStyle />
@@ -99,15 +104,15 @@ return (
           <label htmlFor="name">Username</label>
           <StyledInput
             type="text"
-            name="name"
-            value={state.name}
+            name="username"
+            value={state.username}
             onChange={handleInput}
           />
            <label htmlFor="name">Password</label>
           <StyledInput
-            type="pass"
-            name="name"
-            value={state.name}
+            type="password"
+            name="password"
+            value={state.password}
             onChange={handleInput}
           />
          
@@ -130,15 +135,15 @@ return (
              <StyledInput
                type="text"
                name="name"
-               value={state.name}
-               onChange={handleInput}
+               value={signupstate.name}
+               onChange={inputLogin}
              />
               <label htmlFor="name">Password</label>
              <StyledInput
                type="pass"
-               name="name"
-               value={state.name}
-               onChange={handleInput}
+               name="pass"
+               value={state.pass}
+               onChange={inputLogin}
              />
              <label htmlFor="email">Email</label>
              <StyledInput
@@ -177,12 +182,7 @@ return (
                  Male
                </label>
              </StyledFieldset>
-             {/* <label htmlFor="message">Message</label>
-             <StyledTextArea
-               name="message"
-               value={state.message}
-               onChange={handleInput}
-             /> */}
+
              {error && (
                <StyledError>
                  <p>{error}</p>
@@ -195,9 +195,6 @@ return (
   
   </div>
   
-  
-   {/* <Footer /> */}
-
    &nbsp;&nbsp;&nbsp;
         <div className={s.footer}>
 
@@ -214,8 +211,8 @@ return (
         Email: hotro@lana.vn</h6>
         </div>
 </div>
-
-   
    </div>
+
+
 );
 }

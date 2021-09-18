@@ -3,7 +3,7 @@ import React, {useState}from 'react';
 // import Footer from "../footer/Footer";
 import "./Gioithieu.css"
 import s from '../Gopy/header.module.css'
-import { GlobalStyle } from '../Gopy/cssform';
+import { GlobalStyle } from './cssform';
 
 
 
