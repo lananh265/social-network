@@ -28,7 +28,7 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin-left: 30px;
+  margin-left: 50px;
   padding-top: 30px;
   
 `;
@@ -48,7 +48,7 @@ export const Row = styled.div`
 export const FooterLink = styled.a`
   color: #fff;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 20px;
   text-decoration: none;
    
   &:hover {

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import s from '../Gioithieu/header.module.css'
 
 import {GlobalStyle, sharedStyles, StyledFormWrapper,
     StyledForm, StyledInput, StyledTextArea,
     StyledButton, StyledFieldset, StyledError} from '../Gioithieu/cssform'
     
-
-
 const initalState = {
   username: '',
   email: '',
@@ -46,14 +45,27 @@ function App2() {
   return (
     <>
       <GlobalStyle />
+
+      <div className={s.Header}>
+           <div className={`${s.left} ${s.box}`}>
+               <h1>LANA.VN</h1>
+           </div>
+           <div className={`${s.right} ${s.box}`}>
+                
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+               <button className={s.button}>Đăng Xuất</button>
+               &nbsp;&nbsp;&nbsp;
+           </div>
+       </div>
+
       <StyledFormWrapper>
         <StyledForm onSubmit={handleSubmit}>
           <h2>Nhập Thông Tin Góp Ý</h2>
-          <label htmlFor="name">Username</label>
+          <label htmlFor="username">Username</label>
           <StyledInput
             type="text"
-            name="name"
-            value={state.name}
+            name="username"
+            value={state.username}
             onChange={handleInput}
           />
           <label htmlFor="email">Email</label>
