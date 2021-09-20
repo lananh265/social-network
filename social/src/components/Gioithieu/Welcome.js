@@ -211,6 +211,16 @@ return (
                  />
                  Male
                </label>
+               <label>
+                 <input
+                   type="radio"
+                   value="other"
+                   name="gender"
+                   checked={signupstate.gender === 'other'}
+                   onChange={inputLogin}
+                 />
+                 Other
+               </label>
              </StyledFieldset>
 
              {error && (
