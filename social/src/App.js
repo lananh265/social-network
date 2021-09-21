@@ -1,5 +1,4 @@
-// import Home from "./pages/home/Home";
-import Left from "./pages/home/Left";
+import Homee from "./pages/home/Homee";
 // import Login from "./pages/login/Login";
 // import Profile from "./pages/profile/Profile";
 // import Register from "./pages/register/Register";
@@ -42,10 +41,10 @@ function App() {
   <BrowserRouter>
     <Switch>
       <Route path="/">
-        {/* <Home /> */}
+        <Homee />
         {/* <Profile /> */}
         {/* <App2 /> */}
-        <Left />
+        {/* <Left /> */}
 {/* 
 <Header /> */}
 

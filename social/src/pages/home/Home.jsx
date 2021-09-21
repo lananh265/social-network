@@ -13,7 +13,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import MoneyIcon from '@mui/icons-material/Paid';
+import MoneyIcon from '@mui/icons-material/MonetizationOn';
 
 const [state, setState] = React.useState({
   top: false,
@@ -63,9 +63,14 @@ export default function Home() {
         <div className="profileRight">
         <div className="profileRightTop">
             <div className="profileCover">
-              <img
+              {/* <img
                 className="profileCoverImg"
-                src="assets/post/ban.PNG"
+                src="assets/post/kicuc.PNG"
+                alt=""
+              /> */}
+               <img
+                className="profileCoverImg"
+                src="assets/post/kicuc.PNG"
                 alt=""
               />
             </div>

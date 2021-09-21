@@ -10,12 +10,11 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-export default function Left() {
+export default function App() {
   const [state, setState] = React.useState({
-    top: true,
+   
     left: false,
-    bottom:false ,
-    right: false,
+    
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -26,6 +25,10 @@ export default function Left() {
     setState({ ...state, [anchor]: open });
   };
 
+  const thongBao = (text)=>{
+      alert (text)
+  }
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -34,8 +37,8 @@ export default function Left() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+        {['A', 'B', 'C'].map((text, index) => (
+          <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
             </ListItemIcon>
@@ -44,22 +47,13 @@ export default function Left() {
         ))}
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+     
     </Box>
   );
 
   return (
     <div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+      {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <Drawer
