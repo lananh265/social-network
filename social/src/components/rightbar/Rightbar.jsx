@@ -8,23 +8,11 @@ export default function Rightbar({ profile }) {
   const HomeRightbar = () => {
     return (
       <>
-        {/* <div className="phanhoiContainer">
-          <img className="phanhoiImg" src="assets/gift.png" alt="" />
-          
-        </div> */}
-        {/* <img className="rightbarAd" src="assets/ad.png" alt="" /> */}
-
-       
-      
-           
-         
-            
-        
-        {/* <div className="searchbar">
-          <Search className="searchIcon" />
+        <div className="searchbar">
+          {/* <Search className="searchIcon" /> */}
           <input
             className="searchInput" />
-        </div> */}
+        </div>
          <h4 className="rightbarTitle">Người liên hệ</h4>
         
         <ul className="rightbarFriendList">
@@ -36,17 +24,17 @@ export default function Rightbar({ profile }) {
     );
   };
 
-  const ProfileRightbar = () => {
-    return (
-      <>
-        <h4 className="rightbarTitle"></h4>
-        </>
-    );
-  }
+  // const ProfileRightbar = () => {
+  //   return (
+  //     <>
+  //       <h4 className="rightbarTitle"></h4>
+  //       </>
+  //   );
+  // }
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
+        {/* {profile ? <ProfileRightbar /> : <HomeRightbar />} */}
       </div>
     </div>
   );

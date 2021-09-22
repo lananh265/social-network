@@ -41,7 +41,7 @@ function App() {
   <BrowserRouter>
     <Switch>
       <Route path="/">
-        <Homee />
+        {/* <Homee /> */}
         {/* <Profile /> */}
         {/* <App2 /> */}
         {/* <Left /> */}
@@ -49,7 +49,7 @@ function App() {
 <Header /> */}
 
 {/* <Ref /> */}
-{/* <Welcome /> */}
+<Welcome />
 
 {/* <Chat /> */}
 
