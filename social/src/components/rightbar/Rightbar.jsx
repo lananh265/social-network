@@ -19,14 +19,14 @@ export default function Rightbar({ profile }) {
            
          
             
-        <h4 className="rightbarTitle">Thành viên đang hoạt động</h4>
-        <div className="searchbar">
+        
+        {/* <div className="searchbar">
           <Search className="searchIcon" />
           <input
-            placeholder="Tìm kiếm..."
             className="searchInput" />
-        </div>
-        <br/>
+        </div> */}
+         <h4 className="rightbarTitle">Người liên hệ</h4>
+        
         <ul className="rightbarFriendList">
           {Users.map((u) => (
             <Online key={u.id} user={u} />

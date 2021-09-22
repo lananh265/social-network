@@ -8,6 +8,7 @@
 
 .postWrapper {
   padding: 10px;
+  background-color: whitesmoke;
 }
 
 .postTop {
@@ -40,6 +41,7 @@
 
 .postCenter{
     margin: 20px 0;
+   
 }
 
 .postImg{

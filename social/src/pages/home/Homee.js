@@ -15,11 +15,13 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import MoneyIcon from '@mui/icons-material/MonetizationOn';
 import Sidebarleft from '../../components/sidebar/sidebarleft';
+import { GlobalStyle} from './cssform';
 
 export default function Home() {
 
   return (
     <>
+    
     <Topbar />
        <div className="home">
         <Sidebarleft />
@@ -28,7 +30,7 @@ export default function Home() {
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src="assets/post/ban.PNG"
+                src="assets/post/LANA.VN.png"
                 alt=""
               />
             </div>
@@ -37,6 +39,7 @@ export default function Home() {
           <div className="homeContainer">
         <Feed/>
         <Rightbar/>
+        <GlobalStyle />
       </div>
       </div>
     </div>

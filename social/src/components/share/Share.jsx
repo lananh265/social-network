@@ -6,17 +6,8 @@ export default function Share(post) {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-       
-          <input
-            placeholder="Chúng tôi có thể giúp gì cho bạn?"
-            className="shareInput"
-            
-          />
+          <input  className="shareInput" placeholder="Chúng tôi có thể giúp gì cho bạn?" />
         </div>
-        <br/>
-        <br/>
-        <button  onClick={()=>{post()}}> Đăng bài</button>
-     
       </div>
     </div>
   );

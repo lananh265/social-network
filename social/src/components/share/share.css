@@ -9,6 +9,7 @@
 
 .shareWrapper {
   padding: 10px;
+  background-color: whitesmoke;
 }
 
 .shareTop {
@@ -28,6 +29,7 @@
 .shareInput {
   border: none;
   width: 80%;
+  background-color: whitesmoke;
 }
 
 .shareInput:focus {
