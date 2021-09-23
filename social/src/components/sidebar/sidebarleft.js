@@ -18,6 +18,7 @@ import "./sidebar.css";
 import {
   Link
 } from "react-router-dom";
+
 import {
     Home,
     Chat ,
@@ -80,9 +81,9 @@ export default function Sidebarleft() {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-         
-
-        {['Home', 'Message', 'Profile'].map((text, index) => (
+          <h2 style={{ color: "#536976",textAlign: "center"  
+              }}>LANA.VN</h2>
+         {['Home', 'Message', 'Profile'].map((text, index) => (
         <Link to={text}>     
         <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
         <ListItemIcon>
@@ -92,7 +93,6 @@ export default function Sidebarleft() {
         </ListItem>
         </Link>
         ))}
-        
         </List>
         <Divider />
         <List>

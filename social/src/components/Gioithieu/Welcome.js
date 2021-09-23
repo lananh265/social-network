@@ -3,8 +3,8 @@ import { Box, Column, Container, Row, Heading } from "../footer/FooterStyles";
 import s from './header.module.css'
 import { GlobalStyle, StyledFormWrapper,StyledForm, StyledInput,
         StyledButton, StyledFieldset, StyledError } from './cssform';
-
-             
+import { Link } from '@mui/material';
+import PostLogin from '../../API/postLogin';
 
 const initalState = {
     username: '',
@@ -21,14 +21,14 @@ const initalState = {
     
   };
   
- export default function Welcome({nhanProps}) {
+ export default function Welcome({nhanToken}) {
 
   const [state, setState] = useState(initalState);
   const [signupstate, setSignUpState] = useState(signUpState);
 
   const [error, setError] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit =  async e => {
     e.preventDefault();
     console.log('submitted!');
     console.log(state);
@@ -44,7 +44,16 @@ const initalState = {
     // const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     // const test = regex.test(state.email);
     // console.log(test);
+   
+  
+    const ob = {
+        username: state.username,
+        password: state.password
+    }
+   let json = await PostLogin(ob)
+   console.log(json)
 
+   nhanToken (json)
     console.log("Succeeded!!!")
   };
 
@@ -97,7 +106,7 @@ const initalState = {
     const [sign, setSign] = useState(false);
 
     const dangnhap = ()=>{
-        nhanProps('dang nhap thanh cong!');
+        nhanToken('dang nhap thanh cong!');
     }
 
     const dangki = ()=>{
@@ -113,7 +122,7 @@ return (
                <h1>LANA.VN</h1>
            </div>
            <div className={`${s.right} ${s.box}`}>
-                <button className={s.button} onClick ={()=>{setSign(true); setLogin(false)}}>Đăng Kí</button>
+                <button className={s.button} onClick ={()=>{setSign(true); setLogin(false)}}>Đăng Ký</button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                <button className={s.button} onClick={()=>{setLogin(true); setSign(false)}}>Đăng Nhập</button>
                &nbsp;&nbsp;&nbsp;
@@ -121,9 +130,11 @@ return (
        </div>
        <div>
        { login && 
+       
        <StyledFormWrapper>
         <StyledForm onSubmit={handleSubmit}>
           <h2>Đăng Nhập</h2>
+          <br/><br/><br/>
           <label htmlFor="username">Username</label>
           <StyledInput
             type="text"
@@ -131,6 +142,7 @@ return (
             value={state.username}
             onChange={handleInput}
           />
+          <br/><br/>
            <label htmlFor="password">Password</label>
           <StyledInput
             type="password"
@@ -138,13 +150,18 @@ return (
             value={state.password}
             onChange={handleInput}
           />
+
+
+
          
           {error && (
             <StyledError>
               <p>{error}</p>
             </StyledError>
           )}
+          <br/><br/><br/><br/>
           <StyledButton type="submit">Submit</StyledButton>
+          <br/><br/><br/><br/>
         </StyledForm>
       </StyledFormWrapper>
   }
@@ -319,6 +336,14 @@ return (
                         </h5>
                         </Column>
 
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",  
+              }}>CHÍNH SÁCH HỖ TRỢ</h3><br/>
+                        <h5><Link href="#">Điều khoản chính sách</Link><br/>
+              <br/>
+                      <Link href="#">Giải quyết khiếu nại, tranh chấp</Link>
+                        </h5>
+                        </Column>
                     </Row>
                 </Container>
                 <br/>
@@ -334,8 +359,8 @@ return (
          Văn phòng Hà Nội: Tầng 9, Tòa nhà 52A2, Đường Nguyễn Huệ, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội.<br/>
          Văn phòng TP.HCM: 26A đường số 5, Phường 9, Quận Bình Thạnh, TP.Hồ Chí Minh.<br/>
         Liên hệ: <br/>
-         Hotline: 19002605
-        Email: hotro@lana.vn
+         Hotline: 19002605<br/>
+         Email: hotro@lana.vn
       </h6>
              </div>
    </div>

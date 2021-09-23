@@ -26,12 +26,12 @@ import App2 from "./components/Gopy/App";
 
 // import Ref from "./components/Gopy/ref";
 //  import Chat from "./components/chat/chat2";
-
+import useToken from "./API/useToken";
 function App() {
-  const [token, setToken] = useState("abc"); //token = "dang nhap thanh cong"
-
+  // const [state, setSate] = useState()
+  const {token, luuToken} = useToken()
   if(!token) {
-    return <Welcome nhanProps = {setToken}/>
+    return <Welcome nhanToken = {luuToken}/>
   }
 
   return (
@@ -41,7 +41,7 @@ function App() {
   <BrowserRouter>
     <Switch>
       <Route path="/">
-        {/* <Homee /> */}
+        <Homee />
         {/* <Profile /> */}
         {/* <App2 /> */}
         {/* <Left /> */}
@@ -49,7 +49,8 @@ function App() {
 <Header /> */}
 
 {/* <Ref /> */}
-<Welcome />
+
+{/* <Welcome /> */}
 
 {/* <Chat /> */}
 

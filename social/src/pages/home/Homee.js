@@ -16,9 +16,19 @@ import HomeIcon from '@mui/icons-material/Home';
 import MoneyIcon from '@mui/icons-material/MonetizationOn';
 import Sidebarleft from '../../components/sidebar/sidebarleft';
 import { GlobalStyle} from './cssform';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Login from './Login';
+import useToken from "../../API/useToken";
+import Welcome from '../../components/Gioithieu/Welcome';
 export default function Home() {
-
+  const { token, luuToken } = useToken();
+  if(!token){
+      return <Welcome nhanToken={luuToken} />
+  }
   return (
     <>
     
