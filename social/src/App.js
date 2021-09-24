@@ -1,14 +1,23 @@
+import { useState } from "react";
+import Home from "./pages/Home";
+import Welcome from "./pages/Welcome";
+import useToken from "./API/useToken";
+export default function App() {
+  // const [token, setToken] = useState("")
 
-function App() {
-  
+const {token, luuToken} = useToken()
+
+  if(!token){
+    return <Welcome layToken={luuToken} /> //props:layToken
+  }
   return (
  <div>
-   <h1>Day la App</h1>
+   <Home />
 
  </div>
 
 );
 }
-export default App;
+
 
 
