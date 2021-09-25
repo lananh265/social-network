@@ -1,0 +1,106 @@
+.container{
+    /* background-color: white; */
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+.header{
+    width: 100%;
+    display: flex;
+    /* background-color: black; */
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding: 1em;
+    /* background-color: black; */
+}
+
+.box{
+    height:auto;
+    flex-grow: 1;
+}
+
+.left{
+   color: whitesmoke;
+   background-color: yellow;
+}
+
+.right{
+    /* background-color: violet; */
+    text-align: right;
+    background-color: pink;
+}
+.button{
+background-color: #ED213A;
+color: #fff;
+font-size: 0.9rem;
+border: 0;
+border-radius: 5px;
+height: 40px;
+padding: 0 20px;
+cursor: pointer;
+box-sizing: border-box;
+}
+
+.body{
+   
+    width: 100%;
+    height: auto;
+    /* background-color: white; */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.tieude{
+    background-color:khaki;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.tr{
+     background-color:lightgoldenrodyellow;
+}
+.d{
+    text-align: right;
+    background-color:khaki;
+}
+.footer{
+    width: 100%;
+    height: auto;
+    /* background-color:black; */
+    text-align: center;
+
+    
+}
+
+.top{
+    padding-top: 30px;
+    display: flex;
+    width: 100%;
+    color: white;
+
+}
+
+.trai{
+    flex-grow: 1;
+    
+    
+}
+.phai{
+    flex-grow: 1;
+    
+}
+.down{
+    text-align: center;
+}
+
+

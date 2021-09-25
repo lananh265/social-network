@@ -1,5 +1,4 @@
 
-
 export default function GetSignup(ob){
     
     const url = "http://localhost:4000/v0.1/signup?"+
@@ -7,7 +6,8 @@ export default function GetSignup(ob){
     "&password="+ob.password+
     "&email="+ob.email+
     "&phone="+ob.phone+
-    "&name="+ob.name
+    "&name="+ob.name+
+    "&gender="+ob.gender
     
     return fetch(url, {
         method: 'GET',

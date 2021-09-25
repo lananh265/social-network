@@ -1,7 +1,4 @@
 
-
-
-
 export default function Home() {
     const dangXuat = () =>{
         localStorage.removeItem("token")

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Home from "./pages/Home";
-import Welcome from "./pages/Welcome";
+import Welcome from "./pages/Welcome2";
 import useToken from "./API/useToken";
 export default function App() {
   // const [token, setToken] = useState("")
