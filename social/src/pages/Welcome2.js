@@ -3,7 +3,8 @@ import GetSignup from "../API/GetSignup";
 import PostLogin from "../API/postLogin";
 import s from '../components/css/header.module.css';
 import { GlobalStyle, StyledFormWrapper,StyledForm, StyledInput,
-    StyledButton, StyledFieldset, StyledError } from '../components/css/cssform';
+    StyledButton, StyledFieldset, StyledError, Column, Container, Row } from '../components/css/cssform';
+import { Link } from '@mui/material';
 
 const obLogin = {
     username: "",
@@ -19,17 +20,20 @@ const obSignup = {
 }
 
 export default function Welcome({layToken}) {
-const [login, setLogin] = useState(obLogin)
-const [signup, setSignUp] = useState(obSignup)
+const [login, setLogin] = useState(obLogin) //khoi tao ob luu state dang nhap
+const [signup, setSignUp] = useState(obSignup) //khoi tao ob luu state dang ki
+
+//hien thi loi nhap Input
 const [error, setError] = useState('');
 
 //trang thai quyet dinh form Dang nhap hay Dang ki duoc hien thi
+//State cho phep hien thi form Input
 const [formLogin, setFormLogin] = useState(true);
 const [formSignup, setFormSignup] = useState(false);
 
 
-// nut dang nhap
-const handleSubmit =  async e => {
+//Nguoi dung nhan vao nut dang nhap
+const handleLogin =  async e => {
     e.preventDefault();
     console.log('submitted!');
     console.log(login);
@@ -49,17 +53,20 @@ const handleSubmit =  async e => {
    console.log(json)
 
    layToken (json)
-console.log("Succeeded!!!")
+   if(!json.status){
+    alert("Đăng nhập thất bại")
+  }
+  // console.log("Succeeded!!!")
   };
-// lay du lieu dang nhap
-const xulyInput = (e) =>{
+// luu du lieu nhap vao state Login
+const inputLogin = (e) =>{
     const inputName = e.currentTarget.name
     const value = e.currentTarget.value
     setLogin (prev => ({ ...prev, [inputName]: value }));
 }
 
-//xulyNhap cho Signup
-const xulyNhap =(e) =>{
+//luu du lieu vao state Signup
+const inputSignup =(e) =>{
     const inputName = e.currentTarget.name
     const value = e.currentTarget.value
     setSignUp (prev => ({ ...prev, [inputName]: value }));
@@ -84,12 +91,26 @@ e.preventDefault();
     //dua du lieu json vao token cua App moi co the vao duoc trang Home
     //layToken(json) //json:toan bo ob thong tin ca nhan
 }
+//kiem tra Gender dua ve kieu so
+let ob = {
+  gender: signup.gender,
+}
+const checkGender = ()=>{
+  if(ob.gender === "male"){
+    return 1
+  }
+  if(ob.gender === "female"){
+    return 2
+  }
+  if(ob.gender === "other"){
+    return 0
+  }
+}
+console.log(checkGender())
 
-const handleSubmit_signup = e => {
+//nguoi dung nhan vao nut dang ki
+const handleSignup = async(e) => {
 e.preventDefault();
-console.log('submitted!');
-console.log(signup);
-
 for (let key in signup) {
     if (signup[key] === '') {
     setError(`You must provide the ${key}`)
@@ -97,12 +118,26 @@ for (let key in signup) {
     }
 }
 setError('');
-console.log("Succeeded!!!")
-};
-
-const tam = ()=>{
-    
+let ob = {
+  username: signup.username,
+  password: signup.password,
+  email: signup.email,
+  phone: signup.phone,
+  name: signup.name,
+  gender: checkGender()
 }
+console.log(ob)
+const json = await GetSignup(ob)
+
+console.log(json)
+
+
+if(!json.status){
+  alert("Đăng ký thất bại!")
+}else {
+  alert("Đăng ký thành công!")
+}
+};
 
     return (
    <div>
@@ -118,11 +153,10 @@ const tam = ()=>{
                &nbsp;&nbsp;&nbsp;
            </div>
        </div>
-
-       <div>
+    <div>
        { formLogin && 
          <StyledFormWrapper>
-            <StyledForm onSubmit={handleSubmit}>
+            <StyledForm onSubmit={handleLogin}>
             <h2>Đăng Nhập</h2>
             <br/><br/><br/>
             <label htmlFor="username">Username</label>
@@ -130,7 +164,7 @@ const tam = ()=>{
                 type="text"
                 name="username"
                 value={login.username}
-                onChange={xulyInput}
+                onChange={inputLogin}
             />
             <br/><br/>
             <label htmlFor="password">Password</label>
@@ -138,7 +172,7 @@ const tam = ()=>{
                 type="password"
                 name="password"
                 value={login.password}
-                onChange={xulyInput}
+                onChange={inputLogin}
             />
             {error && (
                 <StyledError>
@@ -154,15 +188,77 @@ const tam = ()=>{
 
 { formSignup &&
         <StyledFormWrapper>
-           <StyledForm onSubmit={handleSubmit_signup}>
+           <StyledForm onSubmit={handleSignup}>
                <h2>Đăng Ký</h2>
                <label htmlFor="username">Username</label>
                <StyledInput
                  type="text"
                  name="username"
                  value={signup.username}
-                 onChange={xulyNhap}
+                 onChange={inputSignup}
                />
+
+<label htmlFor="password">Password</label>
+               <StyledInput
+                 type="password"
+                 name="password"
+                 value={signup.password}
+                 onChange={inputSignup}
+               />
+               <label htmlFor="email">Email</label>
+               <StyledInput
+                 type="email"
+                 name="email"
+                 value={signup.email}
+                 onChange={inputSignup}
+               />
+                <label htmlFor="phone">Phone</label>
+                <StyledInput
+                  type="number"
+                  name="phone"
+                  value={signup.phone}
+                  onChange={inputSignup}
+                />
+                <label htmlFor="name">Name</label>
+                <StyledInput
+                  type="text"
+                  name="name"
+                  value={signup.name}
+                  onChange={inputSignup}
+                />
+               <StyledFieldset>
+                 <legend>Gender</legend>
+                 <label>
+                   <input
+                     type="radio"
+                     value="female"
+                     name="gender"
+                     checked={signup.gender === 'female'}
+                     onChange={inputSignup}
+                   />
+                   Female
+                 </label>
+                 <label>
+                   <input
+                     type="radio"
+                     value="male"
+                     name="gender"
+                     checked={signup.gender === 'male'}
+                     onChange={inputSignup}
+                   />
+                   Male
+                 </label>
+                 <label>
+                   <input
+                     type="radio"
+                     value="other"
+                     name="gender"
+                     checked={signup.gender === 'other'}
+                     onChange={inputSignup}
+                   />
+                   Other
+                 </label>
+               </StyledFieldset>
 
                       {error && (
                  <StyledError>
@@ -175,9 +271,121 @@ const tam = ()=>{
        }
 
     </div>
-    </div>
-  );
-  }
+    <div className={s.footer}>
+
+  <div className="body">
+
+
+                <Container>
+                <h1 style={{ color: "#FFFFFF",
+                   textAlign: "center",
+                  }}>LANA.VN - Đơn vị hỗ trợ học tập trực tuyến hàng đầu tại Việt Nam</h1>
+                    <Row>
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>DUYỆT DANH MỤC </h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Duyệt qua danh mục. Tìm người hỗ trợ mà bạn
+                            có thể tin tưởng bằng cách duyệt qua các mẫu công việc trước đây của họ và đọc các đánh giá của họ.<br/>
+                        </h5>
+                        </Column>
+
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>BÁO GIÁ NHANH </h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Nhận báo giá miễn phí từ các nhà hỗ trợ tài năng của chúng tôi một cách nhanh chóng.<br/>
+                         80% dự án được đặt ngay trong vòng 60 giây.<br/>
+
+                        </h5>
+                        </Column>
+
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>THANH TOÁN AN TOÀN</h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Chỉ thanh toán cho công việc khi đã được hoàn thành 100% hài lòng với chất lượng bằng cách sử dụng hệ thống thanh toán của chúng tôi.<br/>
+                        <br/>
+                        </h5>
+                        </Column>
+
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>THEO DÕI TIẾN ĐỘ</h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Luôn cập nhật và theo dõi, luôn biết những gì các nhà hỗ trợ tự do đang làm.<br/>
+
+                        </h5>
+                        </Column>
+
+                    </Row>
+                    <Row>
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>ĐĂNG BÀI</h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Đăng công việc miễn phí, dễ dàng. Chỉ cần điền vào một tiêu đề, mô tả và ngân sách.
+                             Giá cạnh tranh sẽ cập nhật trong vài phút.<br/>
+                        </h5>
+                        </Column>
+
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>GIÚP ĐỠ</h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Với những nhà hỗ trợ tài năng có thể giúp bạn tìm được người hướng dẫn tốt nhất cho công việc, thậm chí có thể quản lí dự án cho bạn.<br/>
+
+                        </h5>
+                        </Column>
+
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>CHẤT LƯỢNG</h3><br/>
+                        <h5 style={{ color: "white ",
+               textAlign: "left",
+              }}>Công việc do <b color="blue">LANA.VN</b> đảm nhận có chất lượng cao - hơn một triệu người để lựa chọn.<br/>
+                        <br/>
+                        </h5>
+                        </Column>
+
+                        <Column>
+                        <h3 style={{ color: "#FFCC33",
+              }}>CHÍNH SÁCH HỖ TRỢ</h3><br/>
+                        <h5><Link href="#">Điều khoản chính sách</Link><br/>
+              <br/>
+                      <Link href="#">Giải quyết khiếu nại, tranh chấp</Link>
+                        </h5>
+                        </Column>
+                    </Row>
+                </Container>
+                <br/>
+                </div>
+      <br/>
+      <h6 style={{ color:"white",
+                   textAlign: "center",
+                  }}>
+        Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục<br/>
+        MST: 02315656972 do Sở kế hoạch và Đầu tư thành phố Hồ Chí Minh cấp ngày 15 tháng 05 năm 2012<br/>
+        Giấy phép cung cấp dịch vụ mạng xã hội trực tuyến số 596/GP-BTTTT Bộ Thông tin và Truyền thông cấp ngày 26/4/2017.<br/>
+        Đại chỉ:<br/>
+         Văn phòng Hà Nội: Tầng 9, Tòa nhà 52A2, Đường Nguyễn Huệ, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội.<br/>
+         Văn phòng TP.HCM: 26A đường số 5, Phường 9, Quận Bình Thạnh, TP.Hồ Chí Minh.<br/>
+        Liên hệ: <br/>
+         Hotline: 19002605<br/>
+         Email: hotro@lana.vn
+      </h6>
+             </div>
+   </div>
+);
+}
+
+  
   
   
   
