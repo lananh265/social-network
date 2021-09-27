@@ -1,0 +1,33 @@
+.Header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: baseline; */
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: black;
+    color: #fff;
+  }
+  
+  .trai{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: left;
+    background-color:black;
+  
+  }
+   
+  .phai{
+    display: flex;
+    width: 50%;
+    align-items: left;
+    background-color: black;
+  }
+
+  .thongtin{
+      height:auto;
+      justify-content: center;
+      flex-direction:initial ;
+  }

@@ -1,21 +1,16 @@
 .container{
-    /* background-color: white; */
     width: 100%;
-    height: auto;
-   
+    width: 100%;
+    
 }
 
-
-
-
-.header{
+.Header{
     width: 100%;
     display: flex;
     color: white;
     text-align: center;
     align-items: center;
     padding: 1em; 
-    
 }
 
 .box{
@@ -25,15 +20,14 @@
 }
 
 .left{
+    text-align: left;
    color: whitesmoke;
-  
 }
 
 .right{
-    /* background-color: violet; */
     text-align: right;
-   
 }
+
 .button{
 background-color: #ED213A;
 color: #fff;

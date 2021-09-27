@@ -1,0 +1,17 @@
+
+.header{
+    width: 100%;
+    background-color: turquoise;
+    display: flex;
+}
+
+.box{
+    flex-grow: 1;
+}
+.left{
+    background-color: yellow;
+}
+
+.right{
+    background-color: violet;
+}

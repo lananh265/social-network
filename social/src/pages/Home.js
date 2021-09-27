@@ -11,6 +11,7 @@ import Infor from "./Infor";
 import Task from "./Task";
 import Money from "./Money";
 import Feedback from "./Feedback";
+
 export default function Home() {
     return (
    <div>
@@ -25,6 +26,8 @@ export default function Home() {
                 <Route path="/task"> <Task /> </Route>
                 <Route path="/money"> <Money /> </Route>
                 <Route path="/feedback"> <Feedback /> </Route>
+                
+                {/* <Route path="/feedback"> <Feedback /> </Route> */}
                 </Switch> 
        </Router>
        </div>
