@@ -9,7 +9,7 @@ export default function chinhsach(){
     return(
         <div>
              <GlobalStyle />
-        <div className={s.Header}>
+        {/* <div className={s.Header}>
            <div className={`${s.left} ${s.box}`}>
                <h1>LANA.VN</h1>
            </div>
@@ -20,7 +20,7 @@ export default function chinhsach(){
                &nbsp;&nbsp;&nbsp;
 
            </div>
-       </div>
+       </div> */}
        <div className="noidung">
        <Container>
            <h6 style={{ color: "white ",

@@ -4,10 +4,12 @@ import Khieunai from "./Khieunai"
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FlashOnTwoTone } from "@material-ui/icons";
+import { GlobalStyle } from "../components/css/cssformHome";
 
 export default function Welcome({layToken}){
   const [login, setLogin] = useState(true)
   const [chinhsach, setChinhsach]= useState(false)
+  const [khieunai, setKhieunai] =useState(false)
   const checkForm = () =>{
     if(login){
       return <Login layToken={layToken} />
@@ -20,10 +22,16 @@ export default function Welcome({layToken}){
 
   return(
     <div>
-      {/* <button onClick={()=>{setLogin(true); setChinhsach(false)}}>Login</button>
-      <button onClick={()=>{setLogin(false); setChinhsach(true)}}>Chính Sách</button> */}
-      {/* <button onClick={showForm("khieunai")}>Khiếu Nại</button> */}
-      {checkForm}
+      <GlobalStyle />
+       <Router>
+            <Login /> 
+            <Switch>
+                <Route path="/login"> <Login /> </Route>
+                <Route path="/chinhsach"> <Chinhsach /> </Route>
+                <Route path="/khieunai"> <Khieunai /> </Route>
+                </Switch> 
+       </Router>
+       {checkForm}
     </div>
   )
 }

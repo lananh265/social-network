@@ -9,7 +9,7 @@ export default function Khieunai(){
     return(
         <div>
               <GlobalStyle />
-        <div className={s.Header}>
+        {/* <div className={s.Header}>
            <div className={`${s.left} ${s.box}`}>
                <h1>LANA.VN</h1>
            </div>
@@ -19,7 +19,7 @@ export default function Khieunai(){
                <button className={s.button} >Đăng Nhập</button>
                &nbsp;&nbsp;&nbsp;
            </div>
-       </div>
+       </div> */}
        <div className="thongtin"> 
        <Container>
            <h6 style={{ color: "white ", 

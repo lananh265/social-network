@@ -26,15 +26,16 @@ export default function Login({layToken}) {
 const [login, setLogin] = useState(obLogin) //khoi tao ob luu state dang nhap
 const [signup, setSignUp] = useState(obSignup) //khoi tao ob luu state dang ki
 
+//state hien thi form input
+const [formLogin, setFormLogin] = useState(true)
+const [formSignup, setFormSignup] = useState(false)
+const [chinhsach, setChinhsach] = useState(false)
+const [khieunai, setKhieunai] = useState(false)
+
 //hien thi loi nhap Input
 const [error, setError] = useState('');
 
 //trang thai quyet dinh form Dang nhap hay Dang ki duoc hien thi
-//State cho phep hien thi form Input
-const [formLogin, setFormLogin] = useState(true);
-const [formSignup, setFormSignup] = useState(false);
-
-
 //Nguoi dung nhan vao nut dang nhap
 const handleLogin =  async e => {
     e.preventDefault();
@@ -198,89 +199,98 @@ if(!json.status){
         </StyledFormWrapper>
         }
 
-{ formSignup &&
-        <StyledFormWrapper>
-           <StyledForm onSubmit={handleSignup}>
-               <h2>Đăng Ký</h2>
-               <label htmlFor="username">Username</label>
-               <StyledInput
-                 type="text"
-                 name="username"
-                 value={signup.username}
-                 onChange={inputSignup}
-               />
-
-<label htmlFor="password">Password</label>
-               <StyledInput
-                 type="password"
-                 name="password"
-                 value={signup.password}
-                 onChange={inputSignup}
-               />
-               <label htmlFor="email">Email</label>
-               <StyledInput
-                 type="email"
-                 name="email"
-                 value={signup.email}
-                 onChange={inputSignup}
-               />
-                <label htmlFor="phone">Phone</label>
-                <StyledInput
-                  type="number"
-                  name="phone"
-                  value={signup.phone}
-                  onChange={inputSignup}
-                />
-                <label htmlFor="name">Name</label>
+        { formSignup &&
+          <StyledFormWrapper>
+            <StyledForm onSubmit={handleSignup}>
+                <h2>Đăng Ký</h2>
+                <label htmlFor="username">Username</label>
                 <StyledInput
                   type="text"
-                  name="name"
-                  value={signup.name}
+                  name="username"
+                  value={signup.username}
                   onChange={inputSignup}
                 />
-               <StyledFieldset>
-                 <legend>Gender</legend>
-                 <label>
-                   <input
-                     type="radio"
-                     value="female"
-                     name="gender"
-                     checked={signup.gender === 'female'}
-                     onChange={inputSignup}
-                   />
-                   Female
-                 </label>
-                 <label>
-                   <input
-                     type="radio"
-                     value="male"
-                     name="gender"
-                     checked={signup.gender === 'male'}
-                     onChange={inputSignup}
-                   />
-                   Male
-                 </label>
-                 <label>
-                   <input
-                     type="radio"
-                     value="other"
-                     name="gender"
-                     checked={signup.gender === 'other'}
-                     onChange={inputSignup}
-                   />
-                   Other
-                 </label>
-               </StyledFieldset>
 
-                      {error && (
-                 <StyledError>
-                   <p>{error}</p>
-                 </StyledError>
-               )}
-             <StyledButton type="submit">Submit</StyledButton>
-           </StyledForm>
-         </StyledFormWrapper>
-       }
+  <label htmlFor="password">Password</label>
+                <StyledInput
+                  type="password"
+                  name="password"
+                  value={signup.password}
+                  onChange={inputSignup}
+                />
+                <label htmlFor="email">Email</label>
+                <StyledInput
+                  type="email"
+                  name="email"
+                  value={signup.email}
+                  onChange={inputSignup}
+                />
+                  <label htmlFor="phone">Phone</label>
+                  <StyledInput
+                    type="number"
+                    name="phone"
+                    value={signup.phone}
+                    onChange={inputSignup}
+                  />
+                  <label htmlFor="name">Name</label>
+                  <StyledInput
+                    type="text"
+                    name="name"
+                    value={signup.name}
+                    onChange={inputSignup}
+                  />
+                <StyledFieldset>
+                  <legend>Gender</legend>
+                  <label>
+                    <input
+                      type="radio"
+                      value="female"
+                      name="gender"
+                      checked={signup.gender === 'female'}
+                      onChange={inputSignup}
+                    />
+                    Female
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="male"
+                      name="gender"
+                      checked={signup.gender === 'male'}
+                      onChange={inputSignup}
+                    />
+                    Male
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="other"
+                      name="gender"
+                      checked={signup.gender === 'other'}
+                      onChange={inputSignup}
+                    />
+                    Other
+                  </label>
+                </StyledFieldset>
+
+                        {error && (
+                  <StyledError>
+                    <p>{error}</p>
+                  </StyledError>
+                )}
+              <StyledButton type="submit">Submit</StyledButton>
+            </StyledForm>
+          </StyledFormWrapper>
+        }
+
+        {chinhsach &&
+        <Chinhsach />
+        }
+
+        {
+          khieunai &&
+          <Khieunai />
+        }
 
     </div>
     <div className={s.footer}>
@@ -368,11 +378,11 @@ if(!json.status){
 
                         <Column>
                         <h3 style={{ color: "#FFCC33",
-              }}>CHÍNH SÁCH HỖ TRỢ</h3><br/>
-                        <h5><Link href="Chinhsach">Điều khoản chính sách</Link><br/>
-              <br/>
-                      <Link href="Khieunai">Giải quyết khiếu nại, tranh chấp</Link>
-                        </h5>
+              }}>CHÍNH SÁCH HỖ TRỢ</h3>
+                        <Link onClick ={()=>{alert("Bạn muốn truy cập Điều Khoản Chính Sách?")}}><h5>Điều khoản chính sách</h5><button onClick={()=>{setFormSignup(false); setFormLogin(false); setKhieunai(false); setChinhsach(true)}}><h6>Xem thêm</h6></button></Link>
+                        
+                        <Link onClick ={()=>{alert("Bạn muốn truy cập Giải quyết khiếu nại, tranh chấp?")}}><h5>Giải quyết khiếu nại, tranh chấp </h5><button onClick={()=>{setFormSignup(false); setFormLogin(false); setKhieunai(true); setChinhsach(false)}}><h6>Xem thêm</h6></button></Link>
+                        
                         </Column>
                     </Row>
                 </Container>

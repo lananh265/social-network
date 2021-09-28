@@ -13,6 +13,7 @@ import Money from "./Money";
 import Feedback from "./Feedback";
 
 export default function Home() {
+    
     return (
    <div>
        <GlobalStyle />
