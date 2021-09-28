@@ -1,6 +1,6 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Home from "./pages/Home";
-import Welcome from "./pages/Welcome2";
+import Login from "./pages/Login";
 import useToken from "./API/useToken";
 export default function App() {
   // const [token, setToken] = useState("")
@@ -8,7 +8,7 @@ export default function App() {
 const {token, luuToken} = useToken()
 
   if(!token){
-    return <Welcome layToken={luuToken} /> //props:layToken
+    return <Login layToken={luuToken} /> //props:layToken
   }
   return (
  <div>

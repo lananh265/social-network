@@ -6,8 +6,8 @@ import { GlobalStyle, StyledFormWrapper,StyledForm, StyledInput,
     StyledButton, StyledFieldset, StyledError, Column, Container, Row } from '../components/css/cssform';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { Link } from '@mui/material';
-import Chinhsach from "./Chinhsach";
-import Khieunai from "./Khieunai";
+import Chinhsach from "../components/welcome/Chinhsach";
+import Khieunai from "../components/welcome/Khieunai";
 
 const obLogin = {
     username: "",
@@ -56,7 +56,7 @@ const handleLogin =  async e => {
    let json = await PostLogin(ob)
    console.log(json)
 
-   layToken (json)
+    layToken(json)
    if(!json.status){
     alert("Đăng nhập thất bại")
   }
@@ -77,24 +77,7 @@ const inputSignup =(e) =>{
 }
 
 
-const dangKy = async(e) =>{
-e.preventDefault();
 
-    const ob = {
-        username: signup.username,
-        password: signup.password,
-        email: signup.email,
-        phone: signup.phone,
-        name: signup.name,
-        gender: signup.gender
-    }
-    
-    const json = await GetSignup(ob)
-    console.log(json)
-    
-    //dua du lieu json vao token cua App moi co the vao duoc trang Home
-    //layToken(json) //json:toan bo ob thong tin ca nhan
-}
 //kiem tra Gender dua ve kieu so
 let ob = {
   gender: signup.gender,
@@ -172,16 +155,18 @@ if(!json.status){
             <StyledForm onSubmit={handleLogin}>
             <h2>Đăng Nhập</h2>
             <br/><br/><br/>
-            <label htmlFor="username">Username</label>
+            
             <StyledInput
+                placeholder="Nhập tài khoản"
                 type="text"
                 name="username"
                 value={login.username}
                 onChange={inputLogin}
             />
-            <br/><br/>
-            <label htmlFor="password">Password</label>
+            <br/><br/> <br/>
+            
             <StyledInput
+                placeholder="Nhập mật khẩu"
                 type="password"
                 name="password"
                 value={login.password}
@@ -194,7 +179,7 @@ if(!json.status){
             )}
             <br/><br/><br/><br/>
             <StyledButton type="submit">Submit</StyledButton>
-            <br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/>
             </StyledForm>
         </StyledFormWrapper>
         }
@@ -203,44 +188,49 @@ if(!json.status){
           <StyledFormWrapper>
             <StyledForm onSubmit={handleSignup}>
                 <h2>Đăng Ký</h2>
-                <label htmlFor="username">Username</label>
+                <br/><br/>
                 <StyledInput
+                 placeholder="Nhập tài khoản"
                   type="text"
                   name="username"
                   value={signup.username}
                   onChange={inputSignup}
                 />
 
-  <label htmlFor="password">Password</label>
+  
                 <StyledInput
+                  placeholder="Nhập mật khẩu"
                   type="password"
                   name="password"
                   value={signup.password}
                   onChange={inputSignup}
                 />
-                <label htmlFor="email">Email</label>
+               
                 <StyledInput
+                  placeholder="Nhập email"
                   type="email"
                   name="email"
                   value={signup.email}
                   onChange={inputSignup}
                 />
-                  <label htmlFor="phone">Phone</label>
+              
                   <StyledInput
+                  placeholder="Nhập số điện thoại"
                     type="number"
                     name="phone"
                     value={signup.phone}
                     onChange={inputSignup}
                   />
-                  <label htmlFor="name">Name</label>
+                 
                   <StyledInput
+                  placeholder="Nhập tên"
                     type="text"
                     name="name"
                     value={signup.name}
                     onChange={inputSignup}
                   />
                 <StyledFieldset>
-                  <legend>Gender</legend>
+                  <legend>Giới tính</legend>
                   <label>
                     <input
                       type="radio"
@@ -249,7 +239,7 @@ if(!json.status){
                       checked={signup.gender === 'female'}
                       onChange={inputSignup}
                     />
-                    Female
+                    Nữ
                   </label>
                   <label>
                     <input
@@ -259,7 +249,7 @@ if(!json.status){
                       checked={signup.gender === 'male'}
                       onChange={inputSignup}
                     />
-                    Male
+                    Nam
                   </label>
                   <label>
                     <input
@@ -269,7 +259,7 @@ if(!json.status){
                       checked={signup.gender === 'other'}
                       onChange={inputSignup}
                     />
-                    Other
+                    Khác
                   </label>
                 </StyledFieldset>
 
@@ -278,7 +268,9 @@ if(!json.status){
                     <p>{error}</p>
                   </StyledError>
                 )}
+                <br/>
               <StyledButton type="submit">Submit</StyledButton>
+              <br/>
             </StyledForm>
           </StyledFormWrapper>
         }
@@ -379,9 +371,9 @@ if(!json.status){
                         <Column>
                         <h3 style={{ color: "#FFCC33",
               }}>CHÍNH SÁCH HỖ TRỢ</h3>
-                        <Link onClick ={()=>{alert("Bạn muốn truy cập Điều Khoản Chính Sách?")}}><h5>Điều khoản chính sách</h5><button onClick={()=>{setFormSignup(false); setFormLogin(false); setKhieunai(false); setChinhsach(true)}}><h6>Xem thêm</h6></button></Link>
+                        <Link onClick={()=>{setFormSignup(false); setFormLogin(false); setKhieunai(false); setChinhsach(true); window.scrollTo(0, 0)}}><h5>Điều khoản chính sách</h5></Link>
                         
-                        <Link onClick ={()=>{alert("Bạn muốn truy cập Giải quyết khiếu nại, tranh chấp?")}}><h5>Giải quyết khiếu nại, tranh chấp </h5><button onClick={()=>{setFormSignup(false); setFormLogin(false); setKhieunai(true); setChinhsach(false)}}><h6>Xem thêm</h6></button></Link>
+                        <Link onClick={()=>{setFormSignup(false); setFormLogin(false); setKhieunai(true); setChinhsach(false);  window.scrollTo(0, 0)}}><h5>Giải quyết khiếu nại, tranh chấp </h5></Link>
                         
                         </Column>
                     </Row>

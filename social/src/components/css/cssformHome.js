@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import styled, { createGlobalStyle, css } from 'styled-components';
+// import React, { useState } from 'react';
+import  { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 html {

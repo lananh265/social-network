@@ -29,7 +29,7 @@ import Task from '@mui/icons-material/Task';
 export default function Sidebarleft() {
     const [state, setState] = React.useState({
         
-      Home: false, 
+      // Home: false, 
       
     });
   
@@ -70,29 +70,26 @@ export default function Sidebarleft() {
     }
     const list = (anchor) => (
       <Box
-        sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-        role="presentation"
-        onClick={toggleDrawer(anchor, false)}
-        onKeyDown={toggleDrawer(anchor, false)}
+
       >
         <List>
-          <h2 style={{ color: "#536976",textAlign: "center"  
-              }}>LANA.VN</h2>
-         {['Home', 'Message', 'Profile'].map((text, index) => (
-        <Link to={text}>     
-        <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
-        <ListItemIcon>
-        {showIcon(index)}
-        </ListItemIcon>        
-        <ListItemText primary={text} />
-        </ListItem>
-        </Link>
-        ))}
+            <h2 style={{ color: "#536976",textAlign: "center"  
+                }}>LANA.VN</h2>
+          {['Home', 'Message', 'Profile'].map((text, index) => (
+          <Link to={text} key={index}>     
+            <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
+              <ListItemIcon>
+              {showIcon(index)}
+              </ListItemIcon>        
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
+          ))}
         </List>
         <Divider />
         <List>
         {['Infor', 'Task', 'Money'].map((text, index) => (
-                    <Link to={text}>
+                    <Link to={text} key={index}>
                     <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
                     <ListItemIcon>
                     {showIconn(index)}
@@ -106,9 +103,9 @@ export default function Sidebarleft() {
     );
     return (
         <div className="sidebar">
-        {['Home'].map((anchor) => (
+        {['left'].map((anchor) => (
           <React.Fragment key={anchor}>
-            <button className={`${s.button} ${s.fontsize}`}onClick={toggleDrawer(anchor, true)} >{anchor}</button>
+            <button className={`${s.button} ${s.fontsize}`}onClick={toggleDrawer(anchor, true)} >Menu</button>
             <Drawer
               anchor={anchor}
               open={state[anchor]}

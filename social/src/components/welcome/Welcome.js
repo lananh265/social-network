@@ -1,6 +1,6 @@
 import { useState } from "react";
-import GetSignup from "../API/GetSignup";
-import PostLogin from "../API/postLogin";
+import GetSignup from "../../API/GetSignup";
+import PostLogin from "../../API/postLogin";
 
 const obLogin = {
     username: "",
