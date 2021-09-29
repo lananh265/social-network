@@ -10,10 +10,12 @@ import Infor from "./Infor";
 import Task from "./Task";
 import Money from "./Money";
 import Feedback from "./Feedback";
+import Status from "../components/status/status";
 
 export default function Home() {
     
     return (
+
    <div>
        <GlobalStyle />
        <Router>
@@ -30,6 +32,11 @@ export default function Home() {
                 {/* <Route path="/feedback"> <Feedback /> </Route> */}
                 </Switch> 
        </Router>
+        <div>
+        <h1>dat status o day</h1>
+        </div>
+        <Status />
+       
        </div>
   );
   }
