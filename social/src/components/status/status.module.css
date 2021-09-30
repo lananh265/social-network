@@ -1,0 +1,29 @@
+.status{
+    
+}
+
+.postWrapper{
+   background-color: white;
+}
+
+.postTop{
+    /* background-color: yellow; */
+    display: flex;
+}
+
+.postTopLeft{
+    /* background-color: violet; */
+    flex-grow: 1;
+} 
+
+.postDate{
+    flex-grow: 1;
+}
+
+.postBenifit{
+    flex-grow: 1;
+}
+
+.postContent{
+    /* background-color:yellowgreen; */
+}

@@ -16,9 +16,14 @@ import "../components/css/home.css"
 import Feed from "../components/feed/Feed";
 import Sidebar from "../components/sidebar/sidebar";
 import Rightbar from "../components/rightbar/Rightbar";
+import Body from "../components/Body/Body";
+import Banner from "../components/banner/banner";
+import { useState } from "react";
 
 
 export default function Home() {
+    
+    const [formBody, setFormBody] = useState(true)
     
     return (
 
@@ -26,6 +31,12 @@ export default function Home() {
        <GlobalStyle />
        <Router>
             <Topbar2 /> 
+            <Banner />
+            <br/>
+            {
+                formBody && <Body/>
+            }
+            
             <Switch>
                 {/* <Route path="/home"></Route> */}
                 <Route path="/message"> <Message /> </Route>
@@ -38,24 +49,7 @@ export default function Home() {
                 {/* <Route path="/feedback"> <Feedback /> </Route> */}
                 </Switch> 
        </Router>
-    <div className="home">
-            <Sidebar />
-       <div className="profileRight">
-            <div className="profileRightTop">
-                <div className="profileCover">
-                    <img
-                className="profileCoverImg"
-                src="assets/post/LANA.VN.png"
-                alt=""
-                    />
-                </div>
-            </div>
-            <div className="homeContainer">
-                <Feed />
-                <Rightbar />
-            </div>
-        </div>
-    </div>
+      
     </div>
        
   );

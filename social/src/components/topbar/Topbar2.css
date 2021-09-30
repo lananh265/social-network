@@ -13,8 +13,6 @@
     padding: 1em;
     text-align: left;
     color: white;
-    text-align: right;
-    /* background-color: blueviolet; */
   }
   
   .topbarCenter {
@@ -24,7 +22,7 @@
     padding: 1em;
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
   }
 
@@ -53,6 +51,7 @@
   .searchInput {
     border: none;
     width: 70%;
+   
   }
   
   .searchInput:focus {

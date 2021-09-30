@@ -66,11 +66,11 @@ export default function Sidebarleft() {
     }
   
     const thongBao = (text)=>{
-      alert(text)
+      // alert(text)
     }
     const list = (anchor) => (
       <Box
-
+      onClick={()=>{setState(false)}}
       >
         <List>
             <h2 style={{ color: "#536976",textAlign: "center"  
@@ -90,7 +90,7 @@ export default function Sidebarleft() {
         <List>
         {['Infor', 'Task', 'Money'].map((text, index) => (
                     <Link to={text} key={index}>
-                    <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
+                    <ListItem type="button"   key={text}>
                     <ListItemIcon>
                     {showIconn(index)}
                     </ListItemIcon>

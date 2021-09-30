@@ -1,12 +1,41 @@
 import {useState, useEffect} from 'react';
 import { Users } from '../data';
+import s from "./status.module.css";
 
 export default function Status(){
     const [listStatus, setListStatus] = useState([{},{}])
 
     const status = listStatus.map( (element,index) =>{
-        return <h3 key={index}>{element.id_st }{' '}{element.connecter_id}{element.content}{element.date_st}{element.benefit}{element.name} </h3>
-    })  
+        return (
+        <div>
+        <h3 key={index}>{element.id_st }{' '}{element.connecter_id}{element.content}{element.date_st}{element.benefit}{element.name} </h3>
+        </div>
+        )
+    }) 
+    
+    const post = listStatus.map( (element,index) =>{
+      return (
+        <div key={index} className={`${s.postWrapper}`}>
+                <div className={`${s.postTop}`}>
+                    <div className={`${s.postTopLeft}`}>
+                    <h3 key={index}>{element.id_st }{' '}{element.name}</h3>
+                    </div>
+                    <div className={`${s.postDate}`}>
+                    <h3 key={index}>{' '}{element.date_st}</h3>
+                    </div>
+                    <div className={`${s.postBenifit}`}>
+                    <h3 key={index}>{' '}{element.benefit}</h3>
+                    </div>
+                </div>
+
+                <div className={`${s.postContent}`}>
+                <h3 key={index}>{' '}{element.content}</h3>
+                </div>
+            </div>
+      )
+  })  
+
+    
 
     useEffect( ()=>{
         const url="http://localhost:4000/status"
@@ -27,25 +56,7 @@ export default function Status(){
     },[])
     return(
         <div>
-              {/* <div className="status">
-      <div className="statusWrapper">
-        <div className="statusTop">
-          <div className="statusTopLeft">
-            <span className="statusname">
-              {Users.filter((u) => u.id_st === status?.connecter_id)[0].name}
-            </span>
-            <span className="statusDate">{status.date_st}</span>
-          </div>
-          {/* <div className="statusTopRight">
-            <MoreVert />
-          </div>  */}
-         {/* </div>
-        <div className="statusCenter">
-          <span className="statusText">{status?.desc}</span>
-        </div>
-      </div> */}
-    {/* </div>   */}
-    {status}
+        {post}
         </div>
     )
 }
