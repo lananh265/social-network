@@ -1,8 +1,13 @@
-
-
 .button{
-    background-color: #536976;
-    color: whitesmoke;
+  border: none;
+  padding:2px;
+  border-radius: 5px;
+  background-color: #DECBA4;
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+  /* padding: 10 10px; */
 }
 
 .fontsize{
@@ -12,7 +17,6 @@
 .sidebar {
     flex: 3;
     height: calc(100vh - 50px);
-    /* overflow-y: scroll; */
     position: sticky;
     top: 50px;
     
@@ -20,12 +24,6 @@
   
   ::-webkit-scrollbar {
     width: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(179, 179, 179);
   }
   
   .sidebarWrapper {

@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { Users } from '../data';
 
 export default function Status(){
     const [listStatus, setListStatus] = useState([{},{}])
@@ -26,8 +27,25 @@ export default function Status(){
     },[])
     return(
         <div>
-            <h1>Day la trang load status</h1>
-               {status}
+              {/* <div className="status">
+      <div className="statusWrapper">
+        <div className="statusTop">
+          <div className="statusTopLeft">
+            <span className="statusname">
+              {Users.filter((u) => u.id_st === status?.connecter_id)[0].name}
+            </span>
+            <span className="statusDate">{status.date_st}</span>
+          </div>
+          {/* <div className="statusTopRight">
+            <MoreVert />
+          </div>  */}
+         {/* </div>
+        <div className="statusCenter">
+          <span className="statusText">{status?.desc}</span>
+        </div>
+      </div> */}
+    {/* </div>   */}
+    {status}
         </div>
     )
 }

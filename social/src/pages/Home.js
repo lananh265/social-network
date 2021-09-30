@@ -11,6 +11,12 @@ import Task from "./Task";
 import Money from "./Money";
 import Feedback from "./Feedback";
 import Status from "../components/status/status";
+import Poststatus from "../components/poststatus/Poststatus"
+import "../components/css/home.css"
+import Feed from "../components/feed/Feed";
+import Sidebar from "../components/sidebar/sidebar";
+import Rightbar from "../components/rightbar/Rightbar";
+
 
 export default function Home() {
     
@@ -32,12 +38,26 @@ export default function Home() {
                 {/* <Route path="/feedback"> <Feedback /> </Route> */}
                 </Switch> 
        </Router>
-        <div>
-        <h1>dat status o day</h1>
+    <div className="home">
+            <Sidebar />
+       <div className="profileRight">
+            <div className="profileRightTop">
+                <div className="profileCover">
+                    <img
+                className="profileCoverImg"
+                src="assets/post/LANA.VN.png"
+                alt=""
+                    />
+                </div>
+            </div>
+            <div className="homeContainer">
+                <Feed />
+                <Rightbar />
+            </div>
         </div>
-        <Status />
+    </div>
+    </div>
        
-       </div>
   );
   }
   
