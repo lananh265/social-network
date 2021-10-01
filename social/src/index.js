@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import Header from './components/test/header';
-import App from './App'
-// import Status from "./components/status/status"
-import Post from "./components/post/Post"
+// import App from './App'
+
+import Chat from "./components/chat/chat"
 ReactDOM.render(
   <React.StrictMode>
-     <App /> 
-     {/* <Post /> */}
-    
+     {/* <App />  */}
+     
+      <Chat />
+     
   </React.StrictMode>,
   document.getElementById('root')
 );

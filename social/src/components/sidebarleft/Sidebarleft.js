@@ -76,7 +76,7 @@ export default function Sidebarleft() {
             <h2 style={{ color: "#536976",textAlign: "center"  
                 }}>LANA.VN</h2>
           {['Home', 'Message', 'Profile'].map((text, index) => (
-          <Link to={text} key={index}>     
+          <Link to={text==="Home"? "/":text} key={index}>     
             <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
               <ListItemIcon>
               {showIcon(index)}

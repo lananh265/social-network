@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import { Users } from '../data';
 import s from "./status.module.css";
 
 export default function Status(){
@@ -34,8 +33,6 @@ export default function Status(){
             </div>
       )
   })  
-
-    
 
     useEffect( ()=>{
         const url="http://localhost:4000/status"

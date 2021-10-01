@@ -9,9 +9,6 @@ export default function Feed() {
       <div className="feedWrapper">
         <Poststatus />
         <br/><br/>
-        {/* {Posts.map((p) => (
-          <Post key={p.id} post={p} />
-        ))} */}
         <Status />
       </div>
     </div>

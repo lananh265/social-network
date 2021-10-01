@@ -5,9 +5,9 @@ export default function Body(){
     
     return(
         <div>
-              <div className="home">
+            <div className="home">
             <Sidebar />
-       <div className="profileRight">
+            <div className="profileRight">
             <div className="homeContainer">
                 <Feed />
                 <Rightbar />

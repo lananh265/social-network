@@ -33,12 +33,14 @@ export default function Home() {
             <Topbar2 /> 
             <Banner />
             <br/>
-            {
-                formBody && <Body/>
-            }
-            
             <Switch>
-                {/* <Route path="/home"></Route> */}
+                <Route 
+                exact path="/"
+                render={() => {
+                    return <Body/>
+                }}>
+                </Route>
+
                 <Route path="/message"> <Message /> </Route>
                 <Route path="/profile"> <Profile /> </Route>
                 <Route path="/infor"> <Infor /> </Route>

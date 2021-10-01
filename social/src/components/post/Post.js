@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Users } from "../data";
+
 // import "./post.css"
 export default function Post(){
     return(
