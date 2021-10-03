@@ -1,11 +1,11 @@
 // import { Chat } from "@material-ui/icons";
-
+import Chat from "../components/chat/chat3";
 
 export default function Message() {
   
     return (
    <div>
-       <h1>Day la Message</h1>
+       <Chat />
       
        </div>
   );

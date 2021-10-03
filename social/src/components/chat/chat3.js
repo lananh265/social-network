@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import socketIOClient, { Socket } from "socket.io-client"
+import s from "./chat.module.css"
 
 const host ="http://localhost:4000/"
 export default function Chat(){
     const [id, setId] = useState()
-    const [listTN, setlistTN] = useState([{}])
+    const [listTN, setlistTN] = useState([])
     const [tn, setTN] = useState("")
     const [target_id, setTarget_ID] = useState("")
+    const messagesEnd = useRef();
 
     let socketRef = useRef()
     const [connecter_id, setConnecter_ID] = useState("1")//Lan Anhnh
@@ -27,10 +29,20 @@ export default function Chat(){
 }
 
    
-  const loadTn = listTN.map ( (e, index)=>
-  <div key = {index}>
-    {e.name} {e.text_me}
-  </div>
+//   const loadTn = listTN.map ( (e, index)=>
+//   <div key = {index}>
+//     {e.name} {e.text_me}
+//   </div>
+// )
+
+const scrollToBottom = () => {
+    messagesEnd.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+const renderMess =  listTN.map((m, index) => 
+<div key={index} className={`${m.id === id ? `${s.yourmessage}` : `${s.otherpeople}`} ${s.chatitem}`}>  
+  {m.name} {m.text_me}
+</div>
 )
 
     useEffect( ()=>{
@@ -42,7 +54,7 @@ export default function Chat(){
             setlistTN((listTN)=> [...listTN,data])
             console.log(data)
             console.log(listTN)
-           
+            scrollToBottom()
         })
     }, [])
 
@@ -53,27 +65,34 @@ export default function Chat(){
             Send()
           }
     }
+
+  
+
     return(
-        <div>
-            <div>
-            <h1>Chat {id}</h1>
-            <input name="name" type="radio" value="2"  onChange={(e)=>{setTarget_ID(e.target.value)}}/>Lan Anh
-            <input name ="name" type="radio" value="1" onChange={(e)=>{setTarget_ID(e.target.value)}}/>Ty
-            <h3>Target_id:</h3> 
-            {target_id}
-           {loadTn}
-           </div>
-            <div>
-                <form>
-                    <label>
-                        <input type="text" value={tn} 
-                        onChange={(e)=>{setTN(e.target.value)}}
-                        onKeyDown={(e)=>{_handleKeyDown(e)}}/>
-                    </label>
-                </form>
-                <button onClick={()=>{Send()}}>Gửi</button>
-                
-            </div>
+        <div className={`${s.boxchat}`}>
+        <div class={`${s.boxchatmessage}`}>
+        {renderMess}
+        <div style={{ float:"left", clear: "both" }}
+               ref={messagesEnd}>
+          </div>
         </div>
+  
+        <div class={`${s.sendbox}`}>
+            <textarea 
+              value={tn}  
+              onKeyDown={(e)=>{_handleKeyDown(e)}}
+              onChange={(e)=>{setTN(e.target.value)}}
+              placeholder="Nhập tin nhắn ..." 
+            />
+            <button className={`${s.button}`} onClick={()=>{Send()}}>
+            Gửi
+            </button>
+
+            
+        </div>
+  
+      </div>
+
+
     )
 }
