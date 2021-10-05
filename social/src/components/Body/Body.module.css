@@ -1,0 +1,20 @@
+.statusContainer{
+    /* background-color:chocolate; */
+    display: flex;
+    /* align-items: center; */
+    /* align-items: center; */
+    text-align: center;
+   
+}
+.sidebar{
+    flex: 3;
+    /* background-color: cornflowerblue; */
+}
+.status{
+    flex:6;
+}
+
+.rightbar{
+    flex: 3;
+    /* background-color: crimson; */
+}

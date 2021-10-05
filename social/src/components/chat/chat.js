@@ -72,7 +72,6 @@ export default function Chat(){
                     </label>
                 </form>
                 <button onClick={()=>{Send()}}>Gửi</button>
-                
             </div>
         </div>
     )

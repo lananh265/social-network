@@ -16,24 +16,24 @@ export default function Chat(){
 
     const Send = ()=>{
         if(tn.length>0){
+        // let ob = {
+        //     id:id,
+        //     name: target_id ==="1" ? "Lan Anh" : "Ty",
+        //     connecter_id: target_id==="1" ? "2" : "1" ,
+        //     target_id: target_id,
+        //     text_me: tn
+        // }
         let ob = {
-            id:id,
-            name: target_id ==="1" ? "Lan Anh" : "Ty",
-            connecter_id: target_id==="1" ? "2" : "1" ,
-            target_id: target_id,
-            text_me: tn
-        }
+          id:id,
+          name: target_id ==="1" ? "Lan Anh" : "Ty",
+          connecter_id: "1",
+          target_id: "2",
+          text_me: tn
+      }
         socketRef.current.emit("mess-out",ob) //kenh chat: messout
         setTN("")
     }
 }
-
-   
-//   const loadTn = listTN.map ( (e, index)=>
-//   <div key = {index}>
-//     {e.name} {e.text_me}
-//   </div>
-// )
 
 const scrollToBottom = () => {
     messagesEnd.current.scrollIntoView({ behavior: "smooth" });
@@ -87,8 +87,6 @@ const renderMess =  listTN.map((m, index) =>
             <button className={`${s.button}`} onClick={()=>{Send()}}>
             Gửi
             </button>
-
-            
         </div>
   
       </div>

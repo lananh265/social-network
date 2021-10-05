@@ -1,15 +1,16 @@
-
-import Poststatus from "../poststatus/Poststatus";
+import Post from "../post/Post";
+import Share from "../share/Share";
 import "./feed.css";
-import Status from "../status/status";
+import { Posts } from "../dummyData"
 
 export default function Feed() {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <Poststatus />
-        <br/><br/>
-        <Status />
+        {/* <Share /> */}
+        {Posts.map((p) => (
+          <Post key={p.id} post={p} />
+        ))}
       </div>
     </div>
   );

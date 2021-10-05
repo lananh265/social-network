@@ -1,13 +1,14 @@
 import { useState } from "react";
-import GetSignup from "../API/GetSignup";
-import PostLogin from "../API/postLogin";
-import s from '../components/css/header.module.css';
+
+import GetSignup from "../../API/GetSignup";
+import PostLogin from "../../API/postLogin";
+import s from '../../components/css/header.module.css';
 import { GlobalStyle, StyledFormWrapper,StyledForm, StyledInput,
-    StyledButton, StyledFieldset, StyledError, Column, Container, Row } from '../components/css/cssform';
+    StyledButton, StyledFieldset, StyledError, Column, Container, Row } from '../../components/css/cssform';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { Link } from '@mui/material';
-import Chinhsach from "../components/welcome/Chinhsach";
-import Khieunai from "../components/welcome/Khieunai";
+import Chinhsach from "../../components/welcome/Chinhsach";
+import Khieunai from "../../components/welcome/Khieunai";
 
 const obLogin = {
     username: "",

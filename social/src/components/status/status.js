@@ -4,15 +4,15 @@ import s from "./status.module.css";
 export default function Status(){
     const [listStatus, setListStatus] = useState([{},{}])
 
-    const status = listStatus.map( (element,index) =>{
-        return (
-        <div>
-        <h3 key={index}>{element.id_st }{' '}{element.connecter_id}{element.content}{element.date_st}{element.benefit}{element.name} </h3>
-        </div>
-        )
-    }) 
+    // const status = listStatus.map( (element,index) =>{
+    //     return (
+    //     <div>
+    //     <h3 key={index}>{element.id_st }{' '}{element.connecter_id}{element.content}{element.date_st}{element.benefit}{element.name} </h3>
+    //     </div>
+    //     )
+    // }) 
     
-    const post = listStatus.map( (element,index) =>{
+    const status = listStatus.map( (element,index) =>{
       return (
         <div key={index} className={`${s.postWrapper}`}>
                 <div className={`${s.postTop}`}>
@@ -52,8 +52,8 @@ export default function Status(){
         })
     },[])
     return(
-        <div>
-        {post}
+        <div className={s.statusContainer}>
+        {status}
         </div>
     )
 }

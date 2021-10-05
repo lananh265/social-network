@@ -1,4 +1,4 @@
-import "./poststatus.css";
+import "./share.css";
 
 export default function Poststatus() {
   return (
