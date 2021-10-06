@@ -4,7 +4,7 @@ export default function useToken() {
   const layTokenCu = () => {
     const tokenString = localStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
-    return userToken?.status
+    return userToken?userToken : false
   };
   const [token, setToken] = useState(layTokenCu());
 

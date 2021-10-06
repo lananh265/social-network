@@ -2,12 +2,13 @@
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import useToken from "./API/useToken";
+
 export default function App() {
   // const [token, setToken] = useState("")
 
 const {token, luuToken} = useToken()
 
-  if(!token){
+  if(!token.status){
     return <Login layToken={luuToken} /> //props:layToken
   }
   return (

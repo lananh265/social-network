@@ -4,7 +4,8 @@ import Rightbar from "../rightbar/Rightbar"
 import s from "./Body.module.css"
 import Status from "../status/status"
 import Share from "../share/Share"
-import Feed from "../feed/Feed"
+import Status2 from "../stastus2/Status2"
+// import Feed from "../feed/Feed"
 export default function Body(){
     
     return(
@@ -15,8 +16,9 @@ export default function Body(){
 
         <div className= {s.status} >
             <Share/>
-            <Feed />
-            <Status/>
+            {/* <Feed /> */}
+            <Status2 />
+            {/* <Status/> */}
             
         </div>
 

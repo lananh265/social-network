@@ -60,6 +60,8 @@ const handleLogin =  async e => {
     layToken(json)
    if(!json.status){
     alert("Đăng nhập thất bại")
+  }else{
+    window.location.href = "/";
   }
   // console.log("Succeeded!!!")
   };
