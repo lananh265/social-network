@@ -28,8 +28,8 @@ export default function Post({ post }) {
             <span className="postDate">{post.date_st}</span>
           </div>
           <div className="postTopRight">
-            <span><MonetizationOn />{post.benefit}</span>
-           <button></button>
+            <span><MonetizationOn  htmlColor="#FF9900"/>{post.benefit}</span>
+           <MoreVert/> 
           </div>
         </div>
         <div className="postCenter">

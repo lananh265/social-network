@@ -67,7 +67,7 @@ export default function Poststatus() {
         <div className={`${s.shareBottom}`}>
             <div className={`${s.shareOptions}`}>
             <div className={`${s.shareOption}`}>
-                    <MonetizationOn htmlColor="tomato" className={`${s.shareIcon}`}/>
+                    <MonetizationOn htmlColor="#FF9900" className={`${s.shareIcon}`}/>
                     <span className={`${s.shareOptionText}`}></span>
                     <input type ="number"
                     name = "benefit"
