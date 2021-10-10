@@ -1,33 +1,37 @@
 import s from "./share.module.css";
-import {MonetizationOn, Label,Room, EmojiEmotions, Share} from "@material-ui/icons"
+import {MonetizationOn, Label,Room, EmojiEmotions, Share, PinDropSharp} from "@material-ui/icons"
 import { useState } from "react";
 import PostShare from "../../API/postShare";
 import useToken from "../../API/useToken";
 
-const obShare = {
-  connecter_id: 1,
+const obInput ={
   content: "",
-  benefit: "",
+  benefit:""
 }
-export default function Poststatus() {
+export default function Poststatus({props}) {
   // const id = "1";
   // const [content, setContent]= useState("")
   // const [benefit, setBenefit] = useState("")
 
- const [share, setShare] = useState(obShare )
- const {token, luuToken} = useToken()
- const inputShare = e =>{
-   const inputName = e.currentTarget.name;
-   const value = e.currentTarget.value;
-   setShare(prev =>({ ...prev, [inputName] : value}));
- };
+  const [input, setInput] = useState(obInput)
+
+  const tokenString = localStorage.getItem('token');
+  const token = JSON.parse(tokenString);
+
+//  const [share, setShare] = useState(obShare )
+//  const {luuToken} = useToken()
+//  const inputShare = e =>{
+//    const inputName = e.currentTarget.name;
+//    const value = e.currentTarget.value;
+//    setShare(prev =>({ ...prev, [inputName] : value}));
+//  };
 
  const [error, setError] = useState('');
  
  const _handleShare = async(e) =>{
    e.preventDefault();
-   for (let key in share){
-     if (share[key] === '') {
+   for (let key in input){
+     if (input[key] === '') {
        setError(`Bạn chưa nhập ${key} !`)
        return
      }
@@ -35,8 +39,8 @@ export default function Poststatus() {
    setError('');
    let ob = {
     connecter_id: token.id,
-    content: share.content,
-    benefit: share.benefit
+    content: input.content,
+    benefit: input.benefit
    }
    const json = await PostShare(ob)
    console.log(json)
@@ -45,9 +49,25 @@ export default function Poststatus() {
      alert("Chia sẻ thất bại!")
    }else{
     alert("Chia sẻ thành công!")
-    setShare(obShare)
+    
+    let obShare = {
+      id_st:json.id_st,
+      connecter_id:token.id,
+      name: token.name,
+      content:input.content,
+      benefit:input.benefit,
+      date_st: "1 second ago"
+    }
+    props(obShare)
+    setInput(obInput)
    }
  };
+
+ const _handleInput = (e)=>{
+   const inputName = e.currentTarget.name
+   const value = e.currentTarget.value
+   setInput(prev =>({...prev, [inputName]: value}))
+ }
 
   return (
     <div className={`${s.share}`}>
@@ -58,8 +78,8 @@ export default function Poststatus() {
             placeholder="Nơi nhập nội dung cần chia sẻ..."
             type ="text"
             name="content"
-            value={share.content}
-            onChange={inputShare}
+            value={input.content}
+            onChange={_handleInput}
             className={`${s.shareInput}`}
           />
         </div>
@@ -71,8 +91,8 @@ export default function Poststatus() {
                     <span className={`${s.shareOptionText}`}></span>
                     <input type ="number"
                     name = "benefit"
-                    value= {share.benefit}
-                    onChange={inputShare}
+                    value= {input.benefit}
+                    onChange={_handleInput}
                     className={`${s.bebefitInput}`} />
                 </div>
             </div>

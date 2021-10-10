@@ -15,7 +15,7 @@ export default function Body(){
         </div>
 
         <div className= {s.status} >
-            <Share/>
+            {/* <Share/> */}
             {/* <Feed /> */}
             <Status2 />
             {/* <Status/> */}

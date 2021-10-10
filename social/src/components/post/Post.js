@@ -22,7 +22,9 @@ export default function Post({ post }) {
               src={Users.filter((u) => u.id === post?.userId)[0].profilePicture}
               alt=""
             /> */}
+            {/* neu Post ton tai tra ve Post.name */}
             <span className="postUsername">
+              {post?.name} 
               {/* {Users.filter((u) => u.id === post?.userId)[0].username} */}
             </span>
             <span className="postDate">{post.date_st}</span>
