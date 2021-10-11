@@ -31,7 +31,7 @@ export default function Post({ post }) {
           </div>
           <div className="postTopRight">
             <span><MonetizationOn  htmlColor="#FF9900"/>{post.benefit}</span>
-           <MoreVert/> 
+           <button className="button" >< MoreVert /></button>
           </div>
         </div>
         <div className="postCenter">

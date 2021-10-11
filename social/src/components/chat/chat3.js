@@ -11,7 +11,7 @@ export default function Chat(){
     const messagesEnd = useRef();
 
     let socketRef = useRef()
-    const [connecter_id, setConnecter_ID] = useState("1")//Lan Anhnh
+    const [connecter_id, setConnecter_ID] = useState("")//Lan Anhnh
     // const [target_id, setTarget_ID] = useState("2")//ty
 
     const Send = ()=>{

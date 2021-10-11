@@ -1,0 +1,57 @@
+.homeContainer{
+    display: flex;
+    width: 100%;
+  }
+  .share{
+      flex:6;
+  }
+  .body{
+     
+      flex:6;
+  }
+  .rightbar{
+    flex: 3;
+    /* background-color: crimson; */
+}
+.profileRight{
+    flex: 3;
+   
+}
+
+/* ten ca nhan */
+.profileCover{
+    height: 180px;
+    position: relative;
+}
+
+/* anh dai dien */
+.profileUserImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0px;
+    border: 3px solid white;
+   
+}
+
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 700px; */
+}
+
+.profileInfoName{
+    font-size: 24px;
+}
+
+
+.profileRightBottom{
+    display: flex;
+}
