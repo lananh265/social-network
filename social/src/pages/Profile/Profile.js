@@ -36,6 +36,11 @@ export default function Profile() {
              <div className={`${s.profileInfo}`}>
                 <h4 className={`${s.profileInfoName}`}>Safak Kocaoglu</h4>
             </div>
+
+            <div>
+                <button className={s.button}><b>Cập nhật thông tin</b></button>
+            </div>
+
                 </div>
             </div>
 

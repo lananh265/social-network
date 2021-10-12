@@ -4,6 +4,7 @@
   }
   .share{
       flex:6;
+      padding-top: 30px;
   }
   .body{
      
@@ -51,6 +52,13 @@
     font-size: 24px;
 }
 
+.button{
+    align-items: center;
+    justify-content: center;
+    background-color: cornflowerblue;
+    border-radius: 15px;
+    margin-left: 300px;
+}
 
 .profileRightBottom{
     display: flex;

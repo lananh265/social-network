@@ -3,6 +3,8 @@ import { MoreVert } from "@material-ui/icons";
 import { Users } from "../dummyData";
 import { useState } from "react";
 import {MonetizationOn, Label,Room, EmojiEmotions, Share} from "@material-ui/icons"
+import { Link } from '@mui/material';
+import  Message  from "../../pages/Message/Message";
 
 export default function Post({ post }) {
   const [like,setLike] = useState(post.like)
@@ -11,6 +13,9 @@ export default function Post({ post }) {
   const likeHandler =()=>{
     setLike(isLiked ? like-1 : like+1)
     setIsLiked(!isLiked)
+  }
+  const goMess = ()=>{
+    window.location.href = "/Message";
   }
   return (
     <div className="post">
@@ -24,7 +29,10 @@ export default function Post({ post }) {
             /> */}
             {/* neu Post ton tai tra ve Post.name */}
             <span className="postUsername">
-              {post?.name} 
+              {/* <Link onClick={()=>{<Message/>}}>{post?.name}</Link> */}
+
+              <Link onClick={()=>{goMess()}}>{post?.name}</Link>
+
               {/* {Users.filter((u) => u.id === post?.userId)[0].username} */}
             </span>
             <span className="postDate">{post.date_st}</span>
