@@ -182,7 +182,7 @@ if(!json.status){
             )}
             <br/><br/><br/><br/>
             <StyledButton type="submit">Submit</StyledButton>
-            <br/><br/><br/><br/><br/>
+            <br/><br/><br/>
             </StyledForm>
         </StyledFormWrapper>
         }
@@ -191,7 +191,7 @@ if(!json.status){
           <StyledFormWrapper>
             <StyledForm onSubmit={handleSignup}>
                 <h2>Đăng Ký</h2>
-                <br/><br/>
+                <br/>
                 <StyledInput
                  placeholder="Nhập tài khoản"
                   type="text"
@@ -273,7 +273,7 @@ if(!json.status){
                 )}
                 <br/>
               <StyledButton type="submit">Submit</StyledButton>
-              <br/>
+              
             </StyledForm>
           </StyledFormWrapper>
         }
@@ -291,7 +291,6 @@ if(!json.status){
     <div className={s.footer}>
 
   <div className="body">
-
 
                 <Container>
                 <h1 style={{ color: "#FFFFFF",

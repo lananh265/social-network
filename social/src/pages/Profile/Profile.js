@@ -19,6 +19,10 @@ export default function Profile() {
     
     const [formBody, setFormBody] = useState(true)
     
+    const goInfor=()=>{
+        window.location.href = "/Infor";
+    }
+    
     return (
         <>
         <div className={s.homeContainer}>
@@ -34,11 +38,11 @@ export default function Profile() {
                     />
                 </div>
              <div className={`${s.profileInfo}`}>
-                <h4 className={`${s.profileInfoName}`}>Safak Kocaoglu</h4>
+                <h4 className={`${s.profileInfoName}`}><b>Lan Anh</b></h4>
             </div>
 
             <div>
-                <button className={s.button}><b>Cập nhật thông tin</b></button>
+                <button className={s.button} onClick={()=>{goInfor()}}><b>Cập nhật thông tin</b></button>
             </div>
 
                 </div>

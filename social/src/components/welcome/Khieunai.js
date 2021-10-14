@@ -33,7 +33,7 @@ Bước 1: Khóa tài khoản học tập tạm thời trong vòng 10 ngày.<br/
 
 Bước 2: Trong vòng 10 ngày, LANA.VN sẽ tiến hành thu thập các bằng chứng về việc vi phạm quy định bảo mật tài khoản và thông tin đến chủ tài khoản.<br/>
 </h6>
-<br/>
+
 <h4 style={{ color: "#FFCC33", 
                    textAlign: "left", 
                   }}>2. Đối với Khiếu nại của học viên đối với dịch vụ giảng dạy</h4>
@@ -46,7 +46,7 @@ Bước 2: Ngay khi tiếp nhận sẽ tiến hành kiểm tra và phân tích t
 
 Bước 3: Trong vòng 10 ngày Nhân viên CSKH tiến hành gọi điện trao đổi với khách hàng để làm rõ vấn đề khiếu nại.<br/>
 Bước 4: Nhân viên CSKH xác nhận thông tin xử lý khiếu nại ngay khi trao đổi xong với khách hàng qua email.<br/></h6>
-<br/>
+
 <h4 style={{ color: "#FFCC33", 
                    textAlign: "left", 
                   }}>3. Đối với Khiếu nại của người hỗ trợ đối với dịch vụ của LANA.VN </h4>
@@ -56,7 +56,7 @@ Bước 1: Tiếp nhận thông tin khiếu nại từ phía người hỗ trợ
 Bước 2: Ngay khi tiếp nhận sẽ tiến hành kiểm tra và phân tích thông tin khiếu nại<br/>
 Bước 3: Trong vòng 10 ngày Bộ phận hợp tác với người hỗ trợ tiến hành gọi điện trao đổi với người hỗ trợ để làm rõ vấn đề khiếu nại.<br/>
 Bước 4: Bộ phận hợp tác với người hỗ trợ ngay sau khi trao đổi xong sẽ xác nhận thông tin xử lý khiếu nại với người hỗ trợ qua email.<br/>
-<br/>     
+  
 </h6>
            
        </Container>

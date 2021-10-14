@@ -54,8 +54,6 @@ LANA.VN có thể từ chối các yêu cầu lặp lại nhiều lần một c�
 Trong trường hợp LANA.VN có thể cung cấp quyền truy cập và chỉnh sửa thông tin, LANA.VN sẽ làm như vậy miễn phí, trừ khi việc đó đòi hỏi sự nỗ lực không tương xứng.<br/>
                   </h6>
                   <br/>
-                  <br/>
-                  <br/>
 
        </Container>
        </div>

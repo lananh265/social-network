@@ -1,52 +1,57 @@
-import "./post.css";
+import s from "./post.module.css";
 import { MoreVert } from "@material-ui/icons";
 import { Users } from "../dummyData";
 import { useState } from "react";
 import {MonetizationOn, Label,Room, EmojiEmotions, Share} from "@material-ui/icons"
 import { Link } from '@mui/material';
 import  Message  from "../../pages/Message/Message";
+import Join from "../modal/Join"
 
 export default function Post({ post }) {
-  const [like,setLike] = useState(post.like)
-  const [isLiked,setIsLiked] = useState(false)
 
-  const likeHandler =()=>{
-    setLike(isLiked ? like-1 : like+1)
-    setIsLiked(!isLiked)
+  const ob = {
+    id_st: post.id_st,
+    connecter_id: post.connecter_id,
+    name: post.name,
+    benefit: post.benefit,
+    content: post.content         
   }
+ 
+
+  
   const goMess = ()=>{
     window.location.href = "/Message";
   }
   return (
-    <div className="post">
-      <div className="postWrapper">
-        <div className="postTop">
-          <div className="postTopLeft">
+    <div className={`${s.post}`}>
+      <div className={`${s.postWrapper}`}>
+        <div className={`${s.postTop}`}>
+          <div className={`${s.postTopLeft}`}>
             {/* <img
               className="postProfileImg"
               src={Users.filter((u) => u.id === post?.userId)[0].profilePicture}
               alt=""
             /> */}
             {/* neu Post ton tai tra ve Post.name */}
-            <span className="postUsername">
+            <span className={`${s.postUsername}`}>
               {/* <Link onClick={()=>{<Message/>}}>{post?.name}</Link> */}
 
               <Link onClick={()=>{goMess()}}>{post?.name}</Link>
 
               {/* {Users.filter((u) => u.id === post?.userId)[0].username} */}
             </span>
-            <span className="postDate">{post.date_st}</span>
+            <span className={`${s.postDate}`}>{post.date_st}</span>
           </div>
-          <div className="postTopRight">
-            <span><MonetizationOn  htmlColor="#FF9900"/>{post.benefit}</span>
-           <button className="button" >< MoreVert /></button>
+          <div className={`${s.postTopRight}`}>
+            <span><MonetizationOn  htmlColor="#BBD2C5"/>{post.benefit}</span>
+            <button className={s.option} > <Join ob={ob}/></button> 
           </div>
         </div>
-        <div className="postCenter">
-          <span className="postText">{post.content}</span>
+        <div className={`${s.postCenter}`}>
+          <span className={`${s.postText}`}>{post.content}</span>
           {/* <img className="postImg" src={post.photo} alt="" /> */}
         </div>
-        <div className="postBottom">
+        <div className={`${s.postBottom}`}>
           {/* <div className="postBottomLeft">
             <img className="likeIcon" src="assets/like.png" onClick={likeHandler} alt="" />
             <img className="likeIcon" src="assets/heart.png" onClick={likeHandler} alt="" />

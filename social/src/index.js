@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import Header from './components/test/header';
 import App from './App'
+
 // import Parent2 from './components/chat/passData/Parent2'
 // import Thieunhi from './components/chat/passData/Thieunhi';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
      <App />
      {/* <Parent2 /> */}
      {/* <Thieunhi/> */}
+   
   </React.StrictMode>,
   document.getElementById('root')
 );

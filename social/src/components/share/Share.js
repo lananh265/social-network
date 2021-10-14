@@ -1,8 +1,12 @@
 import s from "./share.module.css";
 import {MonetizationOn, Label,Room, EmojiEmotions, Share, PinDropSharp} from "@material-ui/icons"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PostShare from "../../API/postShare";
 import useToken from "../../API/useToken";
+import GetAvatar from "../../API/GetAvatar";
+
+//thay doi hinh anh avatar
+const src="http://localhost:1337/server-node/v0.1/server/images/avatars/"
 
 const obInput ={
   content: "",
@@ -12,6 +16,8 @@ export default function Poststatus({props}) {
   // const id = "1";
   // const [content, setContent]= useState("")
   // const [benefit, setBenefit] = useState("")
+
+  const [avatar, setAvatar] = useState({})
 
   const [input, setInput] = useState(obInput)
 
@@ -69,11 +75,32 @@ export default function Poststatus({props}) {
    setInput(prev =>({...prev, [inputName]: value}))
  }
 
+ useEffect( ()=>{
+  let mounted = true;
+  let ob = {
+    id: token.id
+  }
+  GetAvatar(ob)
+  .then(items => {
+      if(mounted) {
+          let obImg = {
+            src: src+items[0].avatar,
+            imageHash: Date.now()
+          }
+          setAvatar(obImg)
+          console.log(items[0].avatar)
+      }
+  })
+  return () => mounted = false;
+},[])
+
+
+
   return (
     <div className={`${s.share}`}>
       <div className={`${s.shareWrapper}`}>
         <div className={`${s.shareTop}`}>
-        <img className={`${s.shareProfileImg}`} src="/assets/person/user.png" alt="" />
+        <img className={`${s.shareProfileImg}`} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
           <input 
             placeholder="Nơi nhập nội dung cần chia sẻ..."
             type ="text"

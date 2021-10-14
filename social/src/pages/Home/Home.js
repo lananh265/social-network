@@ -15,10 +15,11 @@ import Share from "../../components/share/Share";
 import "../../components/css/home.css"
 import Feed from "../../components/feed/Feed";
 import Sidebar from "../../components/sidebar/sidebar";
-
 import Body from "../../components/Body/Body";
 import Banner from "../../components/banner/banner";
 import { useState } from "react";
+
+
 
 
 export default function Home() {
@@ -43,7 +44,7 @@ export default function Home() {
 
                 <Route path="/message"> <Message /> </Route>
                 <Route path="/profile"> <Profile /> </Route>
-                <Route path="/infor"> <Infor /> </Route>
+                <Route path="/infor"><Infor /></Route>
                 <Route path="/task"> <Task /> </Route>
                 <Route path="/money"> <Money /> </Route>
                 <Route path="/feedback"> <Feedback /> </Route>
