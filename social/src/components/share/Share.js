@@ -100,7 +100,9 @@ export default function Poststatus({props}) {
     <div className={`${s.share}`}>
       <div className={`${s.shareWrapper}`}>
         <div className={`${s.shareTop}`}>
-        <img className={`${s.shareProfileImg}`} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
+        {/* <img className={`${s.shareProfileImg}`} src={`${avatar.src}?${avatar.imageHash}`} alt="" /> */}
+        {/* <img className={`${s.shareProfileImg}`} src=" http://localhost:1337/server-node/v0.1/server/images/avatars/1avatar.jpg" alt="" /> */}
+        <img className={s.shareProfileImg} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
           <input 
             placeholder="Nơi nhập nội dung cần chia sẻ..."
             type ="text"

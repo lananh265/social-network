@@ -6,19 +6,18 @@ import {MonetizationOn, Label,Room, EmojiEmotions, Share} from "@material-ui/ico
 import { Link } from '@mui/material';
 import  Message  from "../../pages/Message/Message";
 import Join from "../modal/Join"
+import GetInfor from "../../API/GetInfor"
 
 export default function Post({ post }) {
-
+const {token} = GetInfor()
   const ob = {
     id_st: post.id_st,
-    connecter_id: post.connecter_id,
+    connecter_id: token.id,
+    target_id: post.connecter_id,
     name: post.name,
     benefit: post.benefit,
     content: post.content         
   }
- 
-
-  
   const goMess = ()=>{
     window.location.href = "/Message";
   }

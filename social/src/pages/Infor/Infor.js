@@ -139,11 +139,10 @@ export default function Infor(layToken){
         )}
 		<form onSubmit={onSubmit}>
 		  <div>
-     
-     <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
-     <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
+        <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
+        <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
 		  </div>
-      </form>
+    </form>
 <br/>
 		  {/* <input className={s.inputfile}
 			type='submit'
@@ -164,7 +163,6 @@ export default function Infor(layToken){
             <StyledButton  type="submit">Cập Nhật</StyledButton>
           </StyledForm>
         </StyledFormWrapper>
-      
       
   </div>
   
