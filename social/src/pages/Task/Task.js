@@ -56,8 +56,8 @@ const TodoList = () => {
             <Sidebar />
             <div className={s.body}>
             <div className = {`${s.headertextcenter}`}>
-                <h3><b>Danh Sách Công Việc</b></h3>
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
+                <h3><b>Công Việc Cần Thực Hiện</b></h3>
+                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Tạo Công Việc</button>
             </div>
 
             <div className = {`${s.taskcontainer}`}>

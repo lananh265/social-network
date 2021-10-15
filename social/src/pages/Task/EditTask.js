@@ -33,22 +33,22 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
 
     return (
         <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Update Task</ModalHeader>
+            <ModalHeader toggle={toggle}>Cập Nhật Thêm</ModalHeader>
             <ModalBody>
             
                     <div className = "form-group">
-                        <label>Task Name</label>
+                        <label>Tên Công Việc</label>
                         <input type="text" className = "form-control" value = {taskName} onChange = {handleChange} name = "taskName"/>
                     </div>
                     <div className = "form-group">
-                        <label>Description</label>
+                        <label>Mô Tả</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
                     </div>
                 
             </ModalBody>
             <ModalFooter>
-            <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
-            <Button color="secondary" onClick={toggle}>Cancel</Button>
+            <Button color="primary" onClick={handleUpdate}>Cập Nhật</Button>{' '}
+            <Button color="secondary" onClick={toggle}>Hoàn Tác</Button>
             </ModalFooter>
       </Modal>
     );

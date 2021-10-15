@@ -123,36 +123,37 @@ export default function Infor(layToken){
                 value={infor.confirmPassword}
                 onChange={inputInfor}
             /><br/>
+             <label className={s.lbel} >Cập nhật lại hình ảnh</label>
+             <br/>
+
               {file && (
         <div>
           <img alt="not fount" width={"250px"} src={URL.createObjectURL(file)} /><br/>
           <br />
-          <button  className={s.button} onClick={()=>setFile(null)}>Remove</button>
+          {/* <button  className={s.button} onClick={()=>setFile(null)}>Remove</button> */}
+
+          <input className={s.inputfile} type='submit' />
+          <label className="fa fa-refresh"  for="file">&ensp;Tải lại</label>
+		      <h3>{uploadedFile.filePath}</h3>
         </div>
         )}
-        <br/>
 		<form onSubmit={onSubmit}>
 		  <div>
-      <label className={s.choosefile}>
-      {/* <input type="file" multiple  /> */}
-			{/* <input
-			  type='file'
-			  id='customFile'
-			  onChange={onChange}
-			/> */}
-      <input type="file" multiple  />
-      <i className="fa fa-cloud-upload" /> Attach
-      </label>
+     
+     <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
+     <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
 		  </div>
+      </form>
 <br/>
-		  <input className={s.button}
+		  {/* <input className={s.inputfile}
 			type='submit'
-			value='Upload'
+		
 		  />
+      <label className="fa fa-refresh"  for="file">&ensp;Tải lại</label>
 		</form>
 		<h3>{uploadedFile.filePath}</h3>
 
-            <br/>
+            <br/> */}
             {error && (
               <StyledError>
                 <p>{error}</p>
@@ -161,11 +162,6 @@ export default function Infor(layToken){
             <br/><br/>
             
             <StyledButton  type="submit">Cập Nhật</StyledButton>
-             <label className={s.choosefile}>
-
-      <input type="file"  />
-      <i className="fa fa-cloud-upload" /> Attach
-      </label>
           </StyledForm>
         </StyledFormWrapper>
       
