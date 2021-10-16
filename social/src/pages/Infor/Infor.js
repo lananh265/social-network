@@ -10,6 +10,7 @@ const obInfor = {
   pic:({}),
   password:"",
   confirmPassword:"",
+  oldPassword:"",
   picMessage:({}),
 }
 
@@ -89,7 +90,6 @@ export default function Infor(layToken){
   
 	return (
 	  <div>
-    
         <StyledFormWrapper>
           <StyledForm onSubmit={handleInfor}>
             <h2><b>Cập Nhật Thông Tin Cá Nhân</b></h2>
@@ -110,26 +110,37 @@ export default function Infor(layToken){
                 onChange={inputInfor}
             /><br/>
             <StyledInput
-                placeholder="Nhập mật khẩu..."
+                placeholder="Nhập mật khẩu mới..."
                 type="password"
                 name="password"
                 value={infor.password}
                 onChange={inputInfor}
             /><br/>
             <StyledInput
-                placeholder="Xác nhận lại mật khẩu..."
+                placeholder="Xác nhận lại mật khẩu vừa nhập..."
                 type="password"
                 name="confirmPassword"
                 value={infor.confirmPassword}
                 onChange={inputInfor}
             /><br/>
+             <StyledInput
+                placeholder="Nhập mật khẩu cũ..."
+                type="password"
+                name="oldPassword"
+                value={infor.oldPassword}
+                onChange={inputInfor}
+            /><br/>
+            
+
              <label className={s.lbel} >Cập nhật lại hình ảnh</label>
              <br/>
 
-              {file && (
+               {file && (
         <div>
           <img alt="not fount" width={"250px"} src={URL.createObjectURL(file)} /><br/>
           <br />
+          
+          
           {/* <button  className={s.button} onClick={()=>setFile(null)}>Remove</button> */}
 
           <input className={s.inputfile} type='submit' />
@@ -137,28 +148,20 @@ export default function Infor(layToken){
 		      <h3>{uploadedFile.filePath}</h3>
         </div>
         )}
-		<form onSubmit={onSubmit}>
-		  <div>
+		{/* <form onSubmit={onSubmit}>
+		  <div onSubmit={onSubmit}>
+      <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
         <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
-        <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
 		  </div>
-    </form>
-<br/>
-		  {/* <input className={s.inputfile}
-			type='submit'
-		
-		  />
-      <label className="fa fa-refresh"  for="file">&ensp;Tải lại</label>
-		</form>
-		<h3>{uploadedFile.filePath}</h3>
+    </form> */}
+<br/> 
 
-            <br/> */}
             {error && (
               <StyledError>
                 <p>{error}</p>
                 </StyledError>
             )}
-            <br/><br/>
+            <br/><br/> 
             
             <StyledButton  type="submit">Cập Nhật</StyledButton>
           </StyledForm>
