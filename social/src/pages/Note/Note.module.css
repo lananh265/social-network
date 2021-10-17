@@ -56,7 +56,8 @@
   padding : 40px 50px;
   margin-top: 25px;
   align-content: left;
-  /* background-color:crimson; */
+
+  
 }
 
 .headertextcenter{
@@ -70,6 +71,7 @@
 .homeContainer{
   display: flex;
   width: 100%;
+ 
 }
 .body{
    

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const CreateNote = ({modal, toggle, save}) => {
+const CreateTaskPopup = ({modal, toggle, save}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -50,4 +50,4 @@ const CreateNote = ({modal, toggle, save}) => {
     );
 };
 
-export default CreateNote;
+export default CreateTaskPopup;

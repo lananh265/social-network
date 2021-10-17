@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const EditNote = ({modal, toggle, updateTask, taskObj}) => {
+const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -33,7 +33,7 @@ const EditNote = ({modal, toggle, updateTask, taskObj}) => {
 
     return (
         <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Cập Nhật Thêm</ModalHeader>
+            <ModalHeader toggle={toggle}>Cập Nhật</ModalHeader>
             <ModalBody>
             
                     <div className = "form-group">
@@ -54,4 +54,4 @@ const EditNote = ({modal, toggle, updateTask, taskObj}) => {
     );
 };
 
-export default EditNote;
+export default EditTaskPopup;
