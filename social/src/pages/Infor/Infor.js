@@ -141,19 +141,35 @@ export default function Infor(layToken){
           <br />
           
           
-          {/* <button  className={s.button} onClick={()=>setFile(null)}>Remove</button> */}
+          <button  className={s.button} onClick={()=>setFile(null)}>Remove</button>
 
-          <input className={s.inputfile} type='submit' />
+          {/* <input className={s.inputfile} type='submit' />
           <label className="fa fa-refresh"  for="file">&ensp;Tải lại</label>
-		      <h3>{uploadedFile.filePath}</h3>
+		      <h3>{uploadedFile.filePath}</h3> */}
         </div>
         )}
-		{/* <form onSubmit={onSubmit}>
-		  <div onSubmit={onSubmit}>
-      <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
-        <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
-		  </div>
+        <div>
+          	  
+            <label className="fa fa-cloud-upload" >&ensp;Tải lên
+            <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile}/>
+            </label>
+          
+		   </div>
+
+      {/* <div>
+        <form>	  
+          <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
+          <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
+        </form>
+		  </div> */}
+    
+    {/* <form>
+		  <div> */}
+      {/* <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label> */}
+        {/* <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} /> */}
+		  {/* </div>
     </form> */}
+
 <br/> 
 
             {error && (
@@ -166,8 +182,16 @@ export default function Infor(layToken){
             <StyledButton  type="submit">Cập Nhật</StyledButton>
           </StyledForm>
         </StyledFormWrapper>
+
+        {/* <div>
+          <form>	  
+            <label className="fa fa-cloud-upload"  >&ensp;Tải lên
+            <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
+            </label>
+          </form>
+		   </div> */}
       
-  </div>
+   </div>
   
   );
 }

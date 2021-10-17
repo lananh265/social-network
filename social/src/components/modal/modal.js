@@ -20,7 +20,7 @@ const Modal = ({ isShowing, hide, ob }) => isShowing ? ReactDOM.createPortal(
     <div className={s.modal_wrapper} aria-modal aria-hidden tabIndex={-1} role="dialog">
       <div className={s.modal}>
         <div className={s.top}> 
-          Bạn muốn hỗ trợ : {ob.name} &nbsp;&ndash; đề tài: {ob.content} &ndash; &#36; {ob.benefit}  
+          Bạn muốn hỗ trợ : {ob.name} &nbsp;&ndash; đề tài: {ob.content} &ndash; &#36; {ob.benefit} VNĐ 
           
         </div>
         <div className={s.down}> 

@@ -1,9 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import socketIOClient, { Socket } from "socket.io-client"
 import s from "./chat.module.css"
-
+import GetAvatar from "../../API/GetAvatar";
+import GetInfor from "../../API/GetInfor"
+const src="http://localhost:1337/server-node/v0.1/server/images/avatars/"
 const host ="http://localhost:4000/"
 export default function Chat(){
+  const [avatar, setAvatar] = useState({})
+  const tokenString = localStorage.getItem('token');
+  const token = JSON.parse(tokenString);
+
     const [id, setId] = useState()
     const [listTN, setlistTN] = useState([])
     const [tn, setTN] = useState("")
@@ -57,6 +63,24 @@ const renderMess =  listTN.map((m, index) =>
             scrollToBottom()
         })
     }, [])
+    useEffect( ()=>{
+      let mounted = true;
+      let ob = {
+        id: token.id
+      }
+      GetAvatar(ob)
+      .then(items => {
+          if(mounted) {
+              let obImg = {
+                src: src+items[0].avatar,
+                imageHash: Date.now()
+              }
+              setAvatar(obImg)
+              console.log(items[0].avatar)
+          }
+      })
+      return () => mounted = false;
+    },[])
 
     const _handleKeyDown = (e)=>{
         if (e.key === 'Enter') {
@@ -65,19 +89,38 @@ const renderMess =  listTN.map((m, index) =>
             Send()
           }
     }
-
+    
+  //   GetAvatar(ob)
+  //   .then(items => {
+  //       if(mounted) {
+  //           let obImg = {
+  //             src: src+items[0].avatar,
+  //             imageHash: Date.now()
+  //           }
+  //           setAvatar(obImg)
+  //           console.log(items[0].avatar)
+  //       }
+  //   })
+  //   return () => mounted = false;
+  // },[])
   
 
     return(
+      <>
+      <div className={`${s.avachat}`}>
+      <img className={s.shareProfileImg} src={`${avatar.src}?${avatar.imageHash}`} alt="" />&emsp;
+      <img className={s.shareProfileImge} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
+      </div>
         <div className={`${s.boxchat}`}>
-        <div class={`${s.boxchatmessage}`}>
+        
+        <div className={`${s.boxchatmessage}`}>
         {renderMess}
         <div style={{ float:"left", clear: "both" }}
                ref={messagesEnd}>
           </div>
         </div>
   
-        <div class={`${s.sendbox}`}>
+        <div className={`${s.sendbox}`}>
             <textarea 
               value={tn}  
               onKeyDown={(e)=>{_handleKeyDown(e)}}
@@ -90,7 +133,7 @@ const renderMess =  listTN.map((m, index) =>
         </div>
   
       </div>
-
+</>
 
     )
 }

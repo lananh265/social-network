@@ -11,7 +11,7 @@ export default function Message() {
        <Chat />
         <Rightbar/>
       
-       </div>
+     </div>
   );
   }
   
