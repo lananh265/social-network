@@ -1,7 +1,7 @@
 import GetInfor from "../../API/GetInfor"
-import Showtasks from "../../API/Showtasks"
-import { useState,useEffect  } from "react"
 import ShowTasks from "../../API/Showtasks"
+import { useState,useEffect  } from "react"
+
 import s from './Task.module.css'
 import Sidebar from '../../components/sidebar/sidebar';
 
@@ -31,14 +31,6 @@ export default function Task(){
           return <h3 key = {index}>
           Họ tên: &nbsp; {join[index].name}<br/>
           Tên Chủ Đề:&nbsp;  {join[index].content}<br/>
-          {/* id_ta:{join[index].id_ta}<br/>
-          id_st:{join[index].id_st}<br/>
-          connecter_id:{join[index].connecter_id}<br/>
-          target_id:{join[index].target_id}<br/>
-          date_start:{join[index].date_start}<br/>
-          date_end:{join[index].date_end}<br/>
-          status_ta:{join[index].status_ta}<br/> */}
-          
           </h3>
       })
 
@@ -49,7 +41,7 @@ export default function Task(){
             <Sidebar />
             <div className={s.body}>
             <div className = {`${s.headertextcenter}`}>
-                <h3><b>Danh Sách Những Người Đã Tham Gia<br/> Hỗ Trợ Bạn</b></h3>
+                <h3><b>Danh Sách Những Người Đã Tham Gia<br/> Hỗ Trợ Bạn Tỷ</b></h3>
               
                 
             </div>
