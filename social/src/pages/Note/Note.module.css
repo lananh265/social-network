@@ -53,9 +53,8 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #F6F7F8;
-    padding : 40px 50px;
+    padding : 40px 100px;
     margin-top: 25px;
-    align-content: left;
     /* background-color:crimson; */
   }
 

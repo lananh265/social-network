@@ -1,70 +1,64 @@
-import React, {useEffect, useState} from 'react';
-import CreateTask from './CreateTask'
-import Card from './Card';
+import GetInfor from "../../API/GetInfor"
+import Showtasks from "../../API/Showtasks"
+import { useState,useEffect  } from "react"
+import ShowTasks from "../../API/Showtasks"
 import s from './Task.module.css'
 import Sidebar from '../../components/sidebar/sidebar';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
 
+export default function Task(){
+    const {token} = GetInfor()
 
-const TodoList = () => {
-    const [modal, setModal] = useState(false);
-    const [taskList, setTaskList] = useState([])
-    
-    useEffect(() => {
-        let arr = localStorage.getItem("taskList")
-       
-        if(arr){
-            let obj = JSON.parse(arr)
-            setTaskList(obj)
+    //luu ob tra ve khi tham gia dau thau
+    const [join, setJoin] = useState([{}])
+    // console.log(token)
+    useEffect( ()=>{
+        let mounted = true;
+        let ob = {
+          target_id: token.id
         }
-    }, [])
+        ShowTasks(ob)
+        .then(items => {
+            if(mounted) {
+                
+                setJoin(items)
+               
+            }
+        })
+        return () => mounted = false;
+      },[])
+      
+      const list = join.map((e,index)=>{
+          return <h3 key = {index}>
+          Họ tên: &nbsp; {join[index].name}<br/>
+          Tên Chủ Đề:&nbsp;  {join[index].content}<br/>
+          {/* id_ta:{join[index].id_ta}<br/>
+          id_st:{join[index].id_st}<br/>
+          connecter_id:{join[index].connecter_id}<br/>
+          target_id:{join[index].target_id}<br/>
+          date_start:{join[index].date_start}<br/>
+          date_end:{join[index].date_end}<br/>
+          status_ta:{join[index].status_ta}<br/> */}
+          
+          </h3>
+      })
 
+    return(
 
-    const deleteTask = (index) => {
-        let tempList = taskList
-        tempList.splice(index, 1)
-        localStorage.setItem("taskList", JSON.stringify(tempList))
-        setTaskList(tempList)
-        window.location.reload()
-    }
-
-    const updateListArray = (obj, index) => {
-        let tempList = taskList
-        tempList[index] = obj
-        localStorage.setItem("taskList", JSON.stringify(tempList))
-        setTaskList(tempList)
-        window.location.reload()
-    }
-
-    const toggle = () => {
-        setModal(!modal);
-    }
-
-    const saveTask = (taskObj) => {
-        let tempList = taskList
-        tempList.push(taskObj)
-        localStorage.setItem("taskList", JSON.stringify(tempList))
-        setTaskList(taskList)
-        setModal(false)
-    }
-
-
-    return (
         <>
         <div className={s.homeContainer}>
             <Sidebar />
             <div className={s.body}>
             <div className = {`${s.headertextcenter}`}>
-                <h3><b>Công Việc Cần Thực Hiện</b></h3>
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Tạo Công Việc</button>
+                <h3><b>Danh Sách Những Người Đã Tham Gia<br/> Hỗ Trợ Bạn</b></h3>
+              
+                
             </div>
 
             <div className = {`${s.taskcontainer}`}>
-            {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
+            {list}
             </div>
 
-            <CreateTask toggle = {toggle} modal = {modal} save = {saveTask}/>
+            {/* <CreateTask toggle = {toggle} modal = {modal} save = {saveTask}/> */}
             </div>
 
             <div className= {s.rightbar} >
@@ -76,4 +70,7 @@ const TodoList = () => {
     );
 };
 
-export default TodoList;
+
+
+
+

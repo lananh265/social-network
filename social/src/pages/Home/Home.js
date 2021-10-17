@@ -10,6 +10,7 @@ import Infor from "../Infor/Infor";
 import Task from "../Task/Task";
 import Money from "../Money/Money";
 import Feedback from "../Feedback/Feedback";
+import Note from "../Note/Note";
 import Status from "../../components/status/status";
 import Share from "../../components/share/Share";
 import "../../components/css/home.css"
@@ -48,6 +49,7 @@ export default function Home() {
                 <Route path="/task"> <Task /> </Route>
                 <Route path="/money"> <Money /> </Route>
                 <Route path="/feedback"> <Feedback /> </Route>
+                <Route path="/note"> <Note/> </Route>
                 
                 {/* <Route path="/feedback"> <Feedback /> </Route> */}
                 </Switch> 

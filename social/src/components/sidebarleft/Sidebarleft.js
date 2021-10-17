@@ -22,7 +22,8 @@ import {
     AssignmentTurnedIn,
     MonetizationOn,
     Message,
-    Money,  
+    Money, 
+    Notes, 
   } from "@material-ui/icons";
 import Task from '@mui/icons-material/Task';
 
@@ -60,11 +61,16 @@ export default function Sidebarleft() {
       if (index === 1){
         return <Task />
       }
-      if (index === 2){
-        return <MonetizationOn />
-      }
+    
+    if (index === 2){
+      return <Notes />
     }
-  
+     
+      if (index === 3){
+        return <MonetizationOn />
+     
+    }
+  }
     const thongBao = (text)=>{
       // alert(text)
     }
@@ -88,7 +94,7 @@ export default function Sidebarleft() {
         </List>
         <Divider />
         <List>
-        {['Infor', 'Task', 'Money'].map((text, index) => (
+        {['Infor', 'Task', 'Note', 'Money'].map((text, index) => (
                     <Link to={text} key={index}>
                     <ListItem type="button"   key={text}>
                     <ListItemIcon>
