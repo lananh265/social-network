@@ -12,6 +12,8 @@ const obInput ={
   content: "",
   benefit:""
 }
+
+// const format = .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 export default function Poststatus({props}) {
   // const id = "1";
   // const [content, setContent]= useState("")
@@ -93,9 +95,12 @@ export default function Poststatus({props}) {
   })
   return () => mounted = false;
 },[])
+const state = input.benefit
+const format = state.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+// for (var i = 0; i < state.length; i++) {}
+  // console.log(format(state[i], 'vnd '))}
 
-
-
+const changeMoney = format+'.000'
   return (
     <div className={`${s.share}`}>
       <div className={`${s.shareWrapper}`}>
@@ -122,7 +127,7 @@ export default function Poststatus({props}) {
                     name = "benefit"
                     value= {input.benefit}
                     onChange={_handleInput}
-                    className={`${s.bebefitInput}`} />
+                    className={`${s.bebefitInput}`} /> <b>{format} VNĐ</b>
                 </div>
             </div>
             <button onClick={_handleShare} className={`${s.shareButton}`}>Chia Sẻ</button>

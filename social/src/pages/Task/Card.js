@@ -52,8 +52,8 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
                 <p className = "mt-3">{taskObj.content}</p>
 
                 <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
-                    <i class="fa fa-pencil-square-o"  style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
-                    &emsp;&emsp;
+                    {/* <i class="fa fa-pencil-square-o"  style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
+                    &emsp;&emsp; */}
                     <i  class="fa fa-trash"  style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
                 </div>
         </div>

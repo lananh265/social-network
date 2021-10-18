@@ -107,9 +107,11 @@ const renderMess =  listTN.map((m, index) =>
 
     return(
       <>
+      <div className={`${s.bb}`}>
       <div className={`${s.avachat}`}>
       <img className={s.shareProfileImg} src={`${avatar.src}?${avatar.imageHash}`} alt="" />&emsp;
       <img className={s.shareProfileImge} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
+      </div>
       </div>
         <div className={`${s.boxchat}`}>
         

@@ -10,14 +10,15 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   }
+
   .shareProfileImge{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
   
   /* body {
@@ -53,22 +54,23 @@
   }
 
   .avachat{
+    align-items: center;
     display: flex;
     flex-grow: 1;
     height: 56px;
     width: 120px;
-    /* background-color: blueviolet; */
-    /* align-items: center; 
-    align-content: center;  */
     border-radius: 9px;
-    /* border-radius: 50%; */
     object-fit: cover;
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
-    /* border: 3px solid white; */
-    
+    }
+    .bb{
+      width:auto;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-right: 50px;   
     }
   .boxchat {
     width:auto;
@@ -78,7 +80,6 @@
     box-shadow: 0 0 10px 0 black;
     border-radius: 1em;
     flex: 5.5;
-   
   }
   
   .sendbox {

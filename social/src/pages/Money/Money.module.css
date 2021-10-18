@@ -1,0 +1,65 @@
+.button{
+    background-color: #ED213A;
+    border-radius: 9px;
+    font-size: 1.05em;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: red;
+  }
+  
+  .choosefile{
+    background-color: #ED213A;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+  }
+  .inputfile + label {
+    height: 30px;
+    width: 100px;
+    font-size: 1.35em;
+    font-weight: 500;
+    color: white;
+    background-color: #ED213A;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 9px;
+    text-align: center;
+    
+  }
+  
+  
+  .inputfile + label:hover {
+    background-color: red;
+  }
+  
+  .lbel{
+    background-color: #edeaea;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    
+  }
+
+  .shareOptions{
+    display: flex;
+    margin-left: 20px;
+    width: 46px;
+}
+.bebefitInput{
+  background-color: #BBD2C5;
+  width: 90px;
+  border-radius: 6px;
+}

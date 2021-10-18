@@ -3,7 +3,7 @@ import axios from 'axios';
 import { StyledError, StyledForm, StyledFormWrapper, StyledInput, StyledButton } from '../../components/css/cssform';
 import PostLogin from '../../API/postLogin';
 import s from './Infor.module.css'
-
+import PostInfor from '../../API/PostInfor';
 const obInfor = {
   name: "",
   email:"",
@@ -12,6 +12,27 @@ const obInfor = {
   confirmPassword:"",
   oldPassword:"",
   picMessage:({}),
+  newname:"",
+  newemail:"",
+  newpassword:"",
+  newphone:"",
+}
+// const obChangeInfor={
+  
+//     username: "anh",
+//     password: "123456",
+//     newname:"Lan Anh Mới",
+//     newemail: "",
+//     newphone: ""
+
+// }
+
+
+
+const updateInfor = async(e)=>{
+  e.preventDefault();
+const json = await PostInfor(obInfor)
+console.log(json)
 }
 
 export default function Infor(layToken){
@@ -62,6 +83,20 @@ export default function Infor(layToken){
 	  setFile(e.target.files[0]);
 	  setFilename(e.target.files[0].name);
 	};
+
+  const onClick = async(e) =>{
+    e.preventDefault();
+    
+      const ob = {
+          username: obInfor.username,
+          password: obInfor.password,
+          newemail: obInfor.newemail,
+          newphone: obInfor.newphone,
+          newname: obInfor.newname,
+          newpassword: obInfor.newpassword,
+      }
+      const json = await setInfor(ob)
+    }
   
     //gui file hinh len server
 	const onSubmit = async e => {
@@ -87,7 +122,7 @@ export default function Infor(layToken){
   
 	   }
 	};
-  
+
 	return (
 	  <div>
         <StyledFormWrapper>
@@ -183,13 +218,7 @@ export default function Infor(layToken){
           </StyledForm>
         </StyledFormWrapper>
 
-        {/* <div>
-          <form>	  
-            <label className="fa fa-cloud-upload"  >&ensp;Tải lên
-            <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
-            </label>
-          </form>
-		   </div> */}
+       <button onClick={(e)=>{updateInfor(e)}}>thay doi thong tin user</button>
       
    </div>
   
