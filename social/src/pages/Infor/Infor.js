@@ -17,28 +17,29 @@ const obInfor = {
   newpassword:"",
   newphone:"",
 }
-// const obChangeInfor={
-  
-//     username: "anh",
-//     password: "123456",
-//     newname:"Lan Anh Mới",
-//     newemail: "",
-//     newphone: ""
-
-// }
 
 
-
-const updateInfor = async(e)=>{
-  e.preventDefault();
-const json = await PostInfor(obInfor)
-console.log(json)
-}
 
 export default function Infor(layToken){
 
-  const [infor, setInfor] = useState(obInfor)
+  const [infor, setInfor] = useState({name: ""})
   const [error, setError]= useState('');
+  const [input, setInput] = useState({
+    username: "",
+    password: "",
+    newname:"",
+    newemail: "",
+    newphone: "",
+    newpassword:"",
+    confirmPassword:"",
+  })
+
+  const changeInfor=async(e)=>{
+    e.preventDefault()
+    //console.log(input)
+    const json = await PostInfor(input)
+    console.log(json)
+  }
   const handleInfor =  async e => {
     e.preventDefault();
     console.log('submitted!');
@@ -68,7 +69,7 @@ export default function Infor(layToken){
   const inputInfor =(e) =>{
     const inputName = e.currentTarget.name
     const value = e.currentTarget.value
-    setInfor (prev => ({ ...prev, [inputName]: value }));
+    setInput (prev => ({ ...prev, [inputName]: value }));
 }
 
 
@@ -84,90 +85,119 @@ export default function Infor(layToken){
 	  setFilename(e.target.files[0].name);
 	};
 
-  const onClick = async(e) =>{
-    e.preventDefault();
+  // const onClick = async(e) =>{
+  //   e.preventDefault();
     
-      const ob = {
-          username: obInfor.username,
-          password: obInfor.password,
-          newemail: obInfor.newemail,
-          newphone: obInfor.newphone,
-          newname: obInfor.newname,
-          newpassword: obInfor.newpassword,
-      }
-      const json = await setInfor(ob)
-    }
+  //     const ob = {
+  //         username: obInfor.username,
+  //         password: obInfor.password,
+  //         newemail: obInfor.newemail,
+  //         newphone: obInfor.newphone,
+  //         newname: obInfor.newname,
+  //         newpassword: obInfor.newpassword,
+  //     }
+  //     const json = await setInfor(ob)
+  //   }
   
     //gui file hinh len server
-	const onSubmit = async e => {
-	  e.preventDefault();
+
+
+
+const postImage = async e =>{
+  e.preventDefault();
 	  let newName = token.id+"avatar"+".jpg"
 	  let id = token.id
 	  const formData = new FormData();
 	  formData.append('file', file);
 	  formData.append('newName', newName);
 	  formData.append('id', id);
-	  console.log(newName)
-  
-	  try {
-		const res = await axios.post('http://localhost:4000/upload', formData, {
-		  headers: {
-			'Content-Type': 'multipart/form-data'
-		  },
-		});
-		const { fileName, filePath } = res.data;
-		setUploadedFile({ fileName, filePath });
-  
-	  } catch (err) {
-  
-	   }
-	};
 
+    const url = "http://localhost:4000/upload"
+    fetch(url, {
+      method: "POST",
+      body: formData
+    })
+    .then(data=>data.json())
+    .then(dataJson=>{
+      console.log(dataJson)
+      const { fileName, filePath } = dataJson;
+		  setUploadedFile({ fileName, filePath });
+     
+    })
+    .catch(err=>console.log(err))
+}
+  
+
+const updateInfor = async(e)=>{
+  e.preventDefault();
+const json = await PostInfor()
+console.log()
+}
 	return (
 	  <div>
         <StyledFormWrapper>
-          <StyledForm onSubmit={handleInfor}>
+          <StyledForm>
             <h2><b>Cập Nhật Thông Tin Cá Nhân</b></h2>
             <br/><br/>
+             <StyledInput
+            placeholder="Nhập tên người dùng mới..."
+            type="text"
+            name="newname"
+            value={input.newname}
+            onChange={inputInfor}
+        /><br/>
+
             <StyledInput
-                placeholder="Nhập họ và tên..."
+                placeholder="Nhập mật khẩu mới..."
+                type="password"
+                name="newpassword"
+                value={input.newpassword}
+                onChange={inputInfor}
+            /><br/>
+          
+              <StyledInput
+            placeholder="Nhập số điện thoại mới..."
+            type="number"
+            name="newphone"
+            value={input.newphone}
+            onChange={inputInfor}
+        /><br/>
+           
+         <StyledInput
+                placeholder="Nhập Email mới..."
+                type="email"
+                name="newemail"
+                value={input.newemail}
+                onChange={inputInfor}
+            /><br/>
+         <StyledInput
+                placeholder="Nhập tài khoản hiện tại ..."
                 type="text"
-                name="name"
-                value={infor.name}
+                name="username"
+                value={input.username}
                 onChange={inputInfor}
             />
             <br/>
             <StyledInput
-                placeholder="Nhập Email..."
-                type="email"
-                name="email"
-                value={infor.email}
-                onChange={inputInfor}
-            /><br/>
-            <StyledInput
-                placeholder="Nhập mật khẩu mới..."
+                placeholder="Nhập mật khẩu hiện tại..."
                 type="password"
                 name="password"
-                value={infor.password}
+                value={input.password}
                 onChange={inputInfor}
-            /><br/>
-            <StyledInput
-                placeholder="Xác nhận lại mật khẩu vừa nhập..."
-                type="password"
-                name="confirmPassword"
-                value={infor.confirmPassword}
-                onChange={inputInfor}
-            /><br/>
-             <StyledInput
-                placeholder="Nhập mật khẩu cũ..."
-                type="password"
-                name="oldPassword"
-                value={infor.oldPassword}
-                onChange={inputInfor}
-            /><br/>
-            
+            />
+          
 
-             <label className={s.lbel} >Cập nhật lại hình ảnh</label>
+            {error && (
+              <StyledError>
+                <p>{error}</p>
+                </StyledError>
+            )}
+            <br/><br/> 
+            
+            <StyledButton  onClick={changeInfor}>Cập Nhật Thông Tin Cá Nhân</StyledButton>
+            <br/><br/>
+            
+            <label className={s.lbel} >Cập nhật lại hình ảnh</label>
              <br/>
 
                {file && (
@@ -177,10 +207,6 @@ export default function Infor(layToken){
           
           
           <button  className={s.button} onClick={()=>setFile(null)}>Remove</button>
-
-          {/* <input className={s.inputfile} type='submit' />
-          <label className="fa fa-refresh"  for="file">&ensp;Tải lại</label>
-		      <h3>{uploadedFile.filePath}</h3> */}
         </div>
         )}
         <div>
@@ -188,38 +214,15 @@ export default function Infor(layToken){
             <label className="fa fa-cloud-upload" >&ensp;Tải lên
             <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile}/>
             </label>
-          
+            <br/><br/>
+            <StyledButton  onClick={postImage}>Cập Nhật Hình Ảnh</StyledButton>
 		   </div>
 
-      {/* <div>
-        <form>	  
-          <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label>
-          <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} />
-        </form>
-		  </div> */}
-    
-    {/* <form>
-		  <div> */}
-      {/* <label className="fa fa-cloud-upload"  for="file">&ensp;Tải lên</label> */}
-        {/* <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile} /> */}
-		  {/* </div>
-    </form> */}
-
-<br/> 
-
-            {error && (
-              <StyledError>
-                <p>{error}</p>
-                </StyledError>
-            )}
-            <br/><br/> 
-            
-            <StyledButton  type="submit">Cập Nhật</StyledButton>
           </StyledForm>
         </StyledFormWrapper>
 
-       <button onClick={(e)=>{updateInfor(e)}}>thay doi thong tin user</button>
-      
+       {/* <button onClick={(e)=>{updateInfor(e)}}>thay doi thong tin user</button> */}
+      {/* <button onClick={changeInfor}>Thay Doi</button> */}
    </div>
   
   );
