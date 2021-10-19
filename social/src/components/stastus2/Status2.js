@@ -5,7 +5,7 @@ import Share from "../share/Share";
 import GetStatus from "../../API/GetStatus"
 import { useState, useEffect } from "react";
 
-export default function Status() {
+export default function Status({search}) {
   const [posts, setPost] = useState([])
   const addPost = (ob)=>{
     setTimeout(function(){
@@ -27,6 +27,10 @@ export default function Status() {
       <Share props={addPost} />
     <div className={`${s.feed}`}>
       <div className={`${s.feedWrapper}`}>
+         {search.map((p,index) => (
+          <Post key={index} post={p} />
+        ))}
+        --------------------------------
         {posts.map((p) => (
           <Post key={p.id_st} post={p} />
         ))}

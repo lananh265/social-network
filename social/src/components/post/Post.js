@@ -42,7 +42,7 @@ const {token} = GetInfor()
             <span className={`${s.postDate}`}>{post.date_st}</span>
           </div>
           <div className={`${s.postTopRight}`}>
-            <span><MonetizationOn  htmlColor="#BBD2C5"/>{post.benefit}</span>
+            <span><MonetizationOn  htmlColor="#FF9900"/>{post.benefit}</span>
             <button className={s.option} > <Join ob={ob}/></button> 
           </div>
         </div>

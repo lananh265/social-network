@@ -21,10 +21,8 @@ import Banner from "../../components/banner/banner";
 import { useState } from "react";
 
 
-
-
 export default function Home() {
-    
+    const [search, setSearch] = useState([{}])
     const [formBody, setFormBody] = useState(true)
     
     return (
@@ -32,14 +30,14 @@ export default function Home() {
    <div>
        <GlobalStyle />
        <Router>
-            <Topbar2 /> 
+            <Topbar2 setSearch={setSearch}/> 
             <Banner />
             <br/>
             <Switch>
                 <Route 
                 exact path="/"
                 render={() => {
-                    return <Body/>
+                    return <Body search={search}/>
                 }}>
                 </Route>
 
