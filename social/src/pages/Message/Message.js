@@ -3,13 +3,18 @@ import Chat from "../../components/chat/chat3";
 import Sidebar from "../../components/sidebar/sidebar";
 import Rightbar from "../../components/rightbar/Rightbar";
 import s from "./message.module.css"
+import { useState } from "react";
+import RightMess from "../../components/rightbar/RightMess"
+
 export default function Message() {
-  
+  const [listInbox, setListInbox] = useState([])
+  const [targetUser, setTargetUser] = useState({})
     return (
    <div className={s.homeContainer}>
         <Sidebar />
-       <Chat />
-        <Rightbar/>
+       <Chat setListInbox={setListInbox} targetUser={targetUser} />
+        {/* <Rightbar/> */}
+        <RightMess listInbox={listInbox} setTargetUser={setTargetUser} />
       
      </div>
   );

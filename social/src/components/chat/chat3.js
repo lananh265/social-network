@@ -3,6 +3,7 @@ import socketIOClient, { Socket } from "socket.io-client"
 import s from "./chat.module.css"
 import GetAvatar from "../../API/GetAvatar";
 import GetInfor from "../../API/GetInfor"
+import UserInbox from "../../API/UserInbox";
 const src="http://localhost:1337/server-node/v0.1/server/images/avatars/"
 const host ="http://localhost:4000/"
 
@@ -11,7 +12,7 @@ const obTarget = {
   name: "",
   id: ""
 }
-export default function Chat(){
+export default function Chat({setListInbox, targetUser}){
   const [target, setTarget] = useState(obTarget)
   const [avatar, setAvatar] = useState({})
   // const tokenString = localStorage.getItem('token');
@@ -34,12 +35,12 @@ export default function Chat(){
     // const [target_id, setTarget_ID] = useState("2")//ty
 
     const Send = ()=>{
-      if(tn.length>0){
+      if(tn.length>0 && targetUser.id>0){
           let ob = {
               id: id,
               name: token.name,
               connecter_id: token.id,
-              target_id: target.target_id,
+              target_id: targetUser.id,
               text_me: tn
           }
           socketRef.current.emit("mess-out",ob)
@@ -52,7 +53,7 @@ const scrollToBottom = () => {
   }
 
 const renderMess =  listTN.map((m, index) => 
-<div key={index} className={`${m.id === id ? `${s.yourmessage}` : `${s.otherpeople}`} ${s.chatitem}`}>  
+<div key={index} className={`${m.connecter_id === token.id ? `${s.yourmessage}` : `${s.otherpeople}`} ${s.chatitem}`}>  
   {m.name} {m.text_me}
 </div>
 )
@@ -73,7 +74,9 @@ const renderMess =  listTN.map((m, index) =>
     useEffect( ()=>{
       socketRef.current = socketIOClient.connect(host)
       socketRef.current.on("getId", (data)=>{
-          if(!data){alert("Cảnh báo: ai đó đã đăng nhập vào tài khoản của bạn !")}
+          if(!data){
+            // alert("Cảnh báo: ai đó đã đăng nhập vào tài khoản của bạn !")
+        }
           else{
               const obSocket = {
                   username: token.username,
@@ -139,20 +142,31 @@ const renderMess =  listTN.map((m, index) =>
   //   return () => mounted = false;
   // },[])
   
+  useEffect(() => {
+    let mounted = true;
+    UserInbox({connecter_id: token.id})
+      .then(items => {
+        if(mounted) {
+         console.log(items)
+          setListInbox(items)
+        }
+      })
+    return () => mounted = false;
+  }, [])
 
     return(
       <>
       <div className={`${s.bb}`}>
       <div className={`${s.avachat}`}>
       <img className={s.shareProfileImg} src={`${avatar.src}?${avatar.imageHash}`} alt="" />&emsp;
-      <img className={s.shareProfileImge} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
+                {
+                    targetUser.id? 
+                    <img className={s.shareProfileImge} src={`${src+targetUser.avatar}`} alt="" />
+                    : 
+                    <img className={s.shareProfileImge} src={`${src+"user.png"}`} alt="" />
+                }
+                </div>
       </div>
-      </div>
-      <div>
-                {/* {id} */}
-                <br/>
-                <input type="number" name="target_id" value={target.target_id} onChange={(e)=>{inputTarget(e)}} />
-            </div>
         <div className={`${s.boxchat}`}>
         
         <div className={`${s.boxchatmessage}`}>
