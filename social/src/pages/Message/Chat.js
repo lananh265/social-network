@@ -4,10 +4,10 @@ import s from "./chat.module.css"
 import GetAvatar from "../../API/GetAvatar";
 import GetInfor from "../../API/GetInfor"
 import UserInbox from "../../API/UserInbox"
-import GetMess from "../../API/GetMess"
+import GetMess from "../../API/GetMess";
 
-const host = "http://192.168.1.2:4000/"
-const src = "http://192.168.1.2/server-node/v0.1/server/images/avatars/"
+const host = "http://localhost:4000/"
+const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
 
 export default function Chat(){
     const {token} = GetInfor()
@@ -17,47 +17,42 @@ export default function Chat(){
     const [targetUser, setTargetUser] = useState({})    //chua thong tin ob target
     const [showNoti, setShowNoti] = useState(true)      //mo hoac dong Noti
     const [tn, setTN] = useState("")                    //luu tin nhan nguoi nhap
-    const [listMess, setListMess] = useState([])        //chua tin nhan Noti
+    const [listMess, setListMess] = useState([])        //chua tin nhan cu va moi
+    const [newMess, setNewMess] = useState([])          //chua tin nhan Noti
 
-    const [renMess, setRenMess] = useState(0)          // index de chay map renderMess2
+    const [online, setOnline] = useState([])            //mang user online
+    // const [target, setTarget] = useState("")            //input id target
     const messagesEnd = useRef();
     const scrollToBottom = () => {
         messagesEnd.current.scrollIntoView({ behavior: "smooth" });
       }
     //show list tin nhan Noti
-    const renderMess =  listMess.map((m, index) =>
+    const renderMess =  newMess.map((m, index) =>
     <div key={index} className={`${m.connecter_id === token.id ? s.your_message : s.other_people} ${s.chat_item} `}>
     {m.name}{' '}{m.text_me}
-    </div>)
-    //check index cua targetUser
+    </div>)   
     
-    const findIndex = (id)=>{
-        console.log(listInbox)
-        var index = listInbox.map(function(e,index) {return e.id}).indexOf(id)
-        console.log('ke qua '+index)
-        if(index >=0){
-            return index
-        }else{ return 0}
-    }
     //show tin nhan 1-1
     const renderMess2 =  listMess.map((m, index) =>
     <div key={index} >
-    {(m.connecter_id==token.id)&&(m.target_id==targetUser.id)? 
+    {(m.connecter_id===token.id)&&(m.target_id===targetUser.id)? 
         <div className={`${s.your_message} ${s.chat_item}`}>{m.name}{' '}{m.text_me}</div> : 
         <></> }
-    {(m.target_id==token.id)&&(m.connecter_id==targetUser.id)? 
+    {(m.target_id===token.id)&&(m.connecter_id===targetUser.id)? 
         <div className={`${s.other_people} ${s.chat_item}`}>{m.name}{' '}{m.text_me}</div> : 
         <></> }
     </div>)
 
     //gui tin nhan
     const Send = ()=>{
+        // if(tn.length>0 && targetUser.id>0){
         if(tn.length>0 && targetUser.id>0){
             let ob = {
                 id: idSocket,
                 name: token.name,
                 connecter_id: token.id,
                 target_id: targetUser.id,
+                // target_id: target,
                 text_me: tn
             }
             socketRef.current.emit("mess-out",ob)
@@ -74,22 +69,29 @@ export default function Chat(){
           }
     }
 
-
-//load Message cu
-useEffect(()=>{
-    let mounted = true;
-    let ob = {
-        id: token.id
+    const checkOnline = (username)=>{
+        if(online.map(function(e){
+            return e.username;
+          }).indexOf(username)>=0){
+            return true
+          }else{
+              return false
+          }
     }
-   GetMess(ob)
-     .then(items => {
-       if(mounted) {
-         setListMess(items)
-       }
-     })
-   return () => mounted = false;
-
-},[]) 
+    //load Messages cu
+    useEffect( ()=>{
+        let mounted = true;
+        let ob = {
+            id: token.id
+        }
+        GetMess(ob)
+          .then(items => {
+            if(mounted) {
+               setListMess(items)
+            }
+          })
+        return () => mounted = false;
+    },[token.id])
 
     //lay thong tin toan bo user inbox voi minh listInbox
     useEffect(() => {
@@ -102,7 +104,7 @@ useEffect(()=>{
             }
           })
         return () => mounted = false;
-      }, [])
+      }, [token.id])
     
     //connect socket io and get idSocket
     let socketRef = useRef()
@@ -110,7 +112,6 @@ useEffect(()=>{
         socketRef.current = socketIOClient.connect(host)
         socketRef.current.on("getId", (data)=>{
             if(!data){
-
             }else{
                 const obSocket = {
                     username: token.username,
@@ -120,14 +121,18 @@ useEffect(()=>{
                 socketRef.current.emit("client-send-obSocket",obSocket)
             }
             setIdSocket(data)
-            console.log(data)
-            
+            // console.log(data)
+        })
+        socketRef.current.on("online", (online)=>{
+            // console.log(online)
+            setOnline(online)
         })
         socketRef.current.on("mess-in", (data)=>{
             setListMess( (listMess)=>[...listMess,data])
+            setNewMess( (newMess)=>[...newMess,data])
             scrollToBottom()
         })
-    },[])
+    },[token.id,token.username])
 
     //lay avatar cua minh
     useEffect( ()=>{
@@ -147,13 +152,16 @@ useEffect(()=>{
             }
         })
         return () => mounted = false;
-    },[])
+    },[token.id])
     
  return(
     <div className={s.homeContainer}>
 
         <div className={s.leftbar}>
-                <h4>Bên trái chat với {targetUser.id}</h4>
+                {/* <h4>Bên trái chat với {targetUser.id}</h4>
+                { checkOnline(targetUser.username)? <h4>Online</h4>: <h4>no</h4>} */}
+                {/* <input type="number" value={target} 
+                onChange={(e)=>{setTarget(e.target.value)}} /> */}
         </div>
 
         <div className={`${s.bb}`}>
@@ -196,8 +204,6 @@ useEffect(()=>{
         </div>
         }
         
-
-
         <div className={s.rightbar}>
             <div className={s.rightbarWrapper}>
                 <h4 className={s.rightbarTitle}>Danh sách đối tác</h4>
@@ -212,7 +218,10 @@ useEffect(()=>{
                             onClick={()=>{setTargetUser(u); setShowNoti(false);
                                 } }>
                         <img className={s.rightbarProfileImg} src={src+u.avatar} alt="" />
-                        <span className={s.rightbarOnline}></span>
+                        { checkOnline(u.username)? 
+                            <span className={s.rightbarOnline}></span>
+                            : <></>
+                        }
                         </div>
                         <span className={s.rightbarUsername}>{u.name}</span>
                 

@@ -82,9 +82,9 @@
     text-align: center;
   
   }
-  button:hover {
+  /* button:hover {
     background: black;
-  }
+  } */
   textarea:focus {outline:0;}
   
   

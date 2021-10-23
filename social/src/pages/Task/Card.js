@@ -6,9 +6,14 @@ import EditNote from './EditTask'
 import s from "./Task.module.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
-const Card = ({taskObj, index, deleteTask, updateListArray}) => {
-    const [modal, setModal] = useState(false);
 
+
+
+const Card = ({taskObj, index, deleteTask, updateListArray}) => {
+
+    const [checked, setChecked] = React.useState(true);
+
+    const [modal, setModal] = useState(false);
     const colors = [
         {
             primaryColor : "#5D93E1",
@@ -48,13 +53,29 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
         <div className = {`${s.cardwrapper}`}>
             <div className = {`${s.cardtop}`} style={{"background-color": colors[index%5].primaryColor}}></div>
             <div className={`${s.taskholder}`}>
-                <span className = {`${s.cardheader}`} style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px"}}>{taskObj.name}</span>
+                <span className = {`${s.cardheader}`} style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px"}}>{taskObj.name} 
+              
+                <input type="checkbox"
+                    className={`${s.check}`}
+                    checked={checked}
+                    onChange={() => setChecked(!checked)}
+                />
+     
+                </span>
                 <p className = "mt-3">{taskObj.content}</p>
 
-                <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                <div style={{"position": "absolute", "right" : "20px", "bottom" : "0px" , "height": "20px"}}>
                     {/* <i class="fa fa-pencil-square-o"  style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
                     &emsp;&emsp; */}
                     <i  class="fa fa-trash"  style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
+                </div>
+                <div className={`${s.nut}`}>
+                   <div className={`${s.left}`}>
+                   <button className={`${s.butt}`}>Liên hệ</button>
+                   </div>
+                   <div className={`${s.rightt}`}>
+                       <button className={`${s.butt}`}>Duyệt</button>
+                   </div>
                 </div>
         </div>
         <EditNote modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
