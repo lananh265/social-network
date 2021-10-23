@@ -1,7 +1,6 @@
 // import { Chat } from "@material-ui/icons";
 import Chat from "../../components/chat/chat3";
 import Sidebar from "../../components/sidebar/sidebar";
-import Rightbar from "../../components/rightbar/Rightbar";
 import s from "./message.module.css"
 import { useState } from "react";
 import RightMess from "../../components/rightbar/RightMess"

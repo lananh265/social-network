@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { StyledError, StyledForm, StyledFormWrapper, StyledInput, StyledButton } from '../../components/css/cssform';
 import PostLogin from '../../API/postLogin';
 import s from './Infor.module.css'

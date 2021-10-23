@@ -1,8 +1,8 @@
 import s from "./share.module.css";
-import {MonetizationOn, Label,Room, EmojiEmotions, Share, PinDropSharp} from "@material-ui/icons"
+import {MonetizationOn} from "@material-ui/icons"
 import { useState, useEffect } from "react";
 import PostShare from "../../API/postShare";
-import useToken from "../../API/useToken";
+// import useToken from "../../API/useToken";
 import GetAvatar from "../../API/GetAvatar";
 
 //thay doi hinh anh avatar

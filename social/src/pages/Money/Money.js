@@ -1,7 +1,7 @@
 import { useState } from "react";
 import s from "./Money.module.css"
-import { StyledError, StyledForm, StyledFormWrapper, StyledInput, StyledButton } from '../../components/css/cssform';
-import {MonetizationOn, Label,Room, EmojiEmotions, Share, PinDropSharp} from "@material-ui/icons"
+import { StyledError, StyledForm, StyledFormWrapper, StyledButton } from '../../components/css/cssform';
+import {MonetizationOn} from "@material-ui/icons"
 const obMoney = {
     name: "",
     email: "",
