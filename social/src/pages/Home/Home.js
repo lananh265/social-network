@@ -19,7 +19,7 @@ import { useState } from "react";
 
 export default function Home() {
     const [search, setSearch] = useState([{}])
-    const [formBody, setFormBody] = useState(true)
+    // const [formBody, setFormBody] = useState(true)
     
     return (
 

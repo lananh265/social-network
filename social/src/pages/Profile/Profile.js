@@ -12,12 +12,11 @@
 import Share from "../../components/share/Share";
 import "../../components/css/home.css"
 import Sidebar from "../../components/sidebar/sidebar";
-import { useState } from "react";
 import s from "./profile.module.css"
 
 export default function Profile() {
     
-    const [formBody, setFormBody] = useState(true)
+    // const [formBody, setFormBody] = useState(true)
     
     const goInfor=()=>{
         window.location.href = "/Infor";

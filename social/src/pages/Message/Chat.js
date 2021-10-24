@@ -199,7 +199,7 @@ export default function Chat(){
                     onChange={(e)=>{setTN(e.target.value)}}
                     placeholder="Nhập tin nhắn ..."
                 />
-                <button className={s.button} onClick={Send}> Send </button>
+                <button className={s.button} onClick={Send}> Gửi </button>
             </div>
         </div>
         }

@@ -156,7 +156,7 @@ const TodoList = () => {
             <div className={s.body}>
             <div className = {`${s.headertextcenter}`}>
                 <h3>Danh Sách Việc Cần Làm</h3>
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
+                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Tạo Công Việc</button>
             </div>
             <div className = {`${s.taskcontainer}`}>
             {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}

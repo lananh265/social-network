@@ -13,33 +13,33 @@ const obMoney = {
 }
 export default function Money() {
   const [money, setMoney] = useState(obMoney)
-  const [error, setError] = useState('');
-  const handleMoney = async e =>{
-    e.preventDefault();
-    console.log('submitted!');
-    console.log(money);
+  const [error] = useState('');
+//   const handleMoney = async e =>{
+//     e.preventDefault();
+//     console.log('submitted!');
+//     console.log(money);
 
-    for (let key in money) {
-      if (money[key] === '') {
-        setError(`You must provide the ${key}`)
-        return
-      }
-  }
-  setError('');
-  const ob = {
-      username: money.name,
-      password: money.password
-  }
-//  let json = await PostLogin(ob)
-//  console.log(json)
+//     for (let key in money) {
+//       if (money[key] === '') {
+//         setError(`You must provide the ${key}`)
+//         return
+//       }
+//   }
+//   setError('');
+//   const ob = {
+//       username: money.name,
+//       password: money.password
+//   }
+// //  let json = await PostLogin(ob)
+// //  console.log(json)
 
-//   layToken(json)
-//  if(!json.status){
-//   alert("Cập nhật thông tin không thành công. Vui lòng kiểm tra lại!")
-// }else{
-//   window.location.href = "/";
-// }
-};
+// //   layToken(json)
+// //  if(!json.status){
+// //   alert("Cập nhật thông tin không thành công. Vui lòng kiểm tra lại!")
+// // }else{
+// //   window.location.href = "/";
+// // }
+// };
 const inputMoney =(e) =>{
     const inputName = e.currentTarget.name
     const value = e.currentTarget.value

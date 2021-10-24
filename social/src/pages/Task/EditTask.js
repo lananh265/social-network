@@ -22,7 +22,7 @@ const EditNote = ({modal, toggle, updateTask, taskObj}) => {
     useEffect(() => {
         setTaskName(taskObj.Name)
         setDescription(taskObj.Description)
-    },[])
+    },[taskObj.Description, taskObj.Name])
 
     const handleUpdate = (e) => {
         e.preventDefault();

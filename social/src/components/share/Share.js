@@ -94,13 +94,13 @@ export default function Poststatus({props}) {
       }
   })
   return () => mounted = false;
-},[])
+},[token.id])
 const state = input.benefit
 const format = state.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 // for (var i = 0; i < state.length; i++) {}
   // console.log(format(state[i], 'vnd '))}
 
-const changeMoney = format+'.000'
+// const changeMoney = format+'.000'
   return (
     <div className={`${s.share}`}>
       <div className={`${s.shareWrapper}`}>

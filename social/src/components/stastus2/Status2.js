@@ -30,7 +30,7 @@ export default function Status({search}) {
          {search.map((p,index) => (
           <Post key={index} post={p} />
         ))}
-        --------------------------------
+        <b><h1>------------------ 	&#9830;	&#9830;	&#9830; -------------------</h1></b>
         {posts.map((p) => (
           <Post key={p.id_st} post={p} />
         ))}

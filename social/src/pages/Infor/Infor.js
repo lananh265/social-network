@@ -1,28 +1,13 @@
 import React, {  useState } from 'react';
 // import axios from 'axios';
 import { StyledError, StyledForm, StyledFormWrapper, StyledInput, StyledButton } from '../../components/css/cssform';
-import PostLogin from '../../API/postLogin';
 import s from './Infor.module.css'
 import PostInfor from '../../API/PostInfor';
-const obInfor = {
-  name: "",
-  email:"",
-  pic:({}),
-  password:"",
-  confirmPassword:"",
-  oldPassword:"",
-  picMessage:({}),
-  newname:"",
-  newemail:"",
-  newpassword:"",
-  newphone:"",
-}
-
-
+import PostLogin from '../../API/postLogin'
 
 export default function Infor(layToken){
 
-  const [infor, setInfor] = useState({name: ""})
+  const [infor] = useState({name: ""})
   const [error, setError]= useState('');
   const [input, setInput] = useState({
     username: "",
@@ -74,8 +59,8 @@ export default function Infor(layToken){
 
 
 	const [file, setFile] = useState(null);
-	const [filename, setFilename] = useState('Choose File');
-	const [uploadedFile, setUploadedFile] = useState({});
+	const [ filename, setFilename] = useState('Choose File');
+	const [ setUploadedFile] = useState({});
 	
 	const tokenString = localStorage.getItem('token');
 	const token = JSON.parse(tokenString);
@@ -85,19 +70,7 @@ export default function Infor(layToken){
 	  setFilename(e.target.files[0].name);
 	};
 
-  // const onClick = async(e) =>{
-  //   e.preventDefault();
-    
-  //     const ob = {
-  //         username: obInfor.username,
-  //         password: obInfor.password,
-  //         newemail: obInfor.newemail,
-  //         newphone: obInfor.newphone,
-  //         newname: obInfor.newname,
-  //         newpassword: obInfor.newpassword,
-  //     }
-  //     const json = await setInfor(ob)
-  //   }
+ 
   
     //gui file hinh len server
 

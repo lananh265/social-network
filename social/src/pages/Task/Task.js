@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 
 
-const TodoList = () => {
+const Task  = () => {
     const {token} = GetInfor()
 
     //luu ob tra ve khi tham gia dau thau
@@ -45,7 +45,7 @@ const TodoList = () => {
             }
         })
         return () => mounted = false;
-      },[])
+      },[token.id])
 
 
 
@@ -92,7 +92,7 @@ const TodoList = () => {
             {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
             </div> */}
              <div className = {`${s.taskcontainer}`}>
-            {join && join.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
+            {join && join.map((obj , index) => <Card taskObj = {obj} key={index} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
             </div>
 
             <CreateNote toggle = {toggle} modal = {modal} save = {saveTask}/>
@@ -107,7 +107,7 @@ const TodoList = () => {
     );
 };
 
-export default TodoList;
+export default Task ;
 
 
 
