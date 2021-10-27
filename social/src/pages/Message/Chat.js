@@ -5,7 +5,7 @@ import GetAvatar from "../../API/GetAvatar";
 import GetInfor from "../../API/GetInfor"
 import UserInbox from "../../API/UserInbox"
 import GetMess from "../../API/GetMess";
-
+import GetUser from "../../API/GetUser";
 
 const host = "http://localhost:4000/"
 const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
@@ -25,9 +25,9 @@ export default function Chat({contact}){
     const [online, setOnline] = useState([])            //mang user online
     // const [target, setTarget] = useState("")            //input id target
     const messagesEnd = useRef();
-    const scrollToBottom = () => {
-        messagesEnd.current.scrollIntoView({ behavior: "smooth" });
-      }
+    // const scrollToBottom = () => {
+    //     messagesEnd.current.scrollIntoView({ behavior: "smooth" });
+    //   }
     //show list tin nhan Noti
     const renderMess =  newMess.map((m, index) =>
     <div key={index} className={`${m.connecter_id === token.id ? s.your_message : s.other_people} ${s.chat_item} `}>
@@ -101,41 +101,62 @@ export default function Chat({contact}){
         UserInbox({connecter_id: token.id})
           .then(items => {
             if(mounted) {
-              setListInbox(items)
-            //   console.log(items)
+              if(contact.id){ //tu Task di qua
+                  let array = items
+                  array.push(contact)
+                  var pp = array.filter( (ele, ind) =>
+                        ind === array.findIndex(
+                        elem => elem.id === ele.id ) )
+                  setListInbox(pp)
+              } else{
+                setListInbox(items)
+              }
             }
           })
+        //   console.log('contact')
         return () => mounted = false;
-      }, [token.id])
+      }, [token.id,contact.id, contact])
     
     //connect socket io and get idSocket
     let socketRef = useRef()
     useEffect( ()=>{
-        socketRef.current = socketIOClient.connect(host)
-        socketRef.current.on("getId", (data)=>{
-            if(!data){
-            }else{
-                const obSocket = {
-                    username: token.username,
-                    connecter_id: token.id,
-                    socket_id: data
+        let mounted = true;
+        if(mounted){
+            socketRef.current = socketIOClient.connect(host)
+            socketRef.current.on("getId", (data)=>{
+                if(!data){
+                }else{
+                    const obSocket = {
+                        username: token.username,
+                        connecter_id: token.id,
+                        socket_id: data
+                    }
+                    socketRef.current.emit("client-send-obSocket",obSocket)
                 }
-                socketRef.current.emit("client-send-obSocket",obSocket)
-            }
-            setIdSocket(data)
-            // console.log(data)
-        })
-        socketRef.current.on("online", (online)=>{
-            // console.log(online)
-            setOnline(online)
-        })
-        socketRef.current.on("mess-in", (data)=>{
-            setListMess( (listMess)=>[...listMess,data])
-            setNewMess( (newMess)=>[...newMess,data])
-            console.log(data.text_me)
-            // scrollToBottom()
-        })
-    },[token.id,token.username])
+                setIdSocket(data)
+                // console.log(data)
+            })
+            socketRef.current.on("online", (online)=>{
+                // console.log(online)
+                setOnline(online)
+            })
+            socketRef.current.on("mess-in", (data)=>{
+                setListMess( (listMess)=>[...listMess,data])
+                setNewMess( (newMess)=>[...newMess,data])
+                if(data.connecter_id !== token.id && listInbox.map(function(e) {
+                    return e.id;
+                  }).indexOf(data.connecter_id)<0){
+                    console.log('username khong ton tai')
+                    GetUser({id: data.connecter_id}).then((item)=>{
+                        setListInbox( (listInbox)=> [...listInbox,item[0]])
+                    })
+                  }
+                console.log(data.text_me)
+                // scrollToBottom()
+            })
+        }
+        return () =>  mounted = false;
+    },[token.id,token.username, listInbox])
 
     //lay avatar cua minh
     useEffect( ()=>{

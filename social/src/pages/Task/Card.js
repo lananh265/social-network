@@ -56,27 +56,20 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
                     <i  class="fa fa-trash" aria-hidden="true" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i> */}
                 </div>
                 
-                <div className={`${s.nut}`}>
-
-                <button className={`${s.butt}`}>
+                <button>
                     <Link to={{pathname: 'Message', 
-                                state:{id: taskObj.connecter_id,
+                                state:{ id: taskObj.connecter_id,
+                                        username: taskObj.username,
+                                        email: taskObj.email,
+                                        phone: taskObj.phone,
+                                        name: taskObj.name,
                                         avatar: taskObj.avatar,
                                         show: false}}}>Liên hệ</Link>
                 </button>
-&ensp;
-                <button className={`${s.butt}`}>
-                    <Link to={{pathname: 'Message', 
-                                state:{id: taskObj.connecter_id,
-                                        avatar: taskObj.avatar,
-                                        show: false}}}>Duyệt</Link>
-                </button>
-                </div>
-            </div>
-       
+        </div>
         <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
      
-    </div>
+        </div>
         
     );
 };
