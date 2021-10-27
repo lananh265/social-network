@@ -1,5 +1,3 @@
-
-
 import GetInfor from "../../API/GetInfor"
 import ShowTasks from "../../API/Showtasks"
 import React, {useEffect, useState} from 'react';

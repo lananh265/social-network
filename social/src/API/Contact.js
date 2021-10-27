@@ -1,7 +1,7 @@
 
-export default async function ShowTasks(ob){
+export default async function Contact(ob){
 
-    return fetch('http://localhost:4000/v0.2/showtasks', {
+    return fetch('http://localhost:4000/v0.1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -6,16 +6,18 @@ import GetInfor from "../../API/GetInfor"
 import UserInbox from "../../API/UserInbox"
 import GetMess from "../../API/GetMess";
 
+
 const host = "http://localhost:4000/"
 const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
 
-export default function Chat(){
+export default function Chat({contact}){
+    // console.log(contact)
     const {token} = GetInfor()
     const [listInbox, setListInbox] = useState([])      //chua danh sach minh da inbox
     const [idSocket, setIdSocket] = useState(0)         //duoc server cap cho socket id
     const [avatar, setAvatar] = useState({})            //lay avatar cua minh
-    const [targetUser, setTargetUser] = useState({})    //chua thong tin ob target
-    const [showNoti, setShowNoti] = useState(true)      //mo hoac dong Noti
+    const [targetUser, setTargetUser] = useState(contact)    //chua thong tin ob target
+    const [showNoti, setShowNoti] = useState(contact.show)      //mo hoac dong Noti
     const [tn, setTN] = useState("")                    //luu tin nhan nguoi nhap
     const [listMess, setListMess] = useState([])        //chua tin nhan cu va moi
     const [newMess, setNewMess] = useState([])          //chua tin nhan Noti
@@ -130,7 +132,8 @@ export default function Chat(){
         socketRef.current.on("mess-in", (data)=>{
             setListMess( (listMess)=>[...listMess,data])
             setNewMess( (newMess)=>[...newMess,data])
-            scrollToBottom()
+            console.log(data.text_me)
+            // scrollToBottom()
         })
     },[token.id,token.username])
 
@@ -199,7 +202,7 @@ export default function Chat(){
                     onChange={(e)=>{setTN(e.target.value)}}
                     placeholder="Nhập tin nhắn ..."
                 />
-                <button className={s.button} onClick={Send}> Gửi </button>
+                <button className={s.button} onClick={Send}> Send </button>
             </div>
         </div>
         }

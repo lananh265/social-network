@@ -1,19 +1,14 @@
-
-
 import React, {useState} from 'react';
-import EditNote from './EditTask'
-
+import EditTask from './EditTask'
+import {
+    Link
+  } from "react-router-dom";
 import s from "./Task.module.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
-
-
-
 const Card = ({taskObj, index, deleteTask, updateListArray}) => {
-
-    const [checked, setChecked] = React.useState(true);
-
     const [modal, setModal] = useState(false);
+
     const colors = [
         {
             primaryColor : "#5D93E1",
@@ -45,44 +40,43 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
         updateListArray(obj, index)
     }
 
-    const handleDelete = () => {
-        deleteTask(index)
-    }
-
-    const goMess = ()=>{
-        window.location.href = "/Message";
-      }
-
+    // const handleDelete = () => {
+    //     deleteTask(index)
+    // }
     return (
         <div className = {`${s.cardwrapper}`}>
             <div className = {`${s.cardtop}`} style={{"backgroundColor": colors[index%5].primaryColor}}></div>
             <div className={`${s.taskholder}`}>
-                <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px"}}>{taskObj.name} 
-              
-                <input type="checkbox"
-                    className={`${s.check}`}
-                    checked={checked}
-                    onChange={() => setChecked(!checked)}
-                />
-     
-                </span>
-                <p className = "mt-3">{taskObj.content}</p>
-
-                <div style={{"position": "absolute", "right" : "20px", "bottom" : "0px" , "height": "20px"}}>
-                    <i  className="fa fa-trash"  style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
+                <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px", color:"red"}}>{taskObj.name}</span>
+                {/* <p className = "mt-3">{taskObj.Description}</p> */}
+                <p style={{color:"black"}}>{taskObj.content}</p>
+                <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                    {/* <i class="fa fa-pencil-square-o" aria-hidden="true" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
+                    &emsp;&emsp;
+                    <i  class="fa fa-trash" aria-hidden="true" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i> */}
                 </div>
+                
                 <div className={`${s.nut}`}>
-                   <div className={`${s.left}`}>
-                   <button onClick={()=>{goMess()}} className={`${s.butt}`}>Liên hệ</button>
-                   </div>
-                   <div className={`${s.rightt}`}>
-                       <button className={`${s.butt}`}>Duyệt</button>
-                   </div>
+
+                <button className={`${s.butt}`}>
+                    <Link to={{pathname: 'Message', 
+                                state:{id: taskObj.connecter_id,
+                                        avatar: taskObj.avatar,
+                                        show: false}}}>Liên hệ</Link>
+                </button>
+&ensp;
+                <button className={`${s.butt}`}>
+                    <Link to={{pathname: 'Message', 
+                                state:{id: taskObj.connecter_id,
+                                        avatar: taskObj.avatar,
+                                        show: false}}}>Duyệt</Link>
+                </button>
                 </div>
-        </div>
-        <EditNote modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
+            </div>
+       
+        <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
      
-        </div>
+    </div>
         
     );
 };
