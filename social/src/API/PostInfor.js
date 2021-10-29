@@ -1,7 +1,7 @@
-
+import { Url } from "./url"
 export default function PostInfor(ob){
 
-    return fetch('http://localhost:4000/v0.1/changeinfor', {
+    return fetch(Url.api+'v0.1/changeinfor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

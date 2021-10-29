@@ -6,10 +6,11 @@ import GetInfor from "../../API/GetInfor"
 import UserInbox from "../../API/UserInbox"
 import GetMess from "../../API/GetMess";
 import GetUser from "../../API/GetUser";
+import { Url } from "../../API/url";
 
 const host = "http://localhost:4000/"
 // const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
-const src = "http://localhost:1337/social-network/server-social/v0.1/server/images/avatars/"
+const src = Url.img
 
 export default function Chat({contact}){
     // console.log(contact)

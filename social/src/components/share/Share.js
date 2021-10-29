@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import PostShare from "../../API/postShare";
 // import useToken from "../../API/useToken";
 import GetAvatar from "../../API/GetAvatar";
+import { Url } from "../../API/url";
 
 //thay doi hinh anh avatar
 // const src="http://localhost:1337/server-node/v0.1/server/images/avatars/"
-const src = "http://localhost:1337/social-network/server-social/v0.1/server/images/avatars/"
+const src = Url.img
 
 const obInput ={
   content: "",

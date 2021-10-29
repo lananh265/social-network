@@ -1,7 +1,8 @@
+import { Url } from "./url"
 
 export default async function Contact(ob){
 
-    return fetch('http://localhost:4000/v0.1/contact', {
+    return fetch(Url.api+'v0.1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,7 +1,7 @@
-
+import { Url } from "./url"
 export default function PostLogin(ob){
 
-    return fetch('http://localhost:4000/v0.1/login', {
+    return fetch(Url.api+'v0.1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
