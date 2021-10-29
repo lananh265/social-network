@@ -6,7 +6,8 @@ import {
 import s from "./Task.module.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
-const Card = ({taskObj, index, deleteTask, updateListArray}) => {
+import OrderTask from "../../API/ordertask"
+const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
     const [modal, setModal] = useState(false);
 
     const colors = [
@@ -43,11 +44,22 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
     // const handleDelete = () => {
     //     deleteTask(index)
     // }
+    const orDer = async(e,ob)=>{
+        e.preventDefault();
+        const json = await OrderTask(ob)
+        // console.log(json)
+        if(json.status === 0){
+            alert('Duyệt thất bai')
+        }
+        reloadJoin()
+    }
+
     return (
         <div className = {`${s.cardwrapper}`}>
             <div className = {`${s.cardtop}`} style={{"backgroundColor": colors[index%5].primaryColor}}></div>
             <div className={`${s.taskholder}`}>
                 <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px", color:"red"}}>{taskObj.name}</span>
+                <p>{taskObj.start}</p>
                 {/* <p className = "mt-3">{taskObj.Description}</p> */}
                 <p style={{color:"black"}}>{taskObj.content}</p>
                 <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
@@ -55,7 +67,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
                     &emsp;&emsp;
                     <i  class="fa fa-trash" aria-hidden="true" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i> */}
                 </div>
-                
+              
                 <button>
                     <Link to={{pathname: 'Message', 
                                 state:{ id: taskObj.connecter_id,
@@ -66,6 +78,10 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
                                         avatar: taskObj.avatar,
                                         show: false}}}>Liên hệ</Link>
                 </button>
+                <button onClick={(e)=>{orDer(e,{
+                    id_st: taskObj.id_st,
+                    connecter_id: taskObj.connecter_id
+                })}} >Duyệt</button>
         </div>
         <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
      

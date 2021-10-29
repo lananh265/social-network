@@ -1,7 +1,7 @@
 import { Url } from "./url"
-export default async function UserInbox(ob){
+export default function Ordertask(ob){
 
-    return fetch(Url.api+'v0.2/listuserinbox', {
+    return fetch(Url.api+'v0.1/ordertask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

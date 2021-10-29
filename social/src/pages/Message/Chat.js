@@ -9,7 +9,8 @@ import GetUser from "../../API/GetUser";
 import { Url } from "../../API/url";
 
 const host = "http://localhost:4000/"
-// const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
+
+
 const src = Url.img
 
 export default function Chat({contact}){
@@ -126,8 +127,7 @@ export default function Chat({contact}){
         if(mounted){
             socketRef.current = socketIOClient.connect(host)
             socketRef.current.on("getId", (data)=>{
-                if(!data){
-                }else{
+                if(data){
                     const obSocket = {
                         username: token.username,
                         connecter_id: token.id,
@@ -145,14 +145,15 @@ export default function Chat({contact}){
             socketRef.current.on("mess-in", (data)=>{
                 setListMess( (listMess)=>[...listMess,data])
                 setNewMess( (newMess)=>[...newMess,data])
-                if(data.connecter_id !== token.id && listInbox.map(function(e) {
-                    return e.id;
-                  }).indexOf(data.connecter_id)<0){
-                    console.log('username khong ton tai')
-                    GetUser({id: data.connecter_id}).then((item)=>{
-                        setListInbox( (listInbox)=> [...listInbox,item[0]])
-                    })
-                  }
+                console.log(listInbox)
+                // if(data.connecter_id !== token.id && listInbox.map(function(e) {
+                //     return e.id;
+                //   }).indexOf(data.connecter_id)<0){
+                //     console.log('username khong ton tai')
+                //     GetUser({id: data.connecter_id}).then((item)=>{
+                //         setListInbox( (listInbox)=> [...listInbox,item[0]])
+                //     })
+                //   }
                 console.log(data.text_me)
                 // scrollToBottom()
             })

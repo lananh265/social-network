@@ -29,6 +29,15 @@ const Task  = () => {
             setTaskList(obj)
         }
     }, [])
+    const reloadJoin =()=>{
+        let ob = {
+            target_id: token.id
+          }
+          ShowTasks(ob)
+          .then(items => {
+            setJoin(items)
+          })
+    }
     useEffect( ()=>{
         let mounted = true;
         let ob = {
@@ -90,7 +99,7 @@ const Task  = () => {
             {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
             </div> */}
              <div className = {`${s.taskcontainer}`}>
-            {join && join.map((obj , index) => <Card taskObj = {obj} key={index} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
+            {join && join.map((obj , index) => <Card taskObj = {obj} key={index} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray} reloadJoin={reloadJoin}/> )}
             </div>
 
             <CreateNote toggle = {toggle} modal = {modal} save = {saveTask}/>
