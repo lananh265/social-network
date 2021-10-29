@@ -1,0 +1,23 @@
+{
+  "name": "server-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon v0.1/server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-fileupload": "^1.2.1",
+    "md5": "^2.3.0",
+    "mysql": "^2.18.1",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}

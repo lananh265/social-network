@@ -6,7 +6,8 @@ import PostShare from "../../API/postShare";
 import GetAvatar from "../../API/GetAvatar";
 
 //thay doi hinh anh avatar
-const src="http://localhost:1337/server-node/v0.1/server/images/avatars/"
+// const src="http://localhost:1337/server-node/v0.1/server/images/avatars/"
+const src = "http://localhost:1337/social-network/server-social/v0.1/server/images/avatars/"
 
 const obInput ={
   content: "",

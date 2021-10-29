@@ -8,7 +8,8 @@ import GetMess from "../../API/GetMess";
 import GetUser from "../../API/GetUser";
 
 const host = "http://localhost:4000/"
-const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
+// const src = "http://localhost:1337/server-node/v0.1/server/images/avatars/"
+const src = "http://localhost:1337/social-network/server-social/v0.1/server/images/avatars/"
 
 export default function Chat({contact}){
     // console.log(contact)
