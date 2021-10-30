@@ -28,9 +28,9 @@ export default function Chat({contact}){
     const [online, setOnline] = useState([])            //mang user online
     // const [target, setTarget] = useState("")            //input id target
     const messagesEnd = useRef();
-    // const scrollToBottom = () => {
-    //     messagesEnd.current.scrollIntoView({ behavior: "smooth" });
-    //   }
+    const scrollToBottom = () => {
+        messagesEnd.current.scrollIntoView({ behavior: "smooth" });
+      }
     //show list tin nhan Noti
     const renderMess =  newMess.map((m, index) =>
     <div key={index} className={`${m.connecter_id === token.id ? s.your_message : s.other_people} ${s.chat_item} `}>
@@ -50,7 +50,9 @@ export default function Chat({contact}){
 
     //gui tin nhan
     const Send = ()=>{
-        // if(tn.length>0 && targetUser.id>0){
+       if(token.id === targetUser.id){
+           return false
+       }
         if(tn.length>0 && targetUser.id>0){
             let ob = {
                 id: idSocket,
@@ -145,6 +147,7 @@ export default function Chat({contact}){
             socketRef.current.on("mess-in", (data)=>{
                 setListMess( (listMess)=>[...listMess,data])
                 setNewMess( (newMess)=>[...newMess,data])
+                scrollToBottom()
                 console.log(listInbox)
                 // if(data.connecter_id !== token.id && listInbox.map(function(e) {
                 //     return e.id;

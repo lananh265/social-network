@@ -60,15 +60,18 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
             <div className={`${s.taskholder}`}>
                 <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px", color:"red"}}>{taskObj.name}</span>
                 <p>{taskObj.start}</p>
+                
                 {/* <p className = "mt-3">{taskObj.Description}</p> */}
-                <p style={{color:"black"}}>{taskObj.content}</p>
+                {/* <p style={{color:"black"}}>{taskObj.content}</p> */}
+                <textarea className={`${s.content}`}
+                value= {taskObj.content}/>
                 <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
                     {/* <i class="fa fa-pencil-square-o" aria-hidden="true" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
                     &emsp;&emsp;
                     <i  class="fa fa-trash" aria-hidden="true" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i> */}
                 </div>
-              
-                <button>
+              <div className={`${s.nut}`}>
+                <button className={`${s.butt}`}>
                     <Link to={{pathname: 'Message', 
                                 state:{ id: taskObj.connecter_id,
                                         username: taskObj.username,
@@ -78,14 +81,15 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                                         avatar: taskObj.avatar,
                                         show: false}}}>Liên hệ</Link>
                 </button>
-                <button onClick={(e)=>{orDer(e,{
+                <button className={`${s.butt}`} onClick={(e)=>{orDer(e,{
                     id_st: taskObj.id_st,
                     connecter_id: taskObj.connecter_id
                 })}} >Duyệt</button>
+            </div>
         </div>
         <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
      
-        </div>
+    </div>
         
     );
 };

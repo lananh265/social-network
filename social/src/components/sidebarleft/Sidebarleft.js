@@ -46,9 +46,9 @@ export default function Sidebarleft() {
       if (index === 1){
         return <Chat />
       }
-      if (index === 2){
-        return <Person />
-      }
+      // if (index === 2){
+      //   return <Person />
+      // }
     }
 
     const showIconn = (index)=>{
@@ -78,7 +78,7 @@ export default function Sidebarleft() {
         <List>
             <h2 style={{ color: "#536976",textAlign: "center"  
                 }}>LANA.VN</h2>
-          {['Home', 'Message', 'Profile'].map((text, index) => (
+          {['Home', 'Message'].map((text, index) => (
           <Link to={text==="Home"? "/":text} key={index}>     
             <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
               <ListItemIcon>
