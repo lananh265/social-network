@@ -1,11 +1,13 @@
 import "./Topbar2.css"
-import { Search} from "@material-ui/icons";
+import { FlipToBackOutlined, Search} from "@material-ui/icons";
 import s from "../css/header.module.css"
 import Sidebarleft from "../sidebarleft/Sidebarleft";
 import { useState } from "react";
 import PostSearch from "../../API/PostSearch";
+import GetInfor from "../../API/GetInfor";
 
 export default function Topbar({setSearch}) {
+  const {token} = GetInfor()
   const [key,setKey] = useState("")
     const dangXuat = () =>{
         localStorage.removeItem("token")
@@ -45,6 +47,7 @@ export default function Topbar({setSearch}) {
         </div>
       </div>
         <div className="topbarRight">
+          <b>{token.name}</b>
         <button className={s.button} onClick={dangXuat}>Đăng Xuất</button>
         </div>
         <div className="topbarIcons">

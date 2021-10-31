@@ -110,10 +110,11 @@ const format = state.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
         {/* <img className={`${s.shareProfileImg}`} src={`${avatar.src}?${avatar.imageHash}`} alt="" /> */}
         {/* <img className={`${s.shareProfileImg}`} src=" http://localhost:1337/server-node/v0.1/server/images/avatars/1avatar.jpg" alt="" /> */}
         <img className={s.shareProfileImg} src={`${avatar.src}?${avatar.imageHash}`} alt="" />
-          <input 
+          <textarea
             placeholder="Nơi nhập nội dung cần chia sẻ..."
             type ="text"
             name="content"
+            maxLength={1024}
             value={input.content}
             onChange={_handleInput}
             className={`${s.shareInput}`}
