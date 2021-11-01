@@ -71,6 +71,18 @@ export default function Poststatus({props}) {
     props(obShare)
     setInput(obInput)
    }
+            if(json.status){
+              alert('Chia sẻ thành công!');
+            }
+            if(!json.status){ 
+              if(json.balance){
+              console.log('Số dư hiện tại của bạn không đủ để chia sẻ tin này!');
+            }else{
+              console.log('Chia sẻ thất bại!');
+            }
+            }
+          
+
  };
 
  const _handleInput = (e)=>{

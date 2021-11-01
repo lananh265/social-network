@@ -47,7 +47,7 @@ export default function Topbar({setSearch}) {
         </div>
       </div>
         <div className="topbarRight">
-          <b>{token.name}</b>
+          <b style={{color:"white",textShadow:"2px 2px 8px #FF0000"}}>{token.name}</b>
         <button className={s.button} onClick={dangXuat}>Đăng Xuất</button>
         </div>
         <div className="topbarIcons">

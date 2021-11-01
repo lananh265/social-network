@@ -13,7 +13,7 @@
   } */
   
   .cardwrapper{
-    width: 270px; 
+    width: 320px; 
     height: 250px ; 
     box-shadow: 0px 3px 50px #A5A5A5;
     display: flex;
@@ -61,11 +61,10 @@
   }
   
   .taskcontainer{
-    height: 600px;
+    height: auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    /* background-color: #F6F7F8; */
     padding : 40px 50px;
     margin-top: 25px;
     align-content: left;
@@ -78,33 +77,44 @@
     color: black;
   }
   .rightbar{
-    flex: 1;
+    flex: 3;
 }
-.leftbar{
+/* .leftbar{
   flex: 1;
-} 
+}  */
 .homeContainer{
     display: flex;
     width: 100%;
   }
   .body{
      
-    flex:6;
+    flex:8;
 }
 
 .nut{
  display: flex;
  padding-top: 32px;
- margin-right: 15%;
- margin-left: 15%;
+ margin-right: 1%;
+ margin-left: 3%;
  position:initial;
 
 }
 
 .butt{
   border-radius: 9px;
- 
+ width: 90px;
+ text-align: center;
+ height: 40px;
+ color: rgb(25, 98, 235);
 }
+.buttt{
+  border-radius: 9px;
+ width: 110px;
+ text-align: center;
+ height: 40px;
+ color: rgb(25, 98, 235);
+}
+
 .butt:hover {
   background: #a9d7f7;
   
@@ -118,7 +128,8 @@
 .content{
   width: 250px;
   height: 200px;
-  color:"black"
+  color:"black";
+  margin-left: 25px;
 }
 .date{
   text-align:center;

@@ -55,9 +55,9 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
         updateListArray(obj, index)
     }
 
-    // const handleDelete = () => {
-    //     deleteTask(index)
-    // }
+    const handleDelete = () => {
+        deleteTask(index)
+    }
     const orDer = async(e,ob)=>{
         e.preventDefault();
         const json = await OrderTask(ob)
@@ -89,31 +89,28 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
             <div className = {`${s.cardtop}`} style={{"backgroundColor": colors[index%5].primaryColor}}></div>
             <div className={`${s.taskholder}`}>
                 <div className={`${s.top}`}>
-                <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px", color:"red"}}>{taskObj.name}
+                <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px", color:"red"}}>{taskObj.name} 
+                {taskObj.start ? 
+                taskObj.status_ta ?
+                null:
+                <i class="fa fa-trash" aria-hidden="true" 
+                style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"23px"}} 
+                onClick = {handleDelete}></i>
+                :null
+                }
                 </span>
-                {Object.keys(state).map(key => (
-                        <input
-                        className={s.chbox}
-                        type="checkbox"
-                        onChange={handleToggle}
-                        key={key}
-                        name={key}
-                        checked={state[key]}
-                        />
-                    ))}
-              </div>
-             
-                
-                    {/* {Object.keys(state).map(key => (
-                        <input
-                        type="checkbox"
-                        onChange={handleToggle}
-                        key={key}
-                        name={key}
-                        checked={state[key]}
-                        />
-                    ))} */}
-    
+                {taskObj.status_ta ?
+                 Object.keys(state).map(key => (
+                    <input
+                    className={s.chbox}
+                    type="checkbox"
+                    onChange={handleToggle}
+                    key={key}
+                    name={key}
+                    checked={state[key]}
+                    />
+                )):null}
+              </div> 
                
                {taskObj.start ? 
                <p className={s.date}>{taskObj.start}</p>
@@ -149,20 +146,33 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                 {taskObj.start ? 
                null
                :
-               
-               
                 <button className={`${s.butt}`} onClick={(e)=>{orDer(e,{
                     id_st: taskObj.id_st,
                     connecter_id: taskObj.connecter_id
                 })}} >Duyệt</button>}
 
-                {/* {taskObj.status_ta ? 
-                } */}
+                {taskObj.start ? 
+                taskObj.status_ta ? 
+                null:
+                <button className={`${s.buttt}`} onClick={(e)=>{taskFinished(e,{
+                    id_st: taskObj.id_st,
+                    id_ta: taskObj.id_ta
+                })}} >Hoàn thành</button>
+                 : null}
 
-<button className={`${s.butt}`} onClick={(e)=>{taskFinished(e,{
-                            id_st: taskObj.id_st,
-                            id_ta: taskObj.id_ta
-                        })}} >Hoàn thành</button>
+                {/* {taskObj.start ? 
+                taskObj.status_ta ?
+                null:
+                <i class="fa fa-trash" aria-hidden="true" 
+                style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"62px", "paddingTop":"30px"}} 
+                onClick = {handleDelete}></i>
+                :null
+                } */}
+                {/* {taskObj.status_ta ?
+                <i class="fa fa-trash" aria-hidden="true" 
+                style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"94px", "paddingTop":"30px"}} 
+                onClick = {handleDelete}></i> : null} */}
+               
               </div>
         </div>
         <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
