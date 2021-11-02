@@ -1,0 +1,75 @@
+// src: https://upmostly.com/tutorials/modal-components-react-custom-hooks
+import React from 'react';
+import s from './join.module.css'
+import ReactDOM from 'react-dom';
+import useModal from './useModal';
+import { MoreVert } from "@material-ui/icons"
+import TaskFinished from '../../API/TaskFinished';
+export default function ModalTask({taskObj, reloadJoin}) {
+  const {isShowing, toggle} = useModal();
+
+  return (
+    <div className={s.App}>
+      <MoreVert onClick={toggle}/>
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+        taskObj={taskObj}
+        reloadJoin={reloadJoin}
+      />
+    </div>
+  );
+};
+
+const taskFinished = async(e,ob, reloadJoin,hide)=>{
+  e.preventDefault();
+  let obTask = {
+      id_ta: ob.id_ta,
+      id_st: ob.id_st
+  }
+  const json = await TaskFinished(obTask)
+  // console.log(json)
+  if(json.status){
+      alert('Công việc hoàn tất')
+  }else{
+      alert('Xảy ra lỗi')
+  }
+  reloadJoin(hide)
+}
+
+const deleteTask = async(e, reloadJoin, hide, ob)=>{
+  e.preventDefault();
+  //Xu li API
+  //Cap nhat du lieu Task moi tu Server
+  reloadJoin()
+  //dong form
+  hide()
+}
+
+
+const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM.createPortal(
+    <React.Fragment>
+      <div className={s.modal_overlay}/>
+      <div className={s.modal_wrapper} aria-modal aria-hidden tabIndex={-1} role="dialog">
+        <div className={s.modal}>
+          <div className={s.top}> 
+            Xác nhận tùy chọn của bạn cho: {taskObj.name}{''}<br/>{taskObj.start}
+            
+          </div>
+          <div className={s.down}> 
+              <div className={s.left}> 
+                  <button className={s.button_default} 
+                  onClick={(e)=>taskFinished(e,taskObj,reloadJoin,hide)}>Hoàn thành</button> 
+              </div>
+              <div className={s.center}> 
+                  <button className={s.button_default}
+                   onClick={(e)=>deleteTask(e,reloadJoin,hide, taskObj)}>Xóa</button> 
+              </div>
+              <div className={s.right}> 
+                  <button className={s.button_default} onClick={hide}>Đóng</button> 
+              </div>
+          </div>
+        </div>
+      </div>
+    </React.Fragment>, document.body
+  ) : null;

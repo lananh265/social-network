@@ -8,8 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import OrderTask from "../../API/ordertask"
 import Checkbox from "@material-ui/core/Checkbox";
-import TaskFinished from '../../API/TaskFinished';
-
+import ModelTask from '../../components/modal/ModelTask'
  
 const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
    
@@ -68,21 +67,9 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
         reloadJoin()
     }
 
-    const taskFinished = async(e,ob)=>{
-        e.preventDefault();
-        let obTask = {
-            id_ta: ob.id_ta,
-            id_st: ob.id_st
-        }
-        const json = await TaskFinished(ob)
-        // console.log(json)
-        if(json.status){
-            alert('Công việc hoàn tất')
-        }else{
-            alert('Xảy ra lỗi')
-        }
-        reloadJoin()
-    }
+ 
+
+  
 
     return (
         <div className = {`${s.cardwrapper}`}>
@@ -90,14 +77,14 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
             <div className={`${s.taskholder}`}>
                 <div className={`${s.top}`}>
                 <span className = {`${s.cardheader}`} style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px", color:"red"}}>{taskObj.name} 
-                {taskObj.start ? 
+                {/* {taskObj.start ? 
                 taskObj.status_ta ?
                 null:
-                <i class="fa fa-trash" aria-hidden="true" 
-                style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"23px"}} 
-                onClick = {handleDelete}></i>
+                // <i className="fa fa-trash" aria-hidden="true" 
+                // style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"23px"}} 
+                // onClick = {handleDelete}></i>
                 :null
-                }
+                } */}
                 </span>
                 {taskObj.status_ta ?
                  Object.keys(state).map(key => (
@@ -125,7 +112,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                 {/* <p className = "mt-3">{taskObj.Description}</p> */}
                 {/* <p style={{color:"black"}}>{taskObj.content}</p> */}
                 <textarea className={`${s.content}`}
-                value= {taskObj.content}/>
+                defaultValue= {taskObj.content}/>
                 <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
                     {/* <i class="fa fa-pencil-square-o" aria-hidden="true" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
                     &emsp;&emsp;
@@ -144,6 +131,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                 </button>
 
                 {taskObj.start ? 
+                
                null
                :
                 <button className={`${s.butt}`} onClick={(e)=>{orDer(e,{
@@ -154,10 +142,9 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                 {taskObj.start ? 
                 taskObj.status_ta ? 
                 null:
-                <button className={`${s.buttt}`} onClick={(e)=>{taskFinished(e,{
-                    id_st: taskObj.id_st,
-                    id_ta: taskObj.id_ta
-                })}} >Hoàn thành</button>
+                 <button><ModelTask taskObj={taskObj}
+                 reloadJoin={reloadJoin}/></button>
+
                  : null}
 
                 {/* {taskObj.start ? 

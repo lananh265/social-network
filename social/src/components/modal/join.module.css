@@ -58,6 +58,10 @@
     flex-grow: 1;
     text-align: center;
   }
+  .center{
+    flex-grow: 1;
+    text-align: center;
+  }
   /* .modal_header {
     display: flex;
     justify-content: flex-end;

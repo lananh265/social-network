@@ -55,34 +55,44 @@ export default function Poststatus({props}) {
    const json = await PostShare(ob)
    console.log(json)
    
-   if(!json.status){
-     alert("Chia sẻ thất bại!")
-   }else{
-    alert("Chia sẻ thành công!")
+  //  if(!json.status){
+  //    alert("Chia sẻ thất bại!")
+  //  }else{
+  //   alert("Chia sẻ thành công!")
     
-    let obShare = {
-      id_st:json.id_st,
-      connecter_id:token.id,
-      name: token.name,
-      content:input.content,
-      benefit:input.benefit,
-      date_st: "1 second ago"
-    }
-    props(obShare)
-    setInput(obInput)
-   }
-            if(json.status){
-              alert('Chia sẻ thành công!');
-            }
-            if(!json.status){ 
-              if(json.balance){
-              console.log('Số dư hiện tại của bạn không đủ để chia sẻ tin này!');
-            }else{
-              console.log('Chia sẻ thất bại!');
-            }
-            }
+  //   let obShare = {
+  //     id_st:json.id_st,
+  //     connecter_id:token.id,
+  //     name: token.name,
+  //     content:input.content,
+  //     benefit:input.benefit,
+  //     date_st: "1 second ago"
+  //   }
+  //   props(obShare)
+  //   setInput(obInput)
+  //  }
           
-
+  if(!json.status){
+    
+    if(json.balance){
+      alert("Số dư tài khoản hiện tại của bạn không đủ chia sẻ tin này!")
+    }else{
+      alert("Chia sẻ thất bại!")
+    }
+  }
+  if(json.status){
+    alert("Chia sẻ thành công!")
+    let obShare = {
+          id_st:json.id_st,
+          connecter_id:token.id,
+          name: token.name,
+          content:input.content,
+          benefit:input.benefit,
+          date_st: "1 second ago"
+        }
+        props(obShare)
+        setInput(obInput)
+       }
  };
 
  const _handleInput = (e)=>{
