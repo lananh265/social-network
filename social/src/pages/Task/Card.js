@@ -86,7 +86,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                 :null
                 } */}
                 </span>
-                {taskObj.status_ta ?
+                {taskObj.status && taskObj.confirm_st ?
                  Object.keys(state).map(key => (
                     <input
                     className={s.chbox}
@@ -129,7 +129,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                                         avatar: taskObj.avatar,
                                         show: false}}}>Liên hệ</Link>
                 </button>
-
+{/* 
                 {taskObj.start ? 
                 
                null
@@ -137,15 +137,14 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                 <button className={`${s.butt}`} onClick={(e)=>{orDer(e,{
                     id_st: taskObj.id_st,
                     connecter_id: taskObj.connecter_id
-                })}} >Duyệt</button>}
+                })}} >Duyệt</button>} */}
 
-                {taskObj.start ? 
-                taskObj.status_ta ? 
+                {taskObj.status_ta && taskObj.confirm_st ? 
                 null:
-                 <button><ModelTask taskObj={taskObj}
+                 <button className={`${s.bt}`}><ModelTask taskObj={taskObj}
                  reloadJoin={reloadJoin}/></button>
 
-                 : null}
+               }
 
                 {/* {taskObj.start ? 
                 taskObj.status_ta ?

@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 import useModal from './useModal';
 import { MoreVert } from "@material-ui/icons"
 import TaskFinished from '../../API/TaskFinished';
-import Deletetask from '../../API/deletetask';
-export default function ModalTask({taskObj, reloadJoin}) {
+import DeleteNote from '../../API/deletenote' 
+export default function ModalNote({taskObj, reloadJoin}) {
   const {isShowing, toggle} = useModal();
 
   return (
@@ -38,14 +38,14 @@ const taskFinished = async(e,ob, reloadJoin,hide)=>{
   reloadJoin(hide)
 }
 
-const deleteTask = async(e, reloadJoin, hide, ob)=>{
+const deletenote = async(e, reloadJoin, hide, ob)=>{
   e.preventDefault();
   let obTask={
-    target_id: ob.target_id,
-    id_st: ob.id_st
+    connecter_id: ob.connecter_id,
+    id_ta: ob.id_ta
   }
   console.log(obTask)
-  const json = await Deletetask(obTask)
+  const json = await DeleteNote(obTask)
   console.log(json)
   if(json.status){
     alert('Bạn muốn xóa công việc này!')
@@ -71,15 +71,15 @@ const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM
           </div>
           <div className={s.down}> 
               <div className={s.left}> 
-              {taskObj.confirm_st && taskObj.status_st ? null:
                   <button className={s.button_default} 
                   onClick={(e)=>taskFinished(e,taskObj,reloadJoin,hide)}>Hoàn thành</button> 
-               } 
               </div>
               <div className={s.center}> 
+              {taskObj.status_ta && taskObj.confirm_st ?
+              null:
                   <button className={s.button_default}
-                   onClick={(e)=>deleteTask(e,reloadJoin,hide, taskObj)}>Xóa</button> 
-              </div>
+                   onClick={(e)=>deletenote(e,reloadJoin,hide, taskObj)}>Xóa</button> 
+               } </div>
               <div className={s.right}> 
                   <button className={s.button_default} onClick={hide}>Đóng</button> 
               </div>

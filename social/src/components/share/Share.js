@@ -54,24 +54,7 @@ export default function Poststatus({props}) {
    }
    const json = await PostShare(ob)
    console.log(json)
-   
-  //  if(!json.status){
-  //    alert("Chia sẻ thất bại!")
-  //  }else{
-  //   alert("Chia sẻ thành công!")
     
-  //   let obShare = {
-  //     id_st:json.id_st,
-  //     connecter_id:token.id,
-  //     name: token.name,
-  //     content:input.content,
-  //     benefit:input.benefit,
-  //     date_st: "1 second ago"
-  //   }
-  //   props(obShare)
-  //   setInput(obInput)
-  //  }
-          
   if(!json.status){
     
     if(json.balance){
@@ -114,7 +97,7 @@ export default function Poststatus({props}) {
             imageHash: Date.now()
           }
           setAvatar(obImg)
-          console.log(items[0].avatar)
+          //console.log(items[0].avatar)
       }
   })
   return () => mounted = false;
