@@ -2,6 +2,7 @@ import { useState } from "react";
 import s from "./Money.module.css"
 import { StyledError, StyledForm, StyledFormWrapper, StyledButton } from '../../components/css/cssform';
 import {MonetizationOn} from "@material-ui/icons"
+import QRCode from "./QRCode";
 const obMoney = {
     name: "",
     email: "",
@@ -102,12 +103,14 @@ const format1 = state1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 </StyledError>
             )}
             <br/><br/> 
-            
-            <StyledButton  type="submit">Cập Nhật</StyledButton>
+            <QRCode />
+            <StyledButton >Cập Nhật</StyledButton>
           </StyledForm>
+          {/* <QRCode /> */}
         </StyledFormWrapper>
-    
+        
         </div>
+        
   
   );
 }
