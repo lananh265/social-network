@@ -68,9 +68,6 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
     }
 
  
-
-  
-
     return (
         <div className = {`${s.cardwrapper}`}>
             <div className = {`${s.cardtop}`} style={{"backgroundColor": colors[index%5].primaryColor}}></div>

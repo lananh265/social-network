@@ -103,7 +103,7 @@ const format1 = state1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 </StyledError>
             )}
             <br/><br/> 
-            <QRCode />
+            <QRCode naptien={money.naptien}/><br/>
             <StyledButton >Cập Nhật</StyledButton>
           </StyledForm>
           {/* <QRCode /> */}

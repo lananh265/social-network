@@ -1,22 +1,9 @@
-import React from 'react';
-
-import QRCode from 'qrcode.react';
-
-export default function QRCode() {
-  return (
-    <div className='QrCode'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <div>
-          <QRCode
-            id='qrcode'
-            value='https://viblo.asia/u/tranchien'
-            size={290}
-            level={'H'}
-            includeMargin={true}
-          />
-        </div>
-      </header>
-    </div>
-  );
-}
+console.log('He' + 'llo'); // In ra 'Hello'
+console.log('Wo' + 'rld'); // In ra 'World'
+console.log('I love to ' + 'code.')
+// In ra chuỗi 'I love to code.'
+const coin = 3000
+const url ="http://"
+console.log(url + coin)
+const kethop = url +coin
+console.log(kethop)
