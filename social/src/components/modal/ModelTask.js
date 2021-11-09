@@ -6,6 +6,7 @@ import useModal from './useModal';
 import { MoreVert } from "@material-ui/icons"
 import TaskFinished from '../../API/TaskFinished';
 import Deletetask from '../../API/deletetask';
+import Transfer from '../../API/Transfer';
 export default function ModalTask({taskObj, reloadJoin}) {
   const {isShowing, toggle} = useModal();
 
@@ -59,6 +60,42 @@ const deleteTask = async(e, reloadJoin, hide, ob)=>{
   hide()
 }
 
+const transfer = async(e, ob, reloadJoin, setStart, setDone)=>{
+  e.preventDefault();
+console.log(ob)
+  let obTranfer={
+    connecter_id: ob.connecter_id,
+    target_id: ob.target_id,
+    coin: ob.benefit
+    
+  }
+  console.log(obTranfer)
+  const json = await Transfer(obTranfer)
+  console.log(json)
+  if(json.status){
+    alert(json.code)
+}else{
+    alert('Xảy ra lỗi')
+}}
+//   setStart(true)
+//   alert ('ok!')
+//   let obTranfer={
+//     connecter_id: ob.connecter_id,
+//     target_id: ob.target_id,
+//     coin: ob.benefit
+//   }
+//   let json = await Transfer(obTranfer)
+//   console.log(json)
+//   if(json.status){
+//     setDone(100)
+//   }else{
+//     alert('loi')
+//   }
+//   setTimeout(function(){
+//     alert(json.code)
+//   },1000)
+// }
+
 
 const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM.createPortal(
     <React.Fragment>
@@ -83,6 +120,11 @@ const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM
               <div className={s.right}> 
                   <button className={s.button_default} onClick={hide}>Đóng</button> 
               </div>
+
+              <div className={s.right}> 
+                  <button className={s.button_default} onClick={(e)=>{transfer(e, taskObj)}}>Transfer</button> 
+              </div>
+
           </div>
         </div>
       </div>
