@@ -2,7 +2,7 @@ import s from "./progress.module.css"
 import React from "react";
 import { useEffect } from "react";
 import { Style } from "@material-ui/icons";
-export default function Progressim({done}){
+export default function Progress({done}){
 	const [style, setStyle] = React.useState({});
 	useEffect( ()=>{
         // console.log(done)
@@ -17,7 +17,7 @@ export default function Progressim({done}){
 	return (
 		<div className={`${s.progress}`}>
 			<div className={`${s.progressdone}`} style={style}>
-				{done}%
+			<span className={`${s.num}`}>{done}% </span>
 			</div>
 		</div>
 	)

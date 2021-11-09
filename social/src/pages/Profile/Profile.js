@@ -97,7 +97,7 @@ export default function Profile () {
     return(
 	<>
 		<h1>React Progress Bar</h1>
-		<Progress  done={so}/>
+		<Progress  done = {so}/>
 		<button onClick={()=>{tangDan()}}>Click</button>
 		<button onClick={(e)=>{chuyenTien(e)}}>Chuyen tien</button>
 	</>
