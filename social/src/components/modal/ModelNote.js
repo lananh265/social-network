@@ -4,7 +4,7 @@ import s from './join.module.css'
 import ReactDOM from 'react-dom';
 import useModal from './useModal';
 import { MoreVert } from "@material-ui/icons"
-import TaskFinished from '../../API/TaskFinished';
+import TaskConfirm from '../../API/TaskConfirm';
 import DeleteNote from '../../API/deletenote' 
 export default function ModalNote({taskObj, reloadJoin}) {
   const {isShowing, toggle} = useModal();
@@ -22,13 +22,13 @@ export default function ModalNote({taskObj, reloadJoin}) {
   );
 };
 
-const taskFinished = async(e,ob, reloadJoin,hide)=>{
+const taskConfirm = async(e,ob, reloadJoin,hide)=>{
   e.preventDefault();
   let obTask = {
       id_ta: ob.id_ta,
       id_st: ob.id_st
   }
-  const json = await TaskFinished(obTask)
+  const json = await TaskConfirm(obTask)
   // console.log(json)
   if(json.status){
       alert('Công việc hoàn tất')
@@ -72,7 +72,7 @@ const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM
           <div className={s.down}> 
               <div className={s.left}> 
                   <button className={s.button_default} 
-                  onClick={(e)=>taskFinished(e,taskObj,reloadJoin,hide)}>Hoàn thành</button> 
+                  onClick={(e)=>taskConfirm(e,taskObj,reloadJoin,hide)}>Hoàn thành</button> 
               </div>
               <div className={s.center}> 
               {taskObj.status_ta && taskObj.confirm_st ?

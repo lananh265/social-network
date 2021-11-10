@@ -56,8 +56,7 @@
     text-align: center;
     justify-content: center;
     /* margin-right: 15%; */
-    margin-left: 15%;
-
+    margin-left: 20%;
   }
   
   .taskcontainer{
@@ -94,18 +93,19 @@
 .nut{
  display: flex;
  padding-top: 32px;
- margin-right: 1%;
+ margin-right: 10%;
  margin-left: 10%;
  position:initial;
 
 }
 
 .butt{
-  border-radius: 9px;
- width: 90px;
+ border-radius: 9px;
+ width: 82px;
  text-align: center;
  height: 40px;
  color: rgb(25, 98, 235);
+ 
 }
 .buttt{
   border-radius: 9px;
@@ -141,10 +141,12 @@
 }
 .bt{
   border-radius: 9px;
-  width: 40px;
-  text-align: center;
-  height: 40px;
+  width: 10px;
+  height: 10px;
   color: black;
   background-color: #BBD2C5;
-  margin-left: 140px;
+  padding-top: 32px;
+  position:absolute;
+  bottom: 20px;
+  right:30px
 }

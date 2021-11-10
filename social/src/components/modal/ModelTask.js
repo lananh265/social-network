@@ -7,8 +7,10 @@ import { MoreVert } from "@material-ui/icons"
 import TaskFinished from '../../API/TaskFinished';
 import Deletetask from '../../API/deletetask';
 import Transfer from '../../API/Transfer';
+import Progress from '../progress/Progress';
 export default function ModalTask({taskObj, reloadJoin}) {
   const {isShowing, toggle} = useModal();
+  
 
   return (
     <div className={s.App}>
@@ -48,9 +50,9 @@ const deleteTask = async(e, reloadJoin, hide, ob)=>{
   console.log(obTask)
   const json = await Deletetask(obTask)
   console.log(json)
-  if(json.status){
+  if(json.status){//status = 1
     alert('Bạn muốn xóa công việc này!')
-}else{
+}else{ //status = 0
     alert('Xảy ra lỗi')
 }
   //Xu li API
@@ -97,6 +99,27 @@ console.log(ob)
 // }
 
 
+const chuyenTien= async(e, ob)=>{
+  e.preventDefault();
+  console.log(ob)
+  let obTranfer={
+    connecter_id: ob.connecter_id,
+    target_id: ob.target_id,
+    coin: ob.benefit
+    
+  }
+  console.log(obTranfer)
+let json = await Transfer(obTranfer)
+console.log(json)
+if(!json.status){
+  alert("Chuyen tien thất bại")
+}else{
+  alert(json.code)
+}
+
+};
+
+
 const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM.createPortal(
     <React.Fragment>
       <div className={s.modal_overlay}/>
@@ -108,9 +131,9 @@ const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM
           </div>
           <div className={s.down}> 
               <div className={s.left}> 
-              {taskObj.confirm_st && taskObj.status_st ? null:
+              {taskObj.date_start?
                   <button className={s.button_default} 
-                  onClick={(e)=>taskFinished(e,taskObj,reloadJoin,hide)}>Hoàn thành</button> 
+                   onClick={(e)=>{chuyenTien(e,taskObj)}}>Chuyen tien</button> :null
                } 
               </div>
               <div className={s.center}> 
@@ -121,9 +144,13 @@ const Modal = ({ isShowing, hide, taskObj, reloadJoin }) => isShowing ? ReactDOM
                   <button className={s.button_default} onClick={hide}>Đóng</button> 
               </div>
 
-              <div className={s.right}> 
+              {/* <div className={s.right}> 
                   <button className={s.button_default} onClick={(e)=>{transfer(e, taskObj)}}>Transfer</button> 
-              </div>
+              </div> */}
+              {/* <div className={s.right}>
+              
+              <button onClick={(e)=>{chuyenTien(e,taskObj)}}>Chuyen tien</button>
+                </div> */}
 
           </div>
         </div>
