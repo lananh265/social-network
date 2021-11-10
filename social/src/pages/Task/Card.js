@@ -62,7 +62,14 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
         const json = await OrderTask(ob)
         // console.log(json)
         if(json.status === 0){
-            alert('Duyệt thất bai')
+            if(json.code){
+                alert(json.code)
+            }else{
+                alert('Duyệt thất bại!')
+            }
+        }
+        if(json.status){
+            alert('Duyệt thành công!')
         }
         reloadJoin()
     }
@@ -133,28 +140,16 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                :
                 <button className={`${s.butt}`} onClick={(e)=>{orDer(e,{
                     id_st: taskObj.id_st,
-                    connecter_id: taskObj.connecter_id
+                    connecter_id: taskObj.connecter_id,
+                    target_id: taskObj.target_id,
+                    benefit: taskObj.benefit
                 })}} >Duyệt</button>} 
 
                 {taskObj.status_ta && taskObj.confirm_st ? 
                 null:
                  <button className={`${s.bt}`}><ModelTask taskObj={taskObj}
                  reloadJoin={reloadJoin}/></button>
-
                }
-
-                {/* {taskObj.start ? 
-                taskObj.status_ta ?
-                null:
-                <i class="fa fa-trash" aria-hidden="true" 
-                style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"62px", "paddingTop":"30px"}} 
-                onClick = {handleDelete}></i>
-                :null
-                } */}
-                {/* {taskObj.status_ta ?
-                <i class="fa fa-trash" aria-hidden="true" 
-                style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer", "marginLeft":"94px", "paddingTop":"30px"}} 
-                onClick = {handleDelete}></i> : null} */}
                
               </div>
         </div>

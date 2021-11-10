@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import useModal from './useModal';
 import { MoreVert } from "@material-ui/icons"
 import TaskFinished from '../../API/TaskFinished';
-import Deletetask from '../../API/deletetask';
-import Progress from '../progress/Progress';
-import Transfer from '../../API/Transfer';
+import DeleteTask from '../../API/DeleteTask';
+import Progress from '../Progress/Progress'
+import Transfer from '../../API/Transer';
 export default function ModalTask({taskObj,reloadJoin}) {
   const {isShowing, toggle} = useModal();
   const [done, setDone] = useState(90);
@@ -58,7 +58,7 @@ const deleteTask = async(e, reloadJoin, hide, ob)=>{
         id_st: ob.id_st
       }
     //Xu ly API
-    const json = await Deletetask(obTask)
+    const json = await DeleteTask(obTask)
     if(json.status){
       alert('Xóa thành công')
     }else{
@@ -107,9 +107,9 @@ const Modal = ({ isShowing, hide, taskObj, reloadJoin, done,
       <div className={s.modal_wrapper} aria-modal aria-hidden tabIndex={-1} role="dialog">
         <div className={s.modal}>
           <div className={s.top}> 
-            Công việc bạn đã giao cho: {taskObj.name}{''}
+            Công việc mà bạn giao cho: {taskObj.name}{''}
             <br/>Ngày: {taskObj.start}
-            <br/>Trị giá: {taskObj.benefit} VNĐ
+            <br/>Giá trị: {taskObj.benefit} coin
             { taskObj.confirm_st ?
               <div className={s.text_done}>Đã hoàn thành</div> : null
             }
