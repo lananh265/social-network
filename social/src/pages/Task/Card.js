@@ -60,7 +60,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
     const orDer = async(e,ob)=>{
         e.preventDefault();
         const json = await OrderTask(ob)
-        // console.log(json)
+        console.log(ob)
         if(json.status === 0){
             if(json.code){
                 alert(json.code)

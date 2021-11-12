@@ -1,118 +1,78 @@
-import { useState } from "react";
-import s from "./Money.module.css"
-import { StyledError, StyledForm, StyledFormWrapper, StyledButton } from '../../components/css/cssform';
-import {MonetizationOn} from "@material-ui/icons"
-import QRCode from "./QRCode";
-const obMoney = {
-    name: "",
-    email: "",
-    phone: "",
-    balance: "",
-    cash: "",
-    naptien: "",
-    ruttien:"",
-}
-export default function Money() {
-  const [money, setMoney] = useState(obMoney)
-  const [error] = useState('');
-//   const handleMoney = async e =>{
-//     e.preventDefault();
-//     console.log('submitted!');
-//     console.log(money);
+import React, {useEffect, useState} from 'react';
+import AccountInfor from '../../API/AccountInfor';
+import GetInfor from '../../API/GetInfor';
+import QRCode from 'qrcode.react';
 
-//     for (let key in money) {
-//       if (money[key] === '') {
-//         setError(`You must provide the ${key}`)
-//         return
-//       }
-//   }
-//   setError('');
-//   const ob = {
-//       username: money.name,
-//       password: money.password
-//   }
-// //  let json = await PostLogin(ob)
-// //  console.log(json)
+const src = "http://192.168.1.5:4000/v0.1/" 
+export default function Money(){
+  const [accountInfor, setAccountInfor] = useState([{}])
+  const {token} = GetInfor()
+  const [showQR, setShowQR]= useState(false)
+  const [inMoney, setInMoney] = useState(false)
+  const [coin, setCoin] = useState(0)
+  const checkAction = ()=>{
+    let action = inMoney? 'inMoney?' : 'outMoney?'
+    return src + action+'user_id='+token.id+'&coin='+coin
+  }
+  useEffect( ()=>{
+    let mounted = true
+    const ob = {
+      user_id: token.id
+    }
+    AccountInfor(ob).then( (json)=>{
+      if(mounted){
+        setAccountInfor(json)
+        console.log(json)
+      }
+    })
+    return ()=> mounted = false
+  },[])
 
-// //   layToken(json)
-// //  if(!json.status){
-// //   alert("Cập nhật thông tin không thành công. Vui lòng kiểm tra lại!")
-// // }else{
-// //   window.location.href = "/";
-// // }
-// };
-const inputMoney =(e) =>{
-    const inputName = e.currentTarget.name
-    const value = e.currentTarget.value
-    setMoney (prev => ({ ...prev, [inputName]: value }));
-}
-const obthongTin ={
-  name: "Hồ Thị Lan Anh",
-  email: "AnhB1710104@student.ctu.edu.vn",
-  phone: "0987654799",
-  balance:"4.579.079",
-}
-const state = money.naptien
-const format = state.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    return(
+      <div>
+        <h1>Đây là Money</h1>
+        <ul>
+          <li>Name:{accountInfor[0].name} </li>
+          <li>Email: {accountInfor[0].email}</li>
+          <li>SDT: {accountInfor[0].phone}</li>
+          <li>Blance: {accountInfor[0].balance}</li>
+        </ul>
+                 <label>
+                    <input
+                      type="radio"
+                      value="nap"
+                      name="tien"
+                      onChange={()=>setInMoney(true)}
+                    />
+                    Nạp tiền
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="rut"
+                      name="tien"
+                      onChange={()=>setInMoney(false)}
+                    />
+                    Rút tiền
+                  </label>
+                  <h6>Nhập số tiền bạn muốn rút:</h6>
+                  <h6>URL: {checkAction()}</h6>
+                  <input type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
+                  {showQR ?
+                  <button onClick={()=>{setShowQR(false)}}>Ẩn mã QR</button>:
+                  <button onClick={()=>{setShowQR(true)}}>Quét mã QR</button>
+                  }
+                  {showQR ?
+                  <div>
+                  <QRCode
+            id='qrcode'
+            value={checkAction()}
+            size={190}
+            level={'H'}
+            includeMargin={true}
+          />
+             </div>:null}     
 
-
-const state1 = money.ruttien
-const format1 = state1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-
-
-
-    return (
-        <div>
-        <StyledFormWrapper>
-          <StyledForm >
-            <h2><b>Thông Tin Tài Khoản</b></h2>
-            <br/>
-            <b>
-            <p>Họ tên : {obthongTin.name}</p>
-            <p>Email : {obthongTin.email}</p>
-            <p>Số điện thoại : {obthongTin.phone}</p>
-            <p>Số dư khả dụng : {obthongTin.balance} VNĐ</p>
-            </b>
-            <br/><br/>
-           
-                  <label><b>Số tiền chuyển vào : </b></label>
-                  <div className={`${s.shareOption}`}>
-                    <MonetizationOn htmlColor="#FF9900" className={`${s.shareIcon}`}/>
-                    <span className={`${s.shareOptionText}`}></span>
-                    <input type ="number"
-                    name = "naptien"
-                    value= {money.naptien}
-                    onChange={inputMoney}
-                    className={`${s.bebefitInput}`} /><b>{format}  VNĐ</b>
-                </div>
-                  <br/>
-                  <label><b>Số tiền rút ra : </b></label>
-                  <div className={`${s.shareOption}`}>
-                    <MonetizationOn htmlColor="#FF9900" className={`${s.shareIcon}`}/>
-                    <span className={`${s.shareOptionText}`}></span>
-                    <input type ="number"
-                    name = "ruttien"
-                    value= {money.ruttien}
-                    onChange={inputMoney}
-                    className={`${s.bebefitInput}`} /><b>{format1}  VNĐ</b>
-                </div>
-                  
-            {error && (
-              <StyledError>
-                <p>{error}</p>
-                </StyledError>
-            )}
-            <br/><br/> 
-            <QRCode naptien={money.naptien}/><br/>
-            <StyledButton >Cập Nhật</StyledButton>
-          </StyledForm>
-          {/* <QRCode /> */}
-        </StyledFormWrapper>
-        
-        </div>
-        
-  
-  );
-}
-  
-  
+      </div>
+    )
+  }

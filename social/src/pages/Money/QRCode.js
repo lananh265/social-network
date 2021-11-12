@@ -6,6 +6,7 @@ import { colors } from '@material-ui/core';
 
 export default function QrCode({naptien}) {
   const [showQR, setShowQR] = useState(true)  
+  
   const handleChange=(e)=>{
     e.preventDefault()
     setShowQR(!showQR)
