@@ -63,9 +63,9 @@
    
 
 
-// import React, { useState, useEffect } from "react";
-// import Progress from "../../components/progress/Progress";
-// import Transfer from "../../API/Transfer";
+import React, { useState, useEffect } from "react";
+import Progress from "../../components/progress/Progress";
+import Transfer from "../../API/Transfer";
 
 // const ob ={
 //     connecter_id:1,
@@ -107,36 +107,94 @@
 
 
 
-import React, {useState, useEffect} from "react";
-import AccountInfor from "../../API/AccountInfor";
-import GetInfor from "../../API/GetInfor"
-export default function Money (){
-    const [accountInfor, setAccountInfor] = useState([{}])
-    const {token} = GetInfor()
-    const [showQR, setShowQR]= useState(false)
-    const [inMoney, setInMoney] = useState(false)
-    useEffect( ()=>{
-        let mounted = true
-        const ob = {
-            user_id: token.id
-        }
-        AccountInfor(ob).then((json)=>{
-            if(mounted){
-                setAccountInfor(json)
-                console.log(json)
-            }
-        })
-        return ()=>mounted = false
-    },[])
-    return(
-        <div>
-            <ul>
-             <li>  Name: {accountInfor[0].name}</li>
-             <li>  Email: {accountInfor[0].email}</li>
-              <li> Phone: {accountInfor[0].phone}</li>
-              <li>Balance: {accountInfor[0].balance}</li> 
-            </ul>
+// import React, {useState, useEffect} from "react";
+// import AccountInfor from "../../API/AccountInfor";
+// import GetInfor from "../../API/GetInfor"
+// export default function Money (){
+//     const [accountInfor, setAccountInfor] = useState([{}])
+//     const {token} = GetInfor()
+//     const [showQR, setShowQR]= useState(false)
+//     const [inMoney, setInMoney] = useState(false)
+//     useEffect( ()=>{
+//         let mounted = true
+//         const ob = {
+//             user_id: token.id
+//         }
+//         AccountInfor(ob).then((json)=>{
+//             if(mounted){
+//                 setAccountInfor(json)
+//                 console.log(json)
+//             }
+//         })
+//         return ()=>mounted = false
+//     },[])
+//     return(
+//         <div>
+//             <ul>
+//              <li>  Name: {accountInfor[0].name}</li>
+//              <li>  Email: {accountInfor[0].email}</li>
+//               <li> Phone: {accountInfor[0].phone}</li>
+//               <li>Balance: {accountInfor[0].balance}</li> 
+//             </ul>
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
+
+
+{/* <StyledForm onSubmit={handleSignup}>
+    <h2>Đây là Money</h2>
+    <br/>
+    <ul>
+          <li>Name:{accountInfor[0].name} </li>
+          <li>Email: {accountInfor[0].email}</li>
+          <li>SDT: {accountInfor[0].phone}</li>
+          <li>Blance: {accountInfor[0].balance}</li>
+        </ul>
+    <StyledInput
+     type="radio"
+     value="nap"
+     name="tien"
+     onChange={()=>setInMoney(true)}
+    />
+        Nạp tiền
+
+    <StyledInput
+      type="radio"
+      value="rut"
+      name="tien"
+      onChange={()=>setInMoney(false)}
+    />
+    Rút tiền
+    <h6>Nhập số tiền bạn muốn rút:</h6>
+                  <h6>URL: {checkAction()}</h6>
+    <StyledInput
+      placeholder="Nhập email"
+      type="email"
+      name="email"
+      value={signup.email}
+      onChange={inputSignup}
+    />
+  
+      <StyledInput
+     type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
+     {showQR ?
+     
+     <button onClick={()=>{setShowQR(false)}}>Ẩn mã QR</button>:
+     <button onClick={()=>{setShowQR(true)}}>Quét mã QR</button>
+     }
+     {showQR ?
+     <div>
+     <QRCode
+id='qrcode'
+value={checkAction()}
+size={190}
+level={'H'}
+includeMargin={true}
+/>
+</div>:null}     
+
+
+  
+</StyledForm>
+ */}

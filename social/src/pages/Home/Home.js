@@ -5,7 +5,7 @@ import Topbar2 from "../../components/topbar/Topbar2";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 // import Sidebarleft from "../components/sidebarleft/Sidebarleft"
 import Message from "../Message/Message";
-import Profile from "../Profile/Profile";
+// import Profile from "../Profile/Profile";
 import Infor from "../Infor/Infor";
 import Task from "../Task/Task";
 import Money from "../Money/Money";
@@ -38,7 +38,7 @@ export default function Home() {
                 </Route>
 
                 <Route path="/message"> <Message /> </Route>
-                <Route path="/profile"> <Profile /> </Route>
+                {/* <Route path="/profile"> <Profile /> </Route> */}
                 <Route path="/infor"><Infor /></Route>
                 <Route path="/task"> <Task /> </Route>
                 <Route path="/money"> <Money /> </Route>

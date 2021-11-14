@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import AccountInfor from '../../API/AccountInfor';
 import GetInfor from '../../API/GetInfor';
-import QRCode from 'qrcode.react';
-
+import QRCode from "./QRCode";
+import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
+import s from "./Money.module.css"
 const src = "http://192.168.1.5:4000/v0.1/" 
 export default function Money(){
   const [accountInfor, setAccountInfor] = useState([{}])
   const {token} = GetInfor()
-  const [showQR, setShowQR]= useState(false)
+  // const [showQR, setShowQR]= useState(false)
   const [inMoney, setInMoney] = useState(false)
   const [coin, setCoin] = useState(0)
   const checkAction = ()=>{
@@ -30,48 +31,41 @@ export default function Money(){
 
     return(
       <div>
-        <h1>Đây là Money</h1>
+        <h2>Đây là Money</h2>
+        <StyledFormWrapper>
+        <StyledForm>
         <ul>
-          <li>Name:{accountInfor[0].name} </li>
-          <li>Email: {accountInfor[0].email}</li>
-          <li>SDT: {accountInfor[0].phone}</li>
-          <li>Blance: {accountInfor[0].balance}</li>
+          <li><b>Họ tên:</b>&ensp;{accountInfor[0].name} </li>
+          <li><b>Email:</b>&ensp;{accountInfor[0].email}</li>
+          <li><b>SĐt:</b>&ensp;{accountInfor[0].phone}</li>
+          <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance} VNĐ</li>
         </ul>
-                 <label>
-                    <input
-                      type="radio"
-                      value="nap"
-                      name="tien"
-                      onChange={()=>setInMoney(true)}
-                    />
-                    Nạp tiền
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      value="rut"
-                      name="tien"
-                      onChange={()=>setInMoney(false)}
-                    />
-                    Rút tiền
-                  </label>
-                  <h6>Nhập số tiền bạn muốn rút:</h6>
-                  <h6>URL: {checkAction()}</h6>
-                  <input type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
-                  {showQR ?
-                  <button onClick={()=>{setShowQR(false)}}>Ẩn mã QR</button>:
-                  <button onClick={()=>{setShowQR(true)}}>Quét mã QR</button>
-                  }
-                  {showQR ?
-                  <div>
-                  <QRCode
-            id='qrcode'
-            value={checkAction()}
-            size={190}
-            level={'H'}
-            includeMargin={true}
-          />
-             </div>:null}     
+        <label> 
+    <StyledInput className={`${s.rad}`}
+     type="radio"
+     value="nap"
+     name="tien"
+     onChange={()=>setInMoney(true)}
+    /><h6 style={{ color:"#EE0000"}}>Nạp tiền</h6>
+</label>
+&emsp;
+<label>
+    <StyledInput className={`${s.rad}`}
+      type="radio"
+      value="rut"
+      name="tien"
+      onChange={()=>setInMoney(false)}
+    /><h6 style={{ color:"#EE0000"}}>Rút tiền</h6>
+    </label>&emsp;
+   <label> <h6>URL: {checkAction()}</h6></label>
+    <h4 style={{ color:"#EE0000", 
+                   textAlign: "center", 
+                  }}>Nhập số tiền bạn cần:</h4>
+      <StyledInput
+     type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
+     <QRCode />
+</StyledForm>
+</StyledFormWrapper>
 
       </div>
     )
