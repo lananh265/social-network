@@ -1,14 +1,16 @@
+
 .button{
-    background-color: #ED213A;
+    background-color: #3b8d99;
     border-radius: 9px;
     font-size: 1.05em;
     font-weight: 500;
     color: white;
     cursor: pointer;
+    -webkit-border-radius: 10px;
   }
   
   .button:hover {
-    background-color: red;
+    background-color: #007991;
   }
   
   .choosefile{
@@ -63,7 +65,6 @@
   width: 90px;
   border-radius: 6px;
 }
-.rad{
-  width: 10px;
-  height: 8px;
+.giua{
+  text-align: center;
 }

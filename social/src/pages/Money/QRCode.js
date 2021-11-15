@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import QRCode from 'qrcode.react';
+import s from "./Money.module.css"
+
 // import { colors } from '@material-ui/core';
 import GetInfor from '../../API/GetInfor';
 const src = "http://192.168.1.5:4000/v0.1/" 
@@ -19,7 +21,7 @@ export default function QrCode() {
   } 
   return (
     <div className='QrCode'>
-     <button onClick={(e)=>handleChange(e)}>Hiện/Ẩn Mã QR</button>
+     <button className={`${s.button}`} onClick={(e)=>handleChange(e)}>Hiện/Ẩn Mã QR</button>
      {showQR ?
      <div>
      <QRCode

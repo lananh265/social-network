@@ -31,39 +31,49 @@ export default function Money(){
 
     return(
       <div>
-        <h2>Đây là Money</h2>
         <StyledFormWrapper>
         <StyledForm>
         <ul>
-          <li><b>Họ tên:</b>&ensp;{accountInfor[0].name} </li>
-          <li><b>Email:</b>&ensp;{accountInfor[0].email}</li>
-          <li><b>SĐt:</b>&ensp;{accountInfor[0].phone}</li>
-          <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance} VNĐ</li>
-        </ul>
-        <label> 
-    <StyledInput className={`${s.rad}`}
+        <h3><b>Xin chào, &nbsp;{accountInfor[0].name}</b></h3><hr/>
+          <h5>Thông Tin Tài Khoản</h5>
+            <li><b>Họ tên:</b>&ensp;{accountInfor[0].name} </li>
+            <li><b>Email:</b>&ensp;{accountInfor[0].email}</li>
+            <li><b>SĐt:</b>&ensp;{accountInfor[0].phone}</li>
+            <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance} VNĐ</li>
+        </ul><hr/>
+        <h4 style={{color:"#3b8d99",textAlign: "center",}}><b>Thực Hiện Giao Dịch</b></h4>
+       <br/> <label><h6>Chọn hình thức thực hiện:</h6></label>&emsp;&emsp;
+        <label> <h6><b>Nạp tiền</b></h6>
+    <StyledInput 
+     style={{ width:"24px", height:"17px",}}
      type="radio"
      value="nap"
      name="tien"
      onChange={()=>setInMoney(true)}
-    /><h6 style={{ color:"#EE0000"}}>Nạp tiền</h6>
+    />
 </label>
-&emsp;
-<label>
-    <StyledInput className={`${s.rad}`}
+&emsp;&emsp;
+<label><h6><b>Rút tiền</b></h6>
+    <StyledInput
+      style={{ width:"24px", height:"17px",}}
       type="radio"
       value="rut"
       name="tien"
       onChange={()=>setInMoney(false)}
-    /><h6 style={{ color:"#EE0000"}}>Rút tiền</h6>
-    </label>&emsp;
-   <label> <h6>URL: {checkAction()}</h6></label>
-    <h4 style={{ color:"#EE0000", 
-                   textAlign: "center", 
-                  }}>Nhập số tiền bạn cần:</h4>
+    />
+    </label>
+ <h6 style={{textAlign: "center",}}><b>URL: {checkAction()}</b></h6>
+   <br/>
+    <h6 style={{  
+                   textAlign: "left", 
+                  }}>Nhập số tiền bạn cần:</h6>
       <StyledInput
      type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
-     <QRCode />
+
+     <h4  style={{ color: "#3b8d99",}}>
+       <marquee behavior="alternate">
+        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4>
+   <div className={`${s.giua}`}><QRCode /></div>
 </StyledForm>
 </StyledFormWrapper>
 
