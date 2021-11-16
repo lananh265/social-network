@@ -33,7 +33,13 @@ export default function Topbar({setSearch}) {
         <Sidebarleft />
       </div>
       <div className="topbarLeft">
-        <h1>LANA.VN</h1>
+        <div className="left">
+        <img
+            className="Image"
+            src="assets/post/logo1.png"
+            alt="" /></div>
+        <div className="right"><h1 style={{color:"white",textShadow:"7px 8px 6px #007991"}}> 
+        <marquee behavior="alternate">LANA.VN</marquee></h1><marquee behavior="alternate"><i style={{color:"#000022"}}>	&#9660; Nền tảng hỗ trợ học tập trực tuyến 	&#9660;</i></marquee></div>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
@@ -47,7 +53,7 @@ export default function Topbar({setSearch}) {
         </div>
       </div>
         <div className="topbarRight">
-          <b style={{color:"white",textShadow:"2px 2px 8px #FF0000"}}>{token.name}</b>
+          <b style={{color:"#000000"}}><i>{token.name}</i></b>
         <button className={s.button} onClick={dangXuat}>Đăng Xuất</button>
         </div>
         <div className="topbarIcons">

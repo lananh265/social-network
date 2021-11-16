@@ -4,15 +4,16 @@ import GetInfor from '../../API/GetInfor';
 import QRCode from "./QRCode";
 import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
 import s from "./Money.module.css"
+import HistoryMoney from '../../API/HistoryMoney'; 
 const src = "http://192.168.1.5:4000/v0.1/" 
 export default function Money(){
   const [accountInfor, setAccountInfor] = useState([{}])
   const {token} = GetInfor()
-  // const [showQR, setShowQR]= useState(false)
   const [inMoney, setInMoney] = useState(false)
   const [coin, setCoin] = useState(0)
+  const [historyMoney, setHistoryMoney] = useState([{}])
   const checkAction = ()=>{
-    let action = inMoney? 'inMoney?' : 'outMoney?'
+    let action = inMoney? 'inmoney?' : 'outmoney?'
     return src + action+'user_id='+token.id+'&coin='+coin
   }
   useEffect( ()=>{
@@ -28,7 +29,31 @@ export default function Money(){
     })
     return ()=> mounted = false
   },[])
-
+  useEffect( ()=>{
+    let mounted = true
+    const ob = {
+      user_id: token.id
+    }
+    HistoryMoney(ob).then( (json)=>{
+      if(mounted){
+        setHistoryMoney(json)
+        console.log(json)
+      }
+    })
+    return ()=> mounted = false
+  },[])
+  const renderHistory = historyMoney.map( (e,index)=>{
+    return(<div key={index}>
+      {e.date_tra} 
+      <br/>
+      {token.name} {e.text} {e.name} {e.coin}
+    </div>)
+  })
+  const [showHis, setShowHis]= useState(false)
+  const handleChange=(e)=>{
+    e.preventDefault()
+    setShowHis(!showHis)
+  } 
     return(
       <div>
         <StyledFormWrapper>
@@ -49,7 +74,7 @@ export default function Money(){
      type="radio"
      value="nap"
      name="tien"
-     onChange={()=>setInMoney(true)}
+     onChange={()=>{setInMoney(true)}}
     />
 </label>
 &emsp;&emsp;
@@ -59,7 +84,7 @@ export default function Money(){
       type="radio"
       value="rut"
       name="tien"
-      onChange={()=>setInMoney(false)}
+      onChange={()=>{setInMoney(false)}}
     />
     </label>
  <h6 style={{textAlign: "center",}}><b>URL: {checkAction()}</b></h6>
@@ -73,10 +98,14 @@ export default function Money(){
      <h4  style={{ color: "#3b8d99",}}>
        <marquee behavior="alternate">
         Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4>
-   <div className={`${s.giua}`}><QRCode /></div>
+   <div className={`${s.giua}`}><QRCode /></div><hr/>
+   {/* <h4 style={{color: "#3b8d99",}}>Lịch sử giao dịch</h4> */}
+
+   <button className={`${s.buttonHis}`} onClick={(e)=>handleChange(e)}>Lịch sử giao dịch của bạn</button>
+   {showHis ?
+    <div>{renderHistory}</div>:null}
 </StyledForm>
 </StyledFormWrapper>
-
-      </div>
+</div>
     )
   }

@@ -57,9 +57,12 @@
     border: none;
     padding: 7px;
     border-radius: 5px;
-    background-color: #ED213A;
+    background-color: #3b8d99;
     font-weight: 500;
     margin-right: 20px;
     cursor: pointer;
     color: white;
+}
+.shareButton:hover{
+  background-color: #007991;
 }

@@ -91,7 +91,7 @@ const Task  = () => {
             <Sidebar />
             <div className={s.body}>
             <div className = {`${s.headertextcenter}`}>
-                <h3><b>Danh Sách Những Người Tham Gia Công Việc Của Bạn</b></h3>
+                <h2><marquee behavior="alternate"><i>&diams; Danh Sách Những Người Tham Gia Công Việc Của Bạn  &diams;</i></marquee></h2>
                 {/* <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Tạo Công Việc</button> */}
             </div>
 

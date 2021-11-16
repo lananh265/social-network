@@ -10,9 +10,9 @@ export default function Chinhsach(){
        <div className="noidung">
        <Container>
            
-            <h2 style={{ color: "#EE0000",
-                   textAlign: "left",
-                  }}>Chào mừng bạn đến với Điều Khoản và Chính Sách của LANA.VN</h2><br/>
+            <h2 style={{ color: "#FFCC33",
+                   textAlign: "center",
+                  }}>&#9830; Chào mừng bạn đến với Điều Khoản và Chính Sách của LANA.VN<hr/></h2>
                   <h6 style={{ color: "white ",
                    textAlign: "left",
                   }}>

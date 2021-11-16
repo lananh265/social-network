@@ -68,3 +68,15 @@
 .giua{
   text-align: center;
 }
+.buttonHis{
+  border-radius: 10px;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+}
+
+.buttonHis:hover {
+  background-color: #c2e5eb;
+}
+

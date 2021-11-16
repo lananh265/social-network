@@ -71,7 +71,7 @@
   
   .button {
     width: 10%;
-    background: #f84a4a;
+    background-color: #3b8d99;
     color: white;
     margin-left: 10px;
     
@@ -82,9 +82,9 @@
     text-align: center;
   
   }
-  /* button:hover {
-    background: black;
-  } */
+  .button:hover {
+    background-color: #007991;
+  }
   textarea:focus {outline:0;}
   
   

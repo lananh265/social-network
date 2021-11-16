@@ -9,9 +9,9 @@ export default function Khieunai(){
        <div className="thongtin"> 
        <Container>
            
-            <h2 style={{ color:"#EE0000", 
-                   textAlign: "left", 
-                  }}>Giải quyết khiếu nại tranh chấp</h2><br/>
+            <h2 style={{ color:"#FFCC33", 
+                   textAlign: "center", 
+                  }}>&#9830; GIẢI QUYẾT KHIẾU NẠI - TRANH CHẤP<hr/></h2>
             <h4 style={{ color: "#FFCC33", 
                    textAlign: "left", 
                   }}>1. Đối với Khách hàng.</h4>

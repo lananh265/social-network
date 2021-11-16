@@ -13,6 +13,7 @@
     padding: 1em;
     text-align: left;
     color: white;
+    display: flex;
   }
   
   .topbarCenter {
@@ -62,8 +63,11 @@
     display: flex;
   }
   
- 
-  
+.Image{
+  height: 50px;
+  width: 70px;
+  border-radius: 18px;
+}
   
 
   

@@ -165,12 +165,12 @@ console.log()
                 <p>{error}</p>
                 </StyledError>
             )}
-            <br/><br/> 
+            <br/>
             
-            <StyledButton  onClick={changeInfor}>Cập Nhật Thông Tin Cá Nhân</StyledButton>
+            <button className={`${s.butt}`}  onClick={changeInfor}>Cập Nhật Thông Tin Cá Nhân</button>
             <br/><br/>
             
-            <label className={s.lbel} >Cập nhật lại hình ảnh</label>
+            <label className={s.lbel} >Cập nhật lại hình ảnh: (Chọn ảnh để tải lên)</label>
              <br/>
 
                {file && (
@@ -188,7 +188,7 @@ console.log()
             <input type="file" name="file" id="file" onChange={onChange} className={s.inputfile}/>
             </label>
             <br/><br/>
-            <StyledButton  onClick={postImage}>Cập Nhật Hình Ảnh</StyledButton>
+            <button className={`${s.butt}`} onClick={postImage}>Cập Nhật Hình Ảnh</button>
 		   </div>
 
           </StyledForm>

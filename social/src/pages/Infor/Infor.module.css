@@ -1,14 +1,14 @@
 .button{
   background-color: #ED213A;
   border-radius: 9px;
-  font-size: 1.05em;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 420;
   color: white;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: red;
+  background-color: #DD0000;
 }
 
 .choosefile{
@@ -45,10 +45,16 @@
 }
 
 .lbel{
-  background-color: #edeaea;
-  width: 180px;
-  height: 40px;
-  border-radius: 5px;
   text-align: center;
+}
+.butt{
+  background-color: #3b8d99;
+  color: white;
+  border-radius: 9px;
+  cursor: pointer;
   
+  text-align: center;
+}
+.butt:hover {
+  background-color: #007991;
 }

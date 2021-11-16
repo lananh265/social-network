@@ -22,6 +22,7 @@
 .left{
     text-align: left;
    color: whitesmoke;
+   display: flex;
 }
 
 .right{

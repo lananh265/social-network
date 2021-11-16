@@ -142,12 +142,25 @@ if(!json.status){
 
        <div className={s.Header}>
            <div className={`${s.left} ${s.box}`}>
-               <h1>LANA.VN</h1>
-           </div>
+
+           <div className="le">
+              <img
+                className="Image"
+                src="assets/post/logo1.png"
+                alt=""/></div>
+        <div className="ri"><marquee direction="down" scrollamount="2"> <h1 style={{color:"white",textShadow:"4px 4px 8px #FFCC33"}}>
+        LANA.VN</h1></marquee></div>
+      </div>
+
+
+
+           {/* <marquee behavior="alternate">
+         <h1 style={{color:"white",textShadow:"6px 5px 8px #D3D3D3"}}>LANA.VN</h1></marquee> */}
+           {/* </div> */}
            <div className={`${s.right} ${s.box}`}>
-                <button className={s.button} onClick ={()=>{setFormSignup(true); setFormLogin(false)}}>Đăng Ký</button>
+                <button className={s.button} onClick ={()=>{setFormSignup(true); setFormLogin(false);setKhieunai(false);setChinhsach(false)}}>Đăng Ký</button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-               <button className={s.button} onClick={()=>{setFormLogin(true); setFormSignup(false)}}>Đăng Nhập</button>
+               <button className={s.button} onClick={()=>{setFormLogin(true); setFormSignup(false);setKhieunai(false);setChinhsach(false)}}>Đăng Nhập</button>
                &nbsp;&nbsp;&nbsp;
            </div>
        </div>
@@ -182,7 +195,7 @@ if(!json.status){
             )}
             <br/><br/><br/><br/>
             <StyledButton type="submit">Submit</StyledButton>
-            <br/><br/><br/>
+            <br/><br/><br/><br/><br/>
             </StyledForm>
         </StyledFormWrapper>
         }
@@ -273,7 +286,7 @@ if(!json.status){
                 )}
                 <br/>
               <StyledButton type="submit">Submit</StyledButton>
-              
+              <br/>
             </StyledForm>
           </StyledFormWrapper>
         }
@@ -286,7 +299,7 @@ if(!json.status){
           khieunai &&
           <Khieunai />
         }
-
+<br/>
     </div>
     <div className={s.footer}>
 
@@ -295,7 +308,7 @@ if(!json.status){
                 <Container>
                 <h1 style={{ color: "#FFFFFF",
                    textAlign: "center",
-                  }}>LANA.VN - Đơn vị hỗ trợ học tập trực tuyến hàng đầu tại Việt Nam</h1>
+                  }}><marquee behavior="alternate"><i>NỀN TẢNG HỖ TRỢ HỌC TẬP TRỰC TUYẾN - LANA.VN</i></marquee></h1>
                     <Row>
                         <Column>
                         <h3 style={{ color: "#FFCC33",
@@ -365,7 +378,7 @@ if(!json.status){
               }}>CHẤT LƯỢNG</h3><br/>
                         <h5 style={{ color: "white ",
                textAlign: "left",
-              }}>Công việc do <b color="blue">LANA.VN</b> đảm nhận có chất lượng cao - hơn một triệu người để lựa chọn.<br/>
+              }}>Công việc do <b color="blue">LANA.VN</b> đảm nhận có chất lượng cao - hơn một triệu người đã lựa chọn.<br/>
                         <br/>
                         </h5>
                         </Column>
@@ -392,8 +405,9 @@ if(!json.status){
         Đại chỉ:<br/>
          Văn phòng Hà Nội: Tầng 9, Tòa nhà 52A2, Đường Nguyễn Huệ, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội.<br/>
          Văn phòng TP.HCM: 26A đường số 5, Phường 9, Quận Bình Thạnh, TP.Hồ Chí Minh.<br/>
-        Liên hệ: <br/>
-         Hotline: 19002605<br/>
+        Liên hệ:</h6>
+        <h6 style={{ color: "#FFCC33",
+              }}> Hotline: 19002605<br/>
          Email: hotro@lana.vn
       </h6>
              </div>

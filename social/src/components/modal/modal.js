@@ -7,8 +7,8 @@ const joinTask = async (e,{hide,ob})=>{
     const json = await PostJoin(ob)
     console.log(json)
     if(json.status){
-      alert("Đăng kí tham gia thành công. "+ ob.name+
-            " sẽ inbox bạn trong thời gian sớm nhất")
+      alert("Đăng kí tham gia thành công. "+ ob.name +
+             " sẽ liên hệ với bạn trong thời gian sớm nhất!")
     }else{
       alert("Không đăng kí được")
     }
@@ -20,7 +20,7 @@ const Modal = ({ isShowing, hide, ob }) => isShowing ? ReactDOM.createPortal(
     <div className={s.modal_wrapper} aria-modal aria-hidden tabIndex={-1} role="dialog">
       <div className={s.modal}>
         <div className={s.top}> 
-          Bạn muốn hỗ trợ : {ob.name} &nbsp;&ndash; đề tài: {ob.content} &ndash; &#36; {ob.benefit} VNĐ 
+          Bạn muốn hỗ trợ: {ob.name}&nbsp;&ndash; Nội dung: {ob.content} &ndash; &#36; {ob.benefit} VNĐ 
           
         </div>
         <div className={s.down}> 
