@@ -170,7 +170,7 @@ console.log()
             <button className={`${s.butt}`}  onClick={changeInfor}>Cập Nhật Thông Tin Cá Nhân</button>
             <br/><br/>
             
-            <label className={s.lbel} >Cập nhật lại hình ảnh: (Chọn ảnh để tải lên)</label>
+            <label className={s.lbel} >Cập nhật lại hình ảnh: <i>(Chọn ảnh để tải lên)</i></label>
              <br/>
 
                {file && (

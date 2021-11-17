@@ -148,15 +148,10 @@ if(!json.status){
                 className="Image"
                 src="assets/post/logo1.png"
                 alt=""/></div>
-        <div className="ri"><marquee direction="down" scrollamount="2"> <h1 style={{color:"white",textShadow:"4px 4px 8px #FFCC33"}}>
-        LANA.VN</h1></marquee></div>
+        <div className="ri"><h1 style={{color:"white",textShadow:"4px 4px 8px #FFCC33"}}><marquee behavior="alternate" scrollamount="2">
+        LANA.VN</marquee></h1><marquee behavior="alternate">
+        <i style={{color:"#DAA520"}}>	&#9660; Nền tảng hỗ trợ học tập trực tuyến 	&#9660;</i></marquee></div>
       </div>
-
-
-
-           {/* <marquee behavior="alternate">
-         <h1 style={{color:"white",textShadow:"6px 5px 8px #D3D3D3"}}>LANA.VN</h1></marquee> */}
-           {/* </div> */}
            <div className={`${s.right} ${s.box}`}>
                 <button className={s.button} onClick ={()=>{setFormSignup(true); setFormLogin(false);setKhieunai(false);setChinhsach(false)}}>Đăng Ký</button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -195,7 +190,7 @@ if(!json.status){
             )}
             <br/><br/><br/><br/>
             <StyledButton type="submit">Submit</StyledButton>
-            <br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/>
             </StyledForm>
         </StyledFormWrapper>
         }
@@ -299,7 +294,7 @@ if(!json.status){
           khieunai &&
           <Khieunai />
         }
-<br/>
+
     </div>
     <div className={s.footer}>
 
@@ -405,10 +400,10 @@ if(!json.status){
         Đại chỉ:<br/>
          Văn phòng Hà Nội: Tầng 9, Tòa nhà 52A2, Đường Nguyễn Huệ, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội.<br/>
          Văn phòng TP.HCM: 26A đường số 5, Phường 9, Quận Bình Thạnh, TP.Hồ Chí Minh.<br/>
-        Liên hệ:</h6>
-        <h6 style={{ color: "#FFCC33",
+        Liên hệ:<br/>
+        <b style={{ color: "#FFCC33",
               }}> Hotline: 19002605<br/>
-         Email: hotro@lana.vn
+         Email: hotro@lana.vn</b>
       </h6>
              </div>
    </div>
