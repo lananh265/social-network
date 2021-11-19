@@ -15,6 +15,8 @@ export default function QrCode() {
   const [showQR, setShowQR]= useState(false)
   const [inMoney, setInMoney] = useState(false)
   const [coin, setCoin] = useState(0)
+  const urlQR = "https://sbgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOi"+
+"IyMTExMTYwMDAwMDQxOThQV3Z2MXpxIiwiYXBwaWQiOjI1NTR9"
   const handleChange=(e)=>{
     e.preventDefault()
     setShowQR(!showQR)
@@ -26,7 +28,7 @@ export default function QrCode() {
      <div>
      <QRCode
         id='qrcode'
-        value={checkAction()}
+        value={urlQR}
         size={180}
         level={'H'}
         includeMargin={true}
