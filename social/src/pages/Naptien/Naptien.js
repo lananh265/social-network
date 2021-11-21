@@ -10,8 +10,7 @@ import UpdateToken from '../../API/UpdateToken';
 import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
 import { GlobalStyle } from "../../components/css/cssformHome";
 const src = "http://192.168.1.2:4000/v0.1/"
-const urlQR = "https://sbgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOi"+
-"IyMTExMTYwMDAwMDQxOThQV3Z2MXpxIiwiYXBwaWQiOjI1NTR9"
+
 export default function NapTien(){
   const [accountInfor, setAccountInfor] = useState([{}])
   const {token} = GetInfor()
@@ -98,7 +97,8 @@ export default function NapTien(){
       }
       let updatetoken = await UpdateToken(obToken)
       if(updatetoken.status===1){
-        alert('Chào mừng bạn đã trở thành thành viên chính thức của LANA.VN!<br/> Vui lòng đăng nhập lại để sử dụng trang web!')
+        alert('Chào mừng bạn đã trở thành thành viên chính thức của LANA.VN!' +
+        'Vui lòng đăng nhập lại để sử dụng trang web!')
         dangXuat()
       }
     }

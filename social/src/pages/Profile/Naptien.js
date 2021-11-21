@@ -7,8 +7,7 @@ import NapTienQR from '../../API/Naptien'
 import StatusQR from '../../API/StatusQR';
 import UpdateToken from '../../API/UpdateToken';
 const src = "http://192.168.1.2:4000/v0.1/"
-const urlQR = "https://sbgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOi"+
-"IyMTExMTYwMDAwMDQxOThQV3Z2MXpxIiwiYXBwaWQiOjI1NTR9"
+
 export default function NapTien(){
   const [accountInfor, setAccountInfor] = useState([{}])
   const {token} = GetInfor()
@@ -53,7 +52,7 @@ export default function NapTien(){
   },[])
   const renderHistory = historyMoney.map( (e,index)=>{
     return(<div key={index}>
-      {e.date_tra} 
+      {e.date_tra}
       <br/>
       {token.name} {e.text} {e.name} {e.coin}
     </div>)
@@ -82,7 +81,7 @@ export default function NapTien(){
   const checkQR = async(e)=>{
     e.preventDefault();
     let ob = {
-        "apptransid": qr.apptransid
+        apptransid: qr.apptransid
     }
     let json = await StatusQR(ob)
     setStatusQR(json)
@@ -100,11 +99,11 @@ export default function NapTien(){
       }
     }
   }
-  
+
     return(
       <div>
         <h1>Mời bạn nạp tiền lần đầu</h1>
-        
+
         <ul>
           <li>Name:{accountInfor[0].name} </li>
           <li>Email: {accountInfor[0].email}</li>
@@ -134,7 +133,7 @@ export default function NapTien(){
         <h5>Apptransid: {qr.apptransid}</h5>
         {/* <h5>urlQR: {urlQR}</h5> */}
         <input type="number" onChange={(e)=>{setCoin(e.target.value)}} />
-        {showQR ? 
+        {showQR ?
           <button onClick={()=>{setShowR(false)}} >Ẩn QR</button>:
           <button onClick={(e)=>{createQR(e)}}>Quét QR</button>
         }
