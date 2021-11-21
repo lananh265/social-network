@@ -6,7 +6,9 @@ import QRCode from 'qrcode.react';
 import NapTienQR from '../../API/Naptien'
 import StatusQR from '../../API/StatusQR';
 import s from "./Naptien.module.css"
+import UpdateToken from '../../API/UpdateToken';
 import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
+import { GlobalStyle } from "../../components/css/cssformHome";
 const src = "http://192.168.1.2:4000/v0.1/"
 const urlQR = "https://sbgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOi"+
 "IyMTExMTYwMDAwMDQxOThQV3Z2MXpxIiwiYXBwaWQiOjI1NTR9"
@@ -76,6 +78,10 @@ export default function NapTien(){
     let check = await StatusQR(obcheck)
     setStatusQR(check)
   }
+  const dangXuat = ()=>{
+    localStorage.removeItem("token")
+    window.location.href = "/";
+  }
   const checkQR = async(e)=>{
     e.preventDefault();
     let ob = {
@@ -83,13 +89,48 @@ export default function NapTien(){
     }
     let json = await StatusQR(ob)
     setStatusQR(json)
+    //nap thanh cong update token MySQL
+    if(json.returncode===1){
+      let obToken = {
+        user_id: token.id,
+        apptransid: qr.apptransid,
+        zptransid: json.zptransid
+      }
+      let updatetoken = await UpdateToken(obToken)
+      if(updatetoken.status===1){
+        alert('Chào mừng bạn đã trở thành thành viên chính thức của LANA.VN!<br/> Vui lòng đăng nhập lại để sử dụng trang web!')
+        dangXuat()
+      }
+    }
   }
+  
     return(
       
         <div>
+          <GlobalStyle />
+          <div className={s.Header}>
+           <div className={`${s.left} ${s.box}`}>
+
+           <div className="le">
+              <img
+                className="Image"
+                src="assets/post/logo1.png"
+                alt=""/></div>
+        <div className="ri"><h1 style={{color:"white",textShadow:"4px 4px 8px #FFCC33"}}><marquee behavior="alternate" scrollamount="2">
+        LANA.VN</marquee></h1><marquee behavior="alternate">
+        <i style={{color:"#DAA520"}}>	&#9660; Nền tảng hỗ trợ học tập trực tuyến 	&#9660;</i></marquee></div>
+      </div>
+      <div className={`${s.topbarRight}`}>
+          <b style={{color:"#000000"}}><i>{token.name}</i></b>
+        <button className={s.button} onClick={dangXuat}>Đăng Xuất</button>
+        </div>
+       </div>
+
+
+
         <StyledFormWrapper>
         <StyledForm>
-        <h3 style={{color:"#3b8d99",textAlign: "center",}}>Để Tiếp Tục Sử Dụng Trang Web<br/> Mời Bạn Thực Hiện Lần Nạp Tiền Đầu Tiên</h3><br/>
+        <h3 style={{color:"#3b8d99",textAlign: "center",}}><b>Để Tiếp Tục Sử Dụng Trang Web<br/> Mời Bạn Thực Hiện Lần Nạp Tiền Đầu Tiên</b></h3><br/>
         
         <ul>
         <h3><b>Xin chào, &nbsp;{accountInfor[0].name}</b></h3><hr/>
@@ -100,7 +141,7 @@ export default function NapTien(){
           <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance}$</li>
         </ul><hr/>
         <h4 style={{color:"#3b8d99",textAlign: "center",}}><b>Thực Hiện Giao Dịch</b></h4>
-       <br/> <label><h6>Chọn hình thức thực hiện:</h6></label>&emsp;&emsp;
+       <br/> <label><h6>Chọn phương thức thực hiện:</h6></label>&emsp;&emsp;
        <label> <h6><b>Nạp tiền</b></h6>
        <StyledInput 
      style={{ width:"24px", height:"17px",}}
@@ -108,26 +149,16 @@ export default function NapTien(){
      value="nap"
      name="tien"
      onChange={()=>{setInMoney(true)}}
-    />
-       </label>
-&emsp;&emsp;
-<label><h6><b>Rút tiền</b></h6>
-    <StyledInput
-      style={{ width:"24px", height:"17px",}}
-      type="radio"
-      value="rut"
-      name="tien"
-      onChange={()=>{setInMoney(false)}}
-    />
-    </label>
-    <h6><b>URL: {qr.orderurl}</b></h6>
+    /></label>
+<br/>
+    <b>URL:</b> {qr.orderurl}
    <br/>
         {/* <h5>URL: {qr.orderurl}</h5> */}
         
-    <h6><b>Apptransid: {qr.apptransid}</b></h6>
+    <b>Apptransid:</b> {qr.apptransid}
         {/* <h5>Apptransid: {qr.apptransid}</h5> */}
         {/* <h5>urlQR: {urlQR}</h5> */}
-        <br/>
+        <br/><br/>
     <h6 style={{  
                    textAlign: "left", 
                   }}>Nhập số tiền bạn cần:</h6>
@@ -136,11 +167,12 @@ export default function NapTien(){
 
 <h4  style={{ color: "#3b8d99",}}>
        <marquee behavior="alternate">
-        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4>
+        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4><hr/>
         {/* <input type="number" onChange={(e)=>{setCoin(e.target.value)}} /> */}
+        <div style={{ color: "#3b8d99",textAlign: "center",}}>
         {showQR ? 
-          <button className={`${s.button}`} onClick={()=>{setShowR(false)}} >Ẩn QR</button>:
-          <button className={`${s.button}`} onClick={(e)=>{createQR(e)}}>Quét QR</button>
+          <button className={`${s.button}`}onClick={()=>{setShowR(false)}} >Ẩn Mã QR</button>:
+          <button className={`${s.button}`} onClick={(e)=>{createQR(e)}}>Quét Mã QR</button>
         }
 
         { showQR ?
@@ -154,10 +186,10 @@ export default function NapTien(){
           />
           </div> :
           null
-        }<hr/>
+        }</div><hr/>
       <h3>Lịch sử tài khoản</h3>
 
-      <button className={`${s.buttonHis}`} onClick={(e)=>checkQR(e)} >Kiểm Tra Tài Khoản</button>
+      <button className={`${s.buttonHis}`} onClick={(e)=>checkQR(e)} >Trạng Thái Giao Dịch</button>
       {statusQR.returncode===1 ? <p><b>Đã nạp</b></p> :
        <p><b>Chưa nạp</b></p>}
       {/* {renderHistory} */}

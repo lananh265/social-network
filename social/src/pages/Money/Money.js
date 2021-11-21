@@ -1,18 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import AccountInfor from '../../API/AccountInfor';
 import GetInfor from '../../API/GetInfor';
-import QRCode from "./QRCode";
+import QRCode from 'qrcode.react';
+import NapTienQR from '../../API/Naptien'
+import StatusQR from '../../API/StatusQR';
 import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
 import s from "./Money.module.css"
 import HistoryMoney from '../../API/HistoryMoney'; 
 const src = "http://192.168.1.5:4000/v0.1/" 
-
+const urlQR = "https://sbgateway.zalopay.vn/openinapp?order=eyJ6cHRyYW5zdG9rZW4iOi"+
+"IyMTExMTYwMDAwMDQxOThQV3Z2MXpxIiwiYXBwaWQiOjI1NTR9"
 export default function Money(){
   const [accountInfor, setAccountInfor] = useState([{}])
   const {token} = GetInfor()
+  const [showQR, setShowR]= useState(false)
   const [inMoney, setInMoney] = useState(false)
   const [coin, setCoin] = useState(0)
   const [historyMoney, setHistoryMoney] = useState([{}])
+  const [apptransid, setApptransid] = useState('')
+  const [zptransid, setZptransid] = useState('')
+  const [qr, setQR] = useState({})
+  const [statusQR, setStatusQR] = useState({})
   const checkAction = ()=>{
     let action = inMoney? 'inmoney?' : 'outmoney?'
     return src + action+'user_id='+token.id+'&coin='+coin
@@ -38,7 +46,7 @@ export default function Money(){
     HistoryMoney(ob).then( (json)=>{
       if(mounted){
         setHistoryMoney(json)
-        console.log(json)
+        //console.log(json)
       }
     })
     return ()=> mounted = false
@@ -50,6 +58,23 @@ export default function Money(){
       {token.name} {e.text} {e.name} {e.coin}
     </div>)
   })
+  const createQR = async(e)=>{
+    e.preventDefault();
+    let ob = {
+        coin : coin,
+        description: 'nạp tiền thành viên'
+    }
+    let json = await NapTienQR(ob)
+    console.log(json)
+    setQR(json)
+    setShowR(true)
+
+    let obcheck = {
+        "apptransid": json.apptransid
+    }
+    let check = await StatusQR(obcheck)
+    setStatusQR(check)
+  }
   const [showHis, setShowHis]= useState(false)
   const handleChange=(e)=>{
     e.preventDefault()
@@ -88,8 +113,11 @@ export default function Money(){
       onChange={()=>{setInMoney(false)}}
     />
     </label>
- <h6 style={{textAlign: "center",}}><b>URL: {checkAction()}</b></h6>
+    <br/>
+<b>URL:</b> {qr.orderurl}
    <br/>
+<b>Apptransid:</b> {qr.apptransid}
+<br/><br/>
     <h6 style={{  
                    textAlign: "left", 
                   }}>Nhập số tiền bạn cần:</h6>
@@ -98,8 +126,25 @@ export default function Money(){
 
      <h4  style={{ color: "#3b8d99",}}>
        <marquee behavior="alternate">
-        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4>
-   <div className={`${s.giua}`}><QRCode /></div><hr/>
+        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4><hr/>
+        <div style={{ color: "#3b8d99",textAlign: "center",}}>
+        {showQR ? 
+          <button className={`${s.button}`} onClick={()=>{setShowR(false)}} >Ẩn Mã QR</button>:
+          <button className={`${s.button}`} onClick={(e)=>{createQR(e)}}>Quét Mã QR</button>
+        }
+
+        { showQR ?
+          <div>
+          <QRCode
+              id='qrcode'
+              value={qr.orderurl}
+              size={200}
+              level={'H'}
+              includeMargin={true}
+          />
+          </div> :
+          null
+        }</div><hr/>
    {/* <h4 style={{color: "#3b8d99",}}>Lịch sử giao dịch</h4> */}
 
    <button className={`${s.buttonHis}`} onClick={(e)=>handleChange(e)}>Lịch sử giao dịch của bạn</button>

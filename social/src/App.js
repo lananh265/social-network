@@ -1,27 +1,23 @@
-// import { useState } from "react";
+// import {useState } from 'react';
 import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
+//import Welcome from "./pages/Welcome2";
 import useToken from "./API/useToken";
-import Naptien from "./pages/Naptien/Naptien";
-export default function App() {
+
+import Login from "./pages/Login/Login";
+import NapTien from "./pages/Naptien/Naptien";
+import { useState } from "react";
+export default function App(){
   // const [token, setToken] = useState("")
-
-const {token, luuToken} = useToken()
-
+  const {token, luuToken} = useToken()
+  const tokenString = JSON.parse(localStorage.getItem('token'));
   if(!token){
-    return <Login layToken={luuToken} /> //props:layToken
+    return <Login layToken={luuToken} />
   }
-  if(!token.zptransid){
-    return <Naptien />
-  }
-  return (
- <div>
-   <Home />
-
- </div>
-
-);
+  return(
+    <div>
+      {tokenString.zptransid > 0 ?
+        <Home /> : <NapTien />
+      }
+    </div>
+  )
 }
-
-
-

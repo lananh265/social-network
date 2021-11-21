@@ -37,7 +37,7 @@ padding: 0 20px;
 //form
 export const StyledForm = styled.form`
 width: 100%;
-max-width: 700px;
+max-width: 790px;
 padding: 40px;
 background-color: #fff;
 border-radius: 10px;
