@@ -1,7 +1,7 @@
 import { Url } from "./url"
-export default async function PostLogin(ob){
+export default async function StatusQR(ob){
 
-    return fetch(Url.api+'v0.2/login', {
+    return fetch(Url.api+'v0.1/statusqr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
