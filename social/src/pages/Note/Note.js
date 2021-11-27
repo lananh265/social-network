@@ -90,7 +90,7 @@ const Note  = () => {
             <Sidebar />
             <div className={s.body}>
             <div className = {`${s.headertextcenter}`}>
-                <h2><marquee behavior="alternate"><i>&diams; Danh Sách Công Việc Bạn Được Tín Nhiệm &diams;</i></marquee></h2>
+                <h2><i>&diams; Danh Sách Công Việc Bạn Được Tín Nhiệm &diams;</i></h2>
                 {/* <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Tạo Công Việc</button> */}
             </div>
 

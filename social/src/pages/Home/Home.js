@@ -15,6 +15,7 @@ import "../../components/css/home.css"
 import Body from "../../components/Body/Body";
 import Banner from "../../components/banner/banner";
 import { useState } from "react";
+import Profile from "../Profile/Profile";
 
 
 export default function Home() {
@@ -45,7 +46,7 @@ export default function Home() {
                 <Route path="/feedback"> <Feedback /> </Route>
                 <Route path="/note"> <Note/> </Route>
                 
-                {/* <Route path="/feedback"> <Feedback /> </Route> */}
+                <Route path="/profile"> <Profile /> </Route>
                 </Switch> 
        </Router>
       

@@ -8,7 +8,7 @@ import StatusQR from '../../API/StatusQR';
 import RutTien from '../../API/RutTien';
 const src = "http://localhost:4000/v0.1/"
 
-export default function NapTien(){
+export default function RutTien2(){
   const [accountInfor, setAccountInfor] = useState([{}])
   const {token} = GetInfor()
   const [showQR, setShowR] = useState(false)
@@ -80,7 +80,7 @@ export default function NapTien(){
   const checkQR = async(e)=>{
     e.preventDefault();
     
-    alert('Nạp tiền thành công hãy kiểm tra lại tài khoản!')
+    alert('Yêu cầu rút tiền của bạn sẽ được admin giải quyết !')
     
   }
   const outMoney = async(e)=>{
@@ -103,11 +103,11 @@ export default function NapTien(){
   }
   const handleMoney = async(e)=>{
      e.preventDefault()
-     inMoney? createQR(e) : outMoney(e)
+     alert("Yêu cầu của bạn sẽ được admin xử lý")
   }
     return(
       <div>
-        <h1>Đây là trang nạp tiền</h1>
+        <h1>Đây là trang rút tiền</h1>
         
         <ul>
           <li>Name:{accountInfor[0].name} </li>
@@ -116,7 +116,7 @@ export default function NapTien(){
           <li>Blance: {accountInfor[0].balance}$</li>
         </ul>
         
-        <h5>Nhập số tiền bạn muốn nạp</h5>
+        <h5>Nhập số tiền bạn muốn rút</h5>
         {/* <p>URL: {qr.orderurl}</p> */}
         
         <input type="number" onChange={(e)=>{setCoin(e.target.value)}} />
@@ -137,9 +137,9 @@ export default function NapTien(){
           </div> :
           null
         }
-      <h3>Lịch sử tài khoản</h3>
+      {/* <h3>Lịch sử tài khoản</h3> */}
       {/* {renderHistory} */}
-      <button onClick={(e)=>checkQR(e)} >Check nạp tiền</button>
+      {/* <button onClick={(e)=>checkQR(e)} >Check nạp tiền</button> */}
       </div>
     )
   }

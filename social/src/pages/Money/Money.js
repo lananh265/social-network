@@ -172,9 +172,9 @@ export default function Money(){
       <StyledInput
      type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
 
-     <h4  style={{ color: "#3b8d99",}}>
-       <marquee behavior="alternate">
-        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4><hr/>
+     <h4  style={{ color: "#3b8d99", textAlign:"center"}}>
+       
+        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</h4><hr/>
         <div style={{ color: "#3b8d99",textAlign: "center",}}>
         {showQR ? 
           <button className={`${s.button}`} onClick={()=>{setShowR(false)}} >Ẩn Mã QR</button>:
