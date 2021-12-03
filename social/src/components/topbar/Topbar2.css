@@ -3,28 +3,34 @@
     display: flex;
   }
   
-  .sidebar{
-      flex-grow: 1;
-      /* background-color: blue; */
+  .sideba{
+    flex-grow: 6;
+    background-color: #7bc6cc;
   }
-  .topbarLeft {
+  /* .topbarLeft {
     height:auto;
     flex-grow: 1;
     padding: 1em;
     text-align: left;
     color: white;
     display: flex;
+    background-color: #7bc6cc;
   }
-  
+   */
   .topbarCenter {
-   
     height:auto;
-    flex-grow: 4;
+    flex-grow: 3;
     padding: 1em;
     align-items: center;
     display: flex;
     justify-content: left;
     align-items: center;
+    background-color: #7bc6cc;
+    display: flex;
+    justify-content: space-around;
+  }
+  .lienhe{
+    
   }
 
   .topbarRight{
@@ -32,16 +38,18 @@
     flex-grow: 1;
     padding: 1em;
     text-align: right;
+    background-color: #7bc6cc;
+   
   }
   
   .searchbar {
-    width: 50%;
+    width: 65%;
     height: 30px;
     background-color: white;
     border-radius: 30px;
     display: flex;
     align-items: center;
-    
+   
   }
   
   .searchIcon {
@@ -62,12 +70,19 @@
   .topbarIcons {
     display: flex;
   }
-  
 .Image{
-  height: 50px;
-  width: 70px;
+  height: 85px;
+  width: 150px;
   border-radius: 18px;
+  padding: 2px;
 }
+.Imagee{
+  height: 58px;
+  width: 80px;
+  border-radius: 11px;
+  margin-left: 35px;
+}
+
   
 
   

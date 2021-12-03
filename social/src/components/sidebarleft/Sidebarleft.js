@@ -76,8 +76,13 @@ export default function Sidebarleft() {
       onClick={()=>{setState(false)}}
       >
         <List>
-            <h2 style={{ color: "#536976",textAlign: "center"  
-                }}>LANA.VN</h2>
+            {/* <h2 style={{ color: "#536976",textAlign: "center"  
+                }}>LANA.VN</h2> */}
+                 <div>
+              <img
+            className="Imagee"
+            src="assets/post/logo1.png"
+            alt="" /></div>
           {['Home', 'Message', 'Profile'].map((text, index) => (
           <Link to={text==="Home"? "/":text} key={index}>     
             <ListItem type="button" onClick={()=>{thongBao(text)}}  key={text}>
@@ -105,7 +110,12 @@ export default function Sidebarleft() {
       </Box>
     );
     return (
-        <div className="sidebar">
+        <div className="sideba">
+          <div>
+              <img
+            className="Image"
+            src="assets/post/logo1.png"
+            alt="" /></div>
         {['left'].map((anchor) => (
           <React.Fragment key={anchor}>
             <button className={`${s.button} ${s.fontsize}`}onClick={toggleDrawer(anchor, true)} >Menu</button>

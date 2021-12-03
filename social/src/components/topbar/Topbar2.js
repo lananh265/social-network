@@ -5,6 +5,7 @@ import Sidebarleft from "../sidebarleft/Sidebarleft";
 import { useState } from "react";
 import PostSearch from "../../API/PostSearch";
 import GetInfor from "../../API/GetInfor";
+import {Phone, Mail} from "@material-ui/icons";
 
 export default function Topbar({setSearch}) {
   const {token} = GetInfor()
@@ -32,17 +33,14 @@ export default function Topbar({setSearch}) {
       <div className="sidebar">
         <Sidebarleft />
       </div>
-      <div className="topbarLeft">
-        <div className="left">
+      {/* <div className="topbarLeft">
+        {/* <div className="left">
         <img
             className="Image"
             src="assets/post/logo1.png"
-            alt="" /></div>
-        <div className="right"><h1 style={{color:"white",textShadow:"7px 8px 6px #007991"}}> 
-        <marquee behavior="alternate">LANA.VN</marquee>
-        </h1><marquee behavior="alternate">
-        <i style={{color:"#000022"}}>	&#9660; Nền tảng hỗ trợ học tập trực tuyến 	&#9660;</i></marquee></div>
-      </div>
+            alt="" /></div> */}
+        {/* <div className="right"><h1 style={{fontSize:"47px",}}>LANA.VN</h1></div> */}
+      {/* </div>  */}
       <div className="topbarCenter">
         <div className="searchbar">
           <Search className="searchIcon" />
@@ -53,6 +51,14 @@ export default function Topbar({setSearch}) {
             onKeyDown = {(e)=>{enterKey(e)}}
             onChange = {(e)=>{setKey(e.target.value)}}/>
         </div>
+         
+          <div className="lienhe">
+            <Phone className="sidebarIcon" htmlColor="white"/>&ensp;
+            <span><b style={{color:"white",}}>19002605</b></span><br/>
+            <Mail className="sidebarIcon" htmlColor="white" />&ensp;
+            <span><b style={{color:"white",}}>hotro@lana.vn</b></span>
+          </div>
+         
       </div>
         <div className="topbarRight">
           <b style={{color:"#000000"}}><i>{token.name}</i></b>

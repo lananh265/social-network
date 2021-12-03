@@ -110,7 +110,7 @@ console.log()
 	  <div>
         <StyledFormWrapper>
           <StyledForm>
-            <h2><b>Cập Nhật Thông Tin Cá Nhân</b></h2>
+            <h2><b>Cập Nhật Thông Tin Cá Nhân</b></h2><hr/>
             <br/><br/>
              <StyledInput
             placeholder="Nhập tên người dùng mới..."
