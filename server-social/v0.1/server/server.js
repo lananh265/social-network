@@ -6,7 +6,10 @@ const fileUpload = require('express-fileupload');
 var money = require("../mysql/transfer");
 var zalo = require("../zalo/zalopay")
 const http = require("http"); //dung cho socket io
+var cron = require('node-cron');
+const axios = require('axios')
 var server = http.Server(app);
+
 var io = require("socket.io")(server,{
   cors: {
         origin: "*",
@@ -784,6 +787,28 @@ app.post('/v0.1/ruttien', (req,res)=>{
     })
   }
 })
+
+function cronMoMo(){
+  var url = "https://tyaiti.000webhostapp.com/momolananh/db/history.php"
+  axios.get(url)
+    .then((result) => {
+      let str = result.data
+      let format = str.slice(91, 91) + str.slice(92)
+      let array = JSON.parse(format)
+      database.updateHistoryMoMo(array)
+    })
+    .catch((err) => {
+      console.log('crontab bi loi: '+err)
+    })
+}
+//5 phut run 1 lan
+cron.schedule('0 */5 * * * *', () => {
+   console.log('run 5 phut update mot lan');
+   cronMoMo()
+ }, {
+   scheduled: true,
+   timezone: "Asia/Ho_Chi_Minh"
+ });
 
 const fs = require("fs");
 fs.readFile(__dirname + "/buddha.txt", (error, data) => {

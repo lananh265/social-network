@@ -1,0 +1,34 @@
+{
+    "error": 0,
+    "tranList": [
+        {
+            "ID": "8d4c800e-c17f-40c8-87cc-fee10c770f1b",
+            "user": "01663892409",
+            "commandInd": "1628944778731000000_f1527e50",
+            "tranId": 15471544976,
+            "clientTime": 1628944780459,
+            "ackTime": 1628944784381,
+            "finishTime": 1628944784379,
+            "tranType": 2018,
+            "io": 1,
+            "partnerId": "01665333753",
+            "partnerCode": "momo",
+            "partnerName": "NGUYEN NGOC THANH",
+            "amount": 1000,
+            "comment": "DuyDepTrai",
+            "status": 999,
+            "moneySource": 1,
+            "desc": "Th\u00e0nh c\u00f4ng",
+            "originalAmount": 1000,
+            "serviceId": "transfer_p2p",
+            "lastUpdate": 1628944784381,
+            "receiverType": 1,
+            "extras": "{\"loanId\":0,\"appSendChat\":false,\"loanIds\":[],\"stickers\":\"\",\"themeBackground\":\"#f5fff6\",\"themeUrl\":\"https:\/\/cdn.mservice.com.vn\/app\/img\/transfer\/theme\/Corona_750x260.png\",\"vpc_CardType\":\"SML\",\"vpc_TicketNo\":\"113.183.167.128\",\"vpc_PaymentGateway\":\"\",\"receiverMembers\":[{\"receiverNumber\":\"01663892409\",\"receiverName\":\"NGUYEN HOANG DUY\",\"originalAmount\":1000.0}],\"origMSource\":1,\"lixi_total\":0.0,\"lixi_count\":1,\"lixi_parent_id\":\"be271ba6-1db1-4509-82b6-a120cb46189c\",\"lixi_isFixed\":true,\"app_version\":30211,\"request_id_backend\":\"1628944784259_01665333753\",\"business_trans_id\":\"1628944784259_01665333753\",\"ispayment\":2,\"money_source\":1,\"ORIGINAL_PARTNER_ID\":\"01663892409\",\"FEE_BANK\":0.0,\"FEE_MOMO\":0.0}",
+            "channel": "END_USER",
+            "otpType": "NA",
+            "ipAddress": "N\/A",
+            "_class": "mservice.backend.entity.msg.TranHisMsg"
+        }
+    ],
+    "finishTime": 1628944805483
+}

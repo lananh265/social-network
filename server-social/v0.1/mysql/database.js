@@ -1092,4 +1092,26 @@ exports.test = function(user_id, coin,zptransid, calBackMoney){
       calBackMoney({status: 'lan 2'})
     }, 500); //time out
 }
+
+exports.updateHistoryMoMo = function(data){
+  if(data){
+    data.forEach( e=>{
+      var sql = "INSERT INTO historymomo (phone, name, amount, comment,"+
+      "io, lastupdate,ownername, ownerphone, ownercomment) VALUES "+
+      " ('"+e.phone+"','"+e.name+"','"+e.amount+"','"+e.comment+"','"+e.io+"',"+
+      " '"+e.lastupdate+"','"+e.ownername+"','"+e.ownerphone+"',"+
+      " '"+e.ownercomment+"')"
+      connection.query(sql, function(err, results, field){
+        if(!err){
+
+        }else{
+          // console.log('update loi')
+          // console.log(err.sqlMessage)
+        }
+      })
+    })
+  }
+}
+
+
 //
