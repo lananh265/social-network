@@ -1,0 +1,33 @@
+.noidung{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.left{
+  box-shadow: 0px 3px 50px #A5A5A5;
+  width: 280px; 
+  height: 90px ;   
+  flex-direction: column;
+  margin-bottom: 35px;
+  min-height: 40vh;  
+  max-height: 40vh;  
+}
+.right{
+    /* background-color: yellow; */
+    width: 500px;
+}
+.carttop{
+  margin-top: 1px;
+  margin-bottom: 10px;
+  /* max-width: 180px; */
+  height: 40px;
+  width: 280px;
+  padding: 1px 1px !important;
+  text-align: center;
+  justify-content: center;
+  background-color: cadetblue;
+  color: white;
+  font-size: 127%;
+
+}

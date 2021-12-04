@@ -46,8 +46,8 @@ export default function Profile(){
         <button onClick={(e)=>{ transfer(e)}}>Hoàn Thành</button> */}
         {/* <NapTien/> */}
 
-        {/* <RutTien2/>  */}
-        <Duyet/>
+        <RutTien2/> 
+        {/* <Duyet/> */}
       </div>
     )
   }

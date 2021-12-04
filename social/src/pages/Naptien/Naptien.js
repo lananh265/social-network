@@ -107,42 +107,19 @@ export default function NapTien(){
     return(
       
         <div>
-          <GlobalStyle />
-          <div className={s.Header}>
-           <div className={`${s.left} ${s.box}`}>
-
-           <div className="le">
-              <img
-                className="Image"
-                src="assets/post/logo1.png"
-                alt=""/></div>
-        <div className="ri"><h1 style={{color:"white",textShadow:"4px 4px 8px #FFCC33"}}><marquee behavior="alternate" scrollamount="2">
-        LANA.VN</marquee></h1><marquee behavior="alternate">
-        <i style={{color:"#DAA520"}}>	&#9660; Nền tảng hỗ trợ học tập trực tuyến 	&#9660;</i></marquee></div>
-      </div>
-      <div className={`${s.topbarRight}`}>
-          <b style={{color:"#000000"}}><i>{token.name}</i></b>
-        <button className={s.button} onClick={dangXuat}>Đăng Xuất</button>
-        </div>
-       </div>
-
-
-
         <StyledFormWrapper>
-        <StyledForm>
-        <h3 style={{color:"#3b8d99",textAlign: "center",}}><b>Để Tiếp Tục Sử Dụng Trang Web<br/> Mời Bạn Thực Hiện Lần Nạp Tiền Đầu Tiên</b></h3><br/>
-        
+        <StyledForm>        
         <ul>
         <h3><b>Xin chào, &nbsp;{accountInfor[0].name}</b></h3><hr/>
         <h5>Thông Tin Tài Khoản</h5>
           <li><b>Họ tên:</b>&ensp;{accountInfor[0].name} </li>
           <li><b>Email:</b>&ensp;{accountInfor[0].email}</li>
           <li><b>SĐT:</b>&ensp;{accountInfor[0].phone}</li>
-          <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance}$</li>
+          <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance} VNĐ</li>
         </ul><hr/>
-        <h4 style={{color:"#3b8d99",textAlign: "center",}}><b>Thực Hiện Giao Dịch</b></h4>
+        <h4 style={{color:"#3b8d99",textAlign: "center",}}><b>Thực Hiện Nạp Tiền</b></h4>
        <br/> <label><h6>Chọn phương thức thực hiện:</h6></label>&emsp;&emsp;
-       <label> <h6><b>Nạp tiền</b></h6>
+       <label> <h6 style={{textAlign:"center"}}><b>Nạp tiền</b></h6>
        <StyledInput 
      style={{ width:"24px", height:"17px",}}
      type="radio"
@@ -165,9 +142,6 @@ export default function NapTien(){
       <StyledInput
      type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
 
-<h4  style={{ color: "#3b8d99",}}>
-       <marquee behavior="alternate">
-        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4><hr/>
         {/* <input type="number" onChange={(e)=>{setCoin(e.target.value)}} /> */}
         <div style={{ color: "#3b8d99",textAlign: "center",}}>
         {showQR ? 
@@ -187,6 +161,9 @@ export default function NapTien(){
           </div> :
           null
         }</div><hr/>
+        <h4  style={{ color: "#3b8d99",  textAlign: "center", }}>
+       <marquee direction="up" scrollamount="2">
+        Thanh toán an toàn&ndash;Bảo mật tuyệt đối</marquee></h4><hr/>
       <h3>Lịch sử tài khoản</h3>
 
       <button className={`${s.buttonHis}`} onClick={(e)=>checkQR(e)} >Trạng Thái Giao Dịch</button>

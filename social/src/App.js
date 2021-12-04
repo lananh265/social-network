@@ -15,9 +15,9 @@ export default function App(){
   }
   return(
     <div>
-      {tokenString.zptransid > 0 ?
-        <Home /> : <NapTien />
-      }
+      
+        <Home /> 
+     
     </div>
   )
 }

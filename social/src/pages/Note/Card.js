@@ -129,14 +129,14 @@ const Card = ({taskObj, index, deleteTask, updateListArray, reloadJoin}) => {
                                         show: false}}}>Liên hệ</Link>
                 </button>
 
-                {taskObj.start ? 
+                {/* {taskObj.start ? 
                 
                null
                :
                 <button className={`${s.butt}`} onClick={(e)=>{orDer(e,{
                     id_st: taskObj.id_st,
                     connecter_id: taskObj.connecter_id
-                })}} >Duyệt</button>}
+                })}} >Duyệt</button>} */}
 
                 {taskObj.start ? 
                 taskObj.status_ta ? 

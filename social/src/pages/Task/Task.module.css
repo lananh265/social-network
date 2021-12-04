@@ -71,7 +71,10 @@
   }
 
   .headertextcenter{
-    margin-top: 20px;
+   background-color: rgb(38, 194, 199);
+  border-radius: 70px 20px;
+    width: 79%;
+    margin-left: 110px;
     text-align: center;
     color: #000022;
   }

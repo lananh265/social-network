@@ -72,9 +72,13 @@
   }
 
   .headertextcenter{
-    margin-top: 20px;
+    
     text-align: center;
     color: black;
+    background-color: rgb(38, 194, 199);
+    border-radius: 30px 10px;
+    width: 79%;
+    margin-left: 110px;
   }
   .rightbar{
     flex: 3;

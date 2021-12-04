@@ -16,6 +16,9 @@ import Body from "../../components/Body/Body";
 import Banner from "../../components/banner/banner";
 import { useState } from "react";
 import Profile from "../Profile/Profile";
+import ChinhSachthanhtoan from "../Money/ChinhSachthanhtoan.js";
+import Naptien from "../Naptien/Naptien.js";
+import Ruttien from "../Ruttien/Ruttien.js";
 
 
 export default function Home() {
@@ -45,8 +48,10 @@ export default function Home() {
                 <Route path="/money"> <Money /> </Route>
                 <Route path="/feedback"> <Feedback /> </Route>
                 <Route path="/note"> <Note/> </Route>
-                
                 <Route path="/profile"> <Profile /> </Route>
+                <Route path="/ChinhSachthanhtoan"> <ChinhSachthanhtoan /> </Route>
+                <Route path="/Naptien"> <Naptien /> </Route>
+                <Route path="/Ruttien"> <Ruttien /> </Route>
                 </Switch> 
        </Router>
       

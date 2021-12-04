@@ -2,7 +2,7 @@ import s from "./Note.module.css"
 import {useEffect, useState} from 'react';
 import ShowTasks from "../../../API/Showtasks"
 export default function Note(){
-    
+    const [role, setRole] = {"role": 0}
     const [join, setJoin] = useState([{}])
     const colors = [
         {

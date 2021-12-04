@@ -1,0 +1,125 @@
+
+.button{
+  background-color: #3b8d99;
+  border-radius: 9px;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  -webkit-border-radius: 10px;
+}
+
+.button:hover {
+  background-color: #007991;
+}
+
+.choosefile{
+  background-color: #ED213A;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile + label {
+  height: 30px;
+  width: 100px;
+  font-size: 1.35em;
+  font-weight: 500;
+  color: white;
+  background-color: #ED213A;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 9px;
+  text-align: center;
+  
+}
+
+
+.inputfile + label:hover {
+  background-color: red;
+}
+
+.lbel{
+  background-color: #edeaea;
+  width: 180px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+  
+}
+
+.shareOptions{
+  display: flex;
+  margin-left: 20px;
+  width: 46px;
+}
+.bebefitInput{
+background-color: #BBD2C5;
+width: 90px;
+border-radius: 6px;
+}
+.giua{
+text-align: center;
+}
+.buttonHis{
+border-radius: 10px;
+font-size: 1.05em;
+font-weight: 500;
+color: black;
+cursor: pointer;
+}
+
+.buttonHis:hover {
+background-color: #c2e5eb;
+}
+
+.Header{
+width: 100%;
+display: flex;
+color: white;
+text-align: center;
+align-items: center;
+padding: 1em; 
+}
+.box{
+height:auto;
+flex-grow: 1;
+flex-basis: auto;
+}
+
+.left{
+text-align: left;
+color: whitesmoke;
+display: flex;
+}
+
+.right{
+text-align: right;
+}
+.button{
+background-color: #ED213A;
+color: #fff;
+font-size: 0.9rem;
+border: 0;
+border-radius: 5px;
+height: 40px;
+padding: 0 20px;
+cursor: pointer;
+box-sizing: border-box;
+}
+.button:hover{
+    background-color: red;
+  }
+  .topbarRight{
+    height:auto;
+    flex-grow: 1;
+    padding: 1em;
+    text-align: right;
+  }
