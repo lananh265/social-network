@@ -105,6 +105,84 @@ function addBalance(ob,callBackBalance){
     })
   }
 }
+//--------------------------------------------
 
+function blockMoney(id , callBackBlock){
+  var sql = " SELECT SUM(b.benefit) as lockmoney"+
+            " FROM tasks as a, status as b "+
+            " WHERE a.date_start IS NOT NULL AND "+
+            " a.target_id='"+id+"'"+
+            " AND (a.status_ta='0'   OR a.confirm_st='0')"+
+            " AND a.id_st = b.id_st"
+  connection.query(sql,
+  function(err,results,field){
+    if(!err){
+      // console.log(results[0].lockmoney)
+        if(results[0].lockmoney){
+          return results[0].lockmoney
+        }else{
+          return callBackBlock(0)
+        }
+    }else{
+      // console.log(err)
+      return callBackBlock(0)
+    }
+  })
+}
+function checkBalance(id, callBackBalance){
+  if(id<=0){
+    return callBackBalance(0)
+  }
+  var sql = "SELECT balance FROM users WHERE id='"+id+"'"
+  connection.query(sql,
+  function(err,results,field){
+    if(!err){
+      return callBackBalance(results[0].balance)
+    }else{
+      // console.log(err)
+      return callBackBalance(0)
+    }
+  })
+}
+function cashOut(id, coin, callBackCash){
+  if(id<=0 || coin <=0){
+    return callBackCash(0)
+  }
+  var sql ="UPDATE users SET cashout='"+coin+"' WHERE id='"+id+"'"
+  connection.query(sql,
+    function(err, results, field){
+      if(!err){
+        return callBackCash(1)
+      }else{
+        return callBackCash(0)
+      }
+    })
+}
+function requestMoney(id, coin, callBackResquest){
+  var error = { status: 0 }
+  if(id <=0 || coin<=0 ){
+    return callBackResquest(error)
+  }
+  //Kiểm tra blockMoney
+  blockMoney(id, function(resultBlock){
+    //Kiểm tra balance của user
+    checkBalance(id, function(resultBalance){
+      if(resultBlock+coin >resultBalance){
+        return callBackResquest({status:0, code:'Số tiền không hợp lệ'})
+      }else{
+        cashOut(id, coin, function(resultCash){
+          if(resultCash){
+            return callBackResquest({status:1, code:'Số tiền đang đợi duyệt'})
+          }else{
+            return callBackResquest(error)
+          }
 
-addBalance(obNap)
+        })
+      }
+    })
+  })
+}
+
+requestMoney(1,1, function(resultRequest){
+  console.log(resultRequest)
+})

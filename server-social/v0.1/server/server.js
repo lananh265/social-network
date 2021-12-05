@@ -814,10 +814,10 @@ function updateLSGD(){
 //5 phut run 1 lan
 cron.schedule('0 */5 * * * *', () => {
    console.log('run 5 phut update lsgd mot lan');
-   updateLSGD()
+   // updateLSGD()
    setTimeout(function() {
      cronMoMo()
-     console.log('cron momo')
+     // console.log('cron momo')
    }, 1000); //sau 4 giay se cap nhat data historymomo
    setTimeout(function() {
      database.showHistoryMoMo(function(resultQuery){
@@ -841,6 +841,22 @@ app.get('/v0.1/lsgdmomo', (req, res)=>{
   })
 })
 
+app.post('/v0.1/outmoney', (req,res)=>{
+  var error = { status: 0 }
+  if( req.body.user_id <= 0 ||isNaN(req.body.user_id)
+      || req.body.coin<= 0 || isNaN(req.body.coin)){
+    res.send(error)
+  }else{
+    var user_id = parseInt(req.body.user_id)
+    var coin = parseInt(req.body.coin)
+    database.requestMoney(user_id, coin,
+      function(resultQuery){
+        setTimeout(function() {
+          res.json(resultQuery)
+        }, 500); //time out
+    })
+  }
+})
 const fs = require("fs");
 fs.readFile(__dirname + "/buddha.txt", (error, data) => {
     if(error) {

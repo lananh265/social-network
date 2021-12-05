@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react';
 import AccountInfor from '../../API/AccountInfor';
 import GetInfor from '../../API/GetInfor';
 import HistoryMoney from '../../API/HistoryMoney';
-import QRCode from 'qrcode.react';
 import NapTienQR from '../../API/Naptien'
 import StatusQR from '../../API/StatusQR';
 import s from "./Naptien.module.css"
 import UpdateToken from '../../API/UpdateToken';
 import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
-import { GlobalStyle } from "../../components/css/cssformHome";
 const src = "hhttps://momofree.apimienphi.com/api/QRCode?phone=01214964817&amount=1000&note="
 
 export default function NapTien(){
@@ -97,8 +95,7 @@ export default function NapTien(){
       }
       let updatetoken = await UpdateToken(obToken)
       if(updatetoken.status===1){
-        alert('Chào mừng bạn đã trở thành thành viên chính thức của LANA.VN!' +
-        'Vui lòng đăng nhập lại để sử dụng trang web!')
+        alert('Mời bạn vui lòng đăng nhập lại để tiếp tục khóa học!')
         dangXuat()
       }
     }
@@ -126,31 +123,7 @@ export default function NapTien(){
           <li><b>Số dư khả dụng:</b>&ensp;{accountInfor[0].balance} VNĐ</li>
         </ul><hr/>
         <h4 style={{color:"#3b8d99",textAlign: "center",}}><b>Thực Hiện Nạp Tiền</b></h4>
-       <br/> <label><h6>Chọn phương thức thực hiện:</h6></label>&emsp;&emsp;
-       <label> <h6 style={{textAlign:"center"}}><b>Nạp tiền</b></h6>
-       <StyledInput 
-     style={{ width:"24px", height:"17px",}}
-     type="radio"
-     value="nap"
-     name="tien"
-     onChange={()=>{setInMoney(true)}}
-    /></label>
-<br/>
-    <b>URL:</b> {qr.orderurl}
-   <br/>
-        {/* <h5>URL: {qr.orderurl}</h5> */}
-        
-    <b>Apptransid:</b> {qr.apptransid}
-        {/* <h5>Apptransid: {qr.apptransid}</h5> */}
-        {/* <h5>urlQR: {urlQR}</h5> */}
-        <br/><br/>
-    <h6 style={{  
-                   textAlign: "left", 
-                  }}>Nhập số tiền bạn cần:</h6>
-      <StyledInput
-     type ="number" onChange={(e)=>{setCoin(e.target.value)}}/>
-
-        {/* <input type="number" onChange={(e)=>{setCoin(e.target.value)}} /> */}
+   <br/> 
         <div style={{ color: "#3b8d99",textAlign: "center",}}>
         {showQR ? 
           <button className={`${s.button}`}onClick={()=>{setShowR(false)}} >Ẩn Mã QR</button>:
@@ -159,13 +132,16 @@ export default function NapTien(){
 
         { showQR ?
           <div>
-          <QRCode
+            <img className={`${s.QR}`}  
+            src="http://localhost:1337/social-network/server-social/v0.1/server/images/avatars/QR.jpg" 
+            alt="" />
+          {/* <QRCode
               id='qrcode'
               value={qr.orderurl}
               size={200}
               level={'H'}
               includeMargin={true}
-          />
+          /> */}
           </div> :
           null
         }</div><hr/>

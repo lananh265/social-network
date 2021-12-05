@@ -15,3 +15,5 @@ CREATE TABLE historymomo(
     upbalance BOOLEAN DEFAULT 0
   )ENGINE=INNODB;
  ALTER TABLE `httt`.`historymomo` ADD UNIQUE `uq_tran`(`phone`, `lastupdate`);
+
+ ALTER TABLE `httt`.`users` ADD cashout INT(11) DEFAULT 0;
