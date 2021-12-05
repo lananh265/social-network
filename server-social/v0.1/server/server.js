@@ -801,14 +801,45 @@ function cronMoMo(){
       console.log('crontab bi loi: '+err)
     })
 }
+function updateLSGD(){
+  var url = "https://tyaiti.000webhostapp.com/momolananh/db/updateHis.php"
+  axios.get(url)
+    .then((result) => {
+      //
+    })
+    .catch((err) => {
+      console.log('update LSGD loi: '+err)
+    })
+}
 //5 phut run 1 lan
 cron.schedule('0 */5 * * * *', () => {
-   console.log('run 5 phut update mot lan');
-   cronMoMo()
+   console.log('run 5 phut update lsgd mot lan');
+   updateLSGD()
+   setTimeout(function() {
+     cronMoMo()
+     console.log('cron momo')
+   }, 1000); //sau 4 giay se cap nhat data historymomo
+   setTimeout(function() {
+     database.showHistoryMoMo(function(resultQuery){
+       console.log(resultQuery)
+        resultQuery.forEach(e=>{
+        database.addBalance(e)
+        })
+     })
+   }, 8000); //sau 2 giay se cap nhat data historymomo
  }, {
    scheduled: true,
    timezone: "Asia/Ho_Chi_Minh"
  });
+
+app.get('/v0.1/lsgdmomo', (req, res)=>{
+  database.showHistoryMoMo(function(resultQuery){
+    setTimeout(function() {
+      // console.log(resultQuery)
+      res.json(resultQuery)
+    }, 1000);
+  })
+})
 
 const fs = require("fs");
 fs.readFile(__dirname + "/buddha.txt", (error, data) => {

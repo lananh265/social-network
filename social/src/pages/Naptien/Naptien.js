@@ -9,7 +9,7 @@ import s from "./Naptien.module.css"
 import UpdateToken from '../../API/UpdateToken';
 import {StyledFormWrapper,StyledForm, StyledInput} from '../../components/css/cssform';
 import { GlobalStyle } from "../../components/css/cssformHome";
-const src = "http://192.168.1.2:4000/v0.1/"
+const src = "hhttps://momofree.apimienphi.com/api/QRCode?phone=01214964817&amount=1000&note="
 
 export default function NapTien(){
   const [accountInfor, setAccountInfor] = useState([{}])
@@ -104,6 +104,14 @@ export default function NapTien(){
     }
   }
   
+  const qrMomo= async(e)=>{
+    e.preventDefault()
+    let ob={
+      orderurl:src + coin
+    }
+    setQR(ob);
+    setShowR(true);
+  }
     return(
       
         <div>
@@ -146,7 +154,7 @@ export default function NapTien(){
         <div style={{ color: "#3b8d99",textAlign: "center",}}>
         {showQR ? 
           <button className={`${s.button}`}onClick={()=>{setShowR(false)}} >Ẩn Mã QR</button>:
-          <button className={`${s.button}`} onClick={(e)=>{createQR(e)}}>Quét Mã QR</button>
+          <button className={`${s.button}`} onClick={(e)=>{qrMomo(e)}}>Quét Mã QR</button>
         }
 
         { showQR ?

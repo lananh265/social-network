@@ -11,6 +11,7 @@ CREATE TABLE historymomo(
     ownername VARCHAR(70) NOT NULL,
     ownerphone  VARCHAR(13) NOT NULL,
     ownercomment VARCHAR(100),
+    serverupdate DATETIME NOT NULL,
     upbalance BOOLEAN DEFAULT 0
   )ENGINE=INNODB;
  ALTER TABLE `httt`.`historymomo` ADD UNIQUE `uq_tran`(`phone`, `lastupdate`);

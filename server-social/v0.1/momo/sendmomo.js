@@ -6,7 +6,7 @@ const params = new URLSearchParams()
 params.append('chuyenkhoan', 'chuyen tien')
 params.append('to', '01214964817')
 params.append('amount', 100)//number
-params.append('comment', 'tra luong 3/12')
+params.append('comment', 'nap tien')
 params.append('name', '')
 
 

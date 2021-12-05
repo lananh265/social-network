@@ -575,7 +575,8 @@ function getTime(){
   let seconds = date_ob.getSeconds();
 
   let time = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
-  console.log(time)
+  // console.log(time)
+  // new Date().toISOString().slice(0, 19).replace('T', ' ');
   return time
 }
 function startDate(id_st, connecter_id, callBackStart){
@@ -1096,11 +1097,12 @@ exports.test = function(user_id, coin,zptransid, calBackMoney){
 exports.updateHistoryMoMo = function(data){
   if(data){
     data.forEach( e=>{
+      var time = getTime()
       var sql = "INSERT INTO historymomo (phone, name, amount, comment,"+
-      "io, lastupdate,ownername, ownerphone, ownercomment) VALUES "+
+      "io, lastupdate,ownername, ownerphone, ownercomment, serverupdate) VALUES "+
       " ('"+e.phone+"','"+e.name+"','"+e.amount+"','"+e.comment+"','"+e.io+"',"+
       " '"+e.lastupdate+"','"+e.ownername+"','"+e.ownerphone+"',"+
-      " '"+e.ownercomment+"')"
+      " '"+e.ownercomment+"', '"+time+"')"
       connection.query(sql, function(err, results, field){
         if(!err){
 
@@ -1113,5 +1115,96 @@ exports.updateHistoryMoMo = function(data){
   }
 }
 
+exports.showHistoryMoMo = function(callBackMoMo){
+  var sql = "SELECT *, DATE_FORMAT(lastupdate, '%Y-%m-%d %H:%i:%s') as lastupdate2"+
+            ", DATE_FORMAT(serverupdate, '%Y-%m-%d %H:%i:%s') as serverupdate2" +
+            " FROM historymomo"
+  connection.query(sql, function(err, results, field){
+    if(!err){
+      callBackMoMo(results)
+    }else{
+      console.log('get LSGD loi')
+      callBackMoMo('get LSGD loi')
+    }
+  })
+}
 
+
+function checkExistPhone(phone, callBackPhone){
+  if(phone == "01214964817"){
+    return callBackPhone(false)
+  }
+  sql = "SELECT * FROM users WHERE phone='"+phone+"' "
+  connection.query(sql,
+    function(err, result, field){
+    if(!err){
+      // console.log(result)
+      if(result[0]){
+        return callBackPhone(result[0].id)
+      }else{
+        return callBackPhone(false)
+      }
+    }else{
+      return callBackPhone(false)
+    }
+  })
+}
+function updateBalance(phone, amount, callBackBalance){
+  // console.log(amount)
+  sql = "UPDATE users SET balance=balance+'"+amount+"' WHERE phone='"+phone+"'"
+  connection.query(sql,
+    function(err, result, field){
+    if(!err){
+        callBackBalance(true)
+    }else{
+      // console.log(err)
+      callBackBalance(false)
+    }
+  })
+}
+function transactions(connecter_id, amount, callBackTransaction){
+  var sql = "INSERT INTO transactions (connecter_id, target_id, coin, text)"+
+  " VALUES ('"+connecter_id+"', '2', '"+amount+"', 'nạp tiền')"
+  connection.query(sql,
+    function(err,result, filed){
+      if(!err){
+          callBackTransaction(true)
+      }else{
+        console.log(err)
+        callBackTransaction(false)
+      }
+    })
+}
+function finishedUpdateBalance(lastupdate, phone, callBackUpdate){
+  var sql = "UPDATE historymomo SET upbalance = '1' WHERE lastupdate='"+lastupdate+"' "+
+    " AND phone='"+phone+"'"
+  connection.query(sql,
+    function(err,result, filed){
+      if(!err){
+          callBackUpdate(true)
+      }else{
+        console.log(err)
+        callBackUpdate(false)
+      }
+    })
+}
+exports.addBalance = function (ob){
+  if(ob.io==1 && !ob.upbalance){
+    checkExistPhone(ob.phone, function(resultPhone){
+      if(resultPhone){
+        updateBalance(ob.phone, ob.amount, function(resultBalance){
+          if(resultBalance){
+            transactions(resultPhone, ob.amount, function(resultTransaction){
+              if(resultTransaction){
+                finishedUpdateBalance(ob.lastupdate2,ob.phone, function(resultFinished){
+                  // console.log(resultFinished)
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  }
+}
 //
