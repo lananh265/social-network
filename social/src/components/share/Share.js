@@ -58,7 +58,8 @@ export default function Poststatus({props}) {
   if(!json.status){
     
     if(json.balance){
-      alert("Số dư tài khoản hiện tại của bạn không đủ chia sẻ tin này!")
+      alert("Số dư tài khoản hiện tại của bạn không đủ để chia sẻ tin này!" + 
+       "Vui lòng nạp thêm tiền vào tài khoản để tiếp tục!")
     }else{
       alert("Chia sẻ thất bại!")
     }

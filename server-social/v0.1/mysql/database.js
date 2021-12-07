@@ -1283,4 +1283,17 @@ exports.requestMoney =  function(id, coin, callBackResquest){
     })
   })
 }
+
+
+exports.listCashout = function (calBackCashout){
+  var sql = "SELECT id, phone, name, balance, cashout FROM users WHERE cashout > 0"
+  connection.query(sql,
+  function(err, results, filed){
+    if(!err){
+      calBackCashout(results)
+    }else{
+      calBackCashout({status:0})
+    }
+  })
+}
 //

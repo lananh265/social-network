@@ -814,14 +814,14 @@ function updateLSGD(){
 //5 phut run 1 lan
 cron.schedule('0 */5 * * * *', () => {
    console.log('run 5 phut update lsgd mot lan');
-   // updateLSGD()
+   updateLSGD()
    setTimeout(function() {
      cronMoMo()
      // console.log('cron momo')
    }, 1000); //sau 4 giay se cap nhat data historymomo
    setTimeout(function() {
      database.showHistoryMoMo(function(resultQuery){
-       console.log(resultQuery)
+       // console.log(resultQuery)
         resultQuery.forEach(e=>{
         database.addBalance(e)
         })
@@ -850,6 +850,30 @@ app.post('/v0.1/outmoney', (req,res)=>{
     var user_id = parseInt(req.body.user_id)
     var coin = parseInt(req.body.coin)
     database.requestMoney(user_id, coin,
+      function(resultQuery){
+        setTimeout(function() {
+          res.json(resultQuery)
+        }, 500); //time out
+    })
+  }
+})
+
+app.get('/v0.1/listcashout', (req,res)=>{
+  database.listCashout(
+    function(resultQuery){
+      setTimeout(function() {
+        res.json(resultQuery)
+      }, 500); //time out
+  })
+})
+
+app.post('/v0.2/transfer',(req,res)=>{
+  var error = { status: 0 }
+  if( req.body.user_id <= 0 ||isNaN(req.body.user_id)){
+    res.send(error)
+  }else{
+    var user_id = parseInt(req.body.user_id)
+    money.transfer2(user_id,
       function(resultQuery){
         setTimeout(function() {
           res.json(resultQuery)

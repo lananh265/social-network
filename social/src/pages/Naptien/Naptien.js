@@ -135,13 +135,6 @@ export default function NapTien(){
             <img className={`${s.QR}`}  
             src="http://localhost:1337/social-network/server-social/v0.1/server/images/avatars/QR.jpg" 
             alt="" />
-          {/* <QRCode
-              id='qrcode'
-              value={qr.orderurl}
-              size={200}
-              level={'H'}
-              includeMargin={true}
-          /> */}
           </div> :
           null
         }</div><hr/>

@@ -1,4 +1,6 @@
+const mysql = require('mysql2/promise');
 var zalo = require("../zalo/zalopay")
+const axios = require('axios')
 const env = process.env;
 
 const config = {
@@ -14,8 +16,8 @@ const config = {
   },
 };
 
-const mysql = require('mysql2/promise');
-// const config = require('./config2');
+// const mysql = require('mysql2/promise');
+// // const config = require('./config2');
 
 async function createOrder(connecter_id,taget_id,money) {
 
@@ -343,4 +345,72 @@ exports.rutTien = async function(user_id, coin, zptransid, callBackMoney){
    }
 
    return callBackMoney(await moneyDecrement2(user_id, coin, zptransid))
+}
+
+
+async function sendMoney(phone, amount){
+  const params = new URLSearchParams()
+  params.append('chuyenkhoan', 'chuyen tien')
+  params.append('to', phone)
+  params.append('amount', amount)//number
+  params.append('comment', 'tra luong')
+  params.append('name', '')
+  const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  }
+  const url = 'https://tyaiti.000webhostapp.com/momolananh/checkHistory.php'
+  axios.post(url, params, config)
+    .then((result) => {
+      console.log(result)
+      let str = result.data
+      let format = str.slice(91, 91) + str.slice(92);
+      let ob = JSON.parse(format)
+      console.log(ob)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+exports.transfer2 = async function (id, calBackTransfer){
+  const connection = await mysql.createConnection(config.db);
+  //B1 Set transaction level read committed
+  await connection.execute('SET TRANSACTION ISOLATION LEVEL READ COMMITTED');
+  await connection.execute(
+    'DO SLEEP(1)'
+  )
+  //B2 Start the transaction
+  await connection.beginTransaction();
+  try{
+    //B3 Block row and read balance
+     await connection.execute("SELECT id, username, balance, cashout "+
+           " FROM users WHERE id='"+id+"' FOR UPDATE")
+     const [balance_old,] = await connection.execute(
+       `SELECT phone, balance, cashout FROM users WHERE id = ${id} `)
+       //  [ { balance: 1300, cashout: 10 } ]
+    //B4 Check block
+     var oblock = await blockMoney(id) //{ lockmoney: 0 }
+     if(  parseInt(balance_old[0].cashout)
+        + parseInt(oblock.lockmoney) > balance_old[0].balance){
+       throw {status: 0, code: "Số tiền không hợp lệ"}
+     }
+     //B5 update balance
+     await connection.execute(`UPDATE users SET
+       balance= balance - ${parseInt(balance_old[0].cashout)}
+       , cashout = cashout -  ${parseInt(balance_old[0].cashout)}
+       WHERE id=${id}`)
+    //B6 update transaction
+    await connection.execute(`INSERT INTO transactions
+      (connecter_id, target_id, coin, text)
+      VALUES (${id}, 2, ${parseInt(balance_old[0].cashout)}, "rút tiền")`)
+    var sendMoMo = await sendMoney(balance_old[0].phone, parseInt(balance_old[0].cashout))
+    await connection.commit();
+    return calBackTransfer({status: 1, code: "Rút tiền thành công"})
+  }catch(err){
+     console.log(err)
+     connection.rollback();
+     return calBackTransfer({status: 0})
+  }
+
 }

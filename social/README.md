@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### API xem lịch sử giao dịch
+https://tyaiti.000webhostapp.com/momolananh/db/history.php
+
+### Update cho lịch sử giao dịch 
+https://tyaiti.000webhostapp.com/momolananh/db/updateHis.php

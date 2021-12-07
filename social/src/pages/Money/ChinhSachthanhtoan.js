@@ -18,10 +18,10 @@ export default function ChinhSachthanhtoan(){
              <h6 style={{color:"black",}}>
               <b> Đến với LANA.VN, quý khách thực hiện thanh toán khóa học qua Ví Momo như sau:</b>
               <br/><br/>
-               Hệ thống sẽ hiển thị Thông tin QR code. Bạn nhập số tiền muốn nạp hoặc rút.<br/>
-               Sau đó, bạn đăng nhập ví Momo trên điện thoại chọn “quét mã” và thực hiện quét mã QR.<br/>
+               Hệ thống sẽ hiển thị Thông tin QR code.<br/>
+               Sau đó, bạn đăng nhập ví Momo trên điện thoại chọn “quét mã” và thực hiện quét mã QR của trang web đã hiển thị.<br/>
                Kiểm tra thông tin, số tiền cần thanh toán cho khóa học sau đó nhấn “xác nhận”. <br/>
-               Giao dịch hoàn tất, kiểm tra lại số dư trong ví MoMo, đồng thời đăng nhập vào Kyna để tham gia học.<br/>
+               Giao dịch hoàn tất, kiểm tra lại số dư trong ví MoMo, đồng thời đăng nhập vào LANA.VN để tham gia học.<br/>
                <br/><br/><br/>
                <b>Các trường hợp giao dịch bị hủy:</b> <br/>
 
